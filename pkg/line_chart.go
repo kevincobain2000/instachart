@@ -36,11 +36,9 @@ func (c *LineChart) GetYAxis(label string) chart.YAxis {
 	}
 }
 
-func (c *LineChart) GetYValues(data []int) []float64 {
+func (c *LineChart) GetYValues(data []float64) []float64 {
 	var yValues []float64
-	for _, y := range data {
-		yValues = append(yValues, float64(y))
-	}
+	yValues = append(yValues, data...)
 	return yValues
 }
 

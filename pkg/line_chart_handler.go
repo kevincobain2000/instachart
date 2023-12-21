@@ -24,21 +24,22 @@ type LineChartRequest struct {
 	ChartData  string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
 	XAxisLabel string `json:"x_label" query:"x_label" form:"x_label"`
 	YAxisLabel string `json:"y_label" query:"y_label" form:"y_label"`
+	ChartTitle string `json:"title" query:"title" form:"title"`
 }
 
-type Data struct {
-	XData [][]string `json:"x"`
-	YData [][]int    `json:"y"`
-	Names []string   `json:"names"`
+type LineChartData struct {
+	XData [][]string  `json:"x"`
+	YData [][]float64 `json:"y"`
+	Names []string    `json:"names"`
 }
 
-func (h *LineChartHandler) GetLineRequestChart(c echo.Context) ([]byte, error) {
+func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(LineChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, err
 	}
 
-	var data Data
+	var data LineChartData
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
 		return nil, err
 	}
@@ -75,6 +76,7 @@ func (h *LineChartHandler) GetLineRequestChart(c echo.Context) ([]byte, error) {
 	}
 
 	graph := chart.Chart{
+		Title:      req.ChartTitle,
 		Background: h.chart.GetBackground(),
 		XAxis:      h.chart.GetXAxis(req.XAxisLabel),
 		YAxis:      h.chart.GetYAxis(req.YAxisLabel),

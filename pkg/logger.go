@@ -14,7 +14,7 @@ var (
 )
 
 const (
-	DEFAULT_LOG_FILE = "./logs/go-chart-to-picture.log"
+	DEFAULT_LOG_FILE = "./logs/instachart.log"
 )
 
 func Logger() *logrus.Logger {

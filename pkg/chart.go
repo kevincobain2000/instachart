@@ -62,5 +62,6 @@ func (c *Chart) GetChartStroke(variant int) chart.Style {
 	return chart.Style{
 		StrokeColor: strokeColor,
 		FillColor:   fillColor,
+		StrokeWidth: 2,
 	}
 }

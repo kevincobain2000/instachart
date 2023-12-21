@@ -16,6 +16,7 @@ func NewEcho() *echo.Echo {
 	e := echo.New()
 	e.HTTPErrorHandler = HTTPErrorHandler
 	SetupLogger(e)
+	SetupRoutes(e)
 	return e
 }
 func SetupLogger(e *echo.Echo) {

@@ -20,6 +20,4 @@ jobs:
           version: ${{ matrix.go-version }}
       - name: Test
         run: |
-          mkdir -p dist/
-          echo "hello" > dist/index.html
           go test -race -v ./... -count=1

@@ -1,0 +1,25 @@
+on:
+  pull_request:
+    paths:
+      - '**/*.go'
+      - '**/*.mod'
+      - '**/*.sum'
+      - '**/*.yaml'
+name: CI
+jobs:
+  test:
+    strategy:
+      matrix:
+        go-version: [dev-latest]
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kevincobain2000/action-gobrew@v2.2
+        with:
+          version: ${{ matrix.go-version }}
+      - name: Test
+        run: |
+          mkdir -p dist/
+          echo "hello" > dist/index.html
+          go test -race -v ./... -count=1

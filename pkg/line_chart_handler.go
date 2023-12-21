@@ -27,9 +27,9 @@ type LineChartRequest struct {
 }
 
 type Data struct {
-	XData  [][]string `json:"x"`
-	YData  [][]int    `json:"y"`
-	Labels []string   `json:"labels"`
+	XData [][]string `json:"x"`
+	YData [][]int    `json:"y"`
+	Names []string   `json:"names"`
 }
 
 func (h *LineChartHandler) GetLineRequestChart(c echo.Context) ([]byte, error) {
@@ -51,21 +51,21 @@ func (h *LineChartHandler) GetLineRequestChart(c echo.Context) ([]byte, error) {
 
 	var series []chart.Series
 	for i := 0; i < len(data.XData); i++ {
-		label := "Series " + strconv.Itoa(i+1) + " "
-		if len(data.Labels) > i {
-			label = data.Labels[i]
+		name := "Series " + strconv.Itoa(i+1) + " "
+		if len(data.Names) > i {
+			name = data.Names[i]
 		}
 
 		if isTimeSeries {
 			series = append(series, chart.TimeSeries{
-				Name:    label,
+				Name:    name,
 				Style:   h.chart.GetChartStroke(i),
 				XValues: h.chart.GetXValuesAsTime(data.XData[i]),
 				YValues: h.chart.GetYValues(data.YData[i]),
 			})
 		} else {
 			series = append(series, chart.ContinuousSeries{
-				Name:    label,
+				Name:    name,
 				Style:   h.chart.GetChartStroke(i),
 				XValues: h.chart.GetXValuesAsFloat(data.XData[i]),
 				YValues: h.chart.GetYValues(data.YData[i]),

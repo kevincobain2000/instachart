@@ -32,7 +32,7 @@ air
 
 ### Line Chart
 
-Single date series
+#### Single date series
 
 ```sh
 http://localhost:3000/line?data={
@@ -41,7 +41,7 @@ http://localhost:3000/line?data={
 }
 ```
 
-Multiple date series
+#### Multiple date series
 
 ```sh
 http://localhost:3000/line?data={
@@ -50,7 +50,7 @@ http://localhost:3000/line?data={
 }
 ```
 
-Continuous Series
+#### Continuous Series
 
 ```sh
 http://localhost:3000/line?data={
@@ -59,7 +59,7 @@ http://localhost:3000/line?data={
 }
 ```
 
-Multiple Continuous Series
+#### Multiple Continuous Series
 
 ```sh
 http://localhost:3000/line?data={
@@ -69,6 +69,8 @@ http://localhost:3000/line?data={
 ```
 
 ### Bar Chart
+
+#### Series
 
 ```sh
 http://localhost:3000/bar?title=sleeping+hours

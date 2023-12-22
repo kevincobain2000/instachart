@@ -57,10 +57,9 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 
 	graph := chart.BarChart{
 		Title:      req.ChartTitle,
-		Background: h.chart.GetBackground(),
 		Height:     req.Height,
 		Width:      req.Width,
-		BarWidth:   60,
+		Background: h.chart.GetBackground(),
 		YAxis: chart.YAxis{
 			Name:     req.YAxisLabel,
 			AxisType: chart.YAxisSecondary,

@@ -42,6 +42,35 @@ func (c *LineChart) GetYValues(data []float64) []float64 {
 	return yValues
 }
 
+func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []string) []chart.Series {
+	var series []chart.Series
+	isTimeSeries := c.IsTimeseries(xData[0][0])
+	for i := 0; i < len(xData); i++ {
+		name := "Series " + strconv.Itoa(i+1) + " "
+		if len(names) > i {
+			name = names[i]
+		}
+
+		if isTimeSeries {
+			series = append(series, chart.TimeSeries{
+				Name:    name,
+				Style:   c.GetChartStroke(i),
+				XValues: c.GetXValuesAsTime(xData[i]),
+				YValues: c.GetYValues(yData[i]),
+			})
+		} else {
+			series = append(series, chart.ContinuousSeries{
+				Name:    name,
+				Style:   c.GetChartStroke(i),
+				XValues: c.GetXValuesAsFloat(xData[i]),
+				YValues: c.GetYValues(yData[i]),
+			})
+		}
+
+	}
+	return series
+}
+
 func (c *LineChart) GetXValuesAsTime(data []string) []time.Time {
 	var xValues []time.Time
 	for _, x := range data {

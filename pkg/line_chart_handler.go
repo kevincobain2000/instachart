@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"strconv"
 
 	"github.com/labstack/echo/v4"
 	"github.com/wcharczuk/go-chart/v2"
@@ -25,6 +24,8 @@ type LineChartRequest struct {
 	XAxisLabel string `json:"x_label" query:"x_label" form:"x_label"`
 	YAxisLabel string `json:"y_label" query:"y_label" form:"y_label"`
 	ChartTitle string `json:"title" query:"title" form:"title"`
+	Height     int    `json:"height" query:"height" form:"height"`
+	Width      int    `json:"width" query:"width" form:"width"`
 }
 
 type LineChartData struct {
@@ -48,39 +49,14 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, errors.New("data: invalid data")
 	}
 
-	isTimeSeries := h.chart.IsTimeseries(data.XData[0][0])
-
-	var series []chart.Series
-	for i := 0; i < len(data.XData); i++ {
-		name := "Series " + strconv.Itoa(i+1) + " "
-		if len(data.Names) > i {
-			name = data.Names[i]
-		}
-
-		if isTimeSeries {
-			series = append(series, chart.TimeSeries{
-				Name:    name,
-				Style:   h.chart.GetChartStroke(i),
-				XValues: h.chart.GetXValuesAsTime(data.XData[i]),
-				YValues: h.chart.GetYValues(data.YData[i]),
-			})
-		} else {
-			series = append(series, chart.ContinuousSeries{
-				Name:    name,
-				Style:   h.chart.GetChartStroke(i),
-				XValues: h.chart.GetXValuesAsFloat(data.XData[i]),
-				YValues: h.chart.GetYValues(data.YData[i]),
-			})
-		}
-
-	}
-
 	graph := chart.Chart{
 		Title:      req.ChartTitle,
+		Height:     req.Height,
+		Width:      req.Width,
 		Background: h.chart.GetBackground(),
 		XAxis:      h.chart.GetXAxis(req.XAxisLabel),
 		YAxis:      h.chart.GetYAxis(req.YAxisLabel),
-		Series:     series,
+		Series:     h.chart.GetSeries(data.XData, data.YData, data.Names),
 	}
 	graph.Elements = []chart.Renderable{
 		chart.Legend(&graph),

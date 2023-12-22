@@ -7,6 +7,9 @@ import (
 )
 
 func SetupRoutes(e *echo.Echo) {
+	e.GET("/health", func(c echo.Context) error {
+		return c.String(http.StatusOK, "OK")
+	})
 	e.GET("/line", func(c echo.Context) error {
 		img, err := NewLineChartHandler().Get(c)
 		if err != nil {

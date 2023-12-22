@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/kevincobain2000/instachart">
-    <img alt="c2p" src="https://imgur.com/fNESd6h.png" width="360">
+    <img alt="c2p" src="https://imgur.com/fNESd6h.png" width="620">
   </a>
 </p>
 <p align="center">

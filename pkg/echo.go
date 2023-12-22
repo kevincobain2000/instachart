@@ -15,6 +15,7 @@ import (
 func NewEcho() *echo.Echo {
 	e := echo.New()
 	e.HTTPErrorHandler = HTTPErrorHandler
+	e.Pre(middleware.RemoveTrailingSlash())
 	SetupLogger(e)
 	SetupRoutes(e)
 	return e

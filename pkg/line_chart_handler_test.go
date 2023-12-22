@@ -14,7 +14,7 @@ func TestGetLineRequestChart_ValidRequest(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/line", func(c echo.Context) error {
-		img, err := NewLineChartHandler().GetLineRequestChart(c)
+		img, err := NewLineChartHandler().Get(c)
 		if err != nil {
 			return err
 		}

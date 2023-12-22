@@ -18,6 +18,12 @@ jobs:
       - uses: kevincobain2000/action-gobrew@v2
         with:
           version: ${{ matrix.go-version }}
-      - name: Test
+      - name: Install Tools
         run: |
-          go test -race -v ./... -count=1
+          go install github.com/securego/gosec/v2/cmd/gosec@latest
+          go install github.com/axw/gocov/gocov@latest
+          go install github.com/AlekSi/gocov-xml@latest
+      - name: Lint
+        run: |
+          gosec ./...
+          go vet -all .

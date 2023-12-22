@@ -18,6 +18,6 @@ func main() {
 }
 
 func cliArgs() {
-	flag.StringVar(&port, "port", "3000", "port to serve")
+	flag.StringVar(&port, "port", "3001", "port to serve")
 	flag.Parse()
 }

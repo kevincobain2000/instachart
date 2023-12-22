@@ -10,7 +10,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [dev-latest]
+        go-version: [mod]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -18,6 +18,18 @@ jobs:
       - uses: kevincobain2000/action-gobrew@v2
         with:
           version: ${{ matrix.go-version }}
+
+      - name: Install Tools
+        run: |
+          go install github.com/securego/gosec/v2/cmd/gosec@latest
+          go install github.com/axw/gocov/gocov@latest
+          go install github.com/AlekSi/gocov-xml@latest
+
       - name: Test
         run: |
           go test -race -v ./... -count=1
+      - name: Lint
+        run: |
+          gosec ./...
+          go vet -all .
+

@@ -7,6 +7,15 @@
   Chart as Image - API using go-charts.
 </p>
 
+[![coverage](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=coverage)](https://coveritup.app/kevincobain2000/instachart)
+[![go-binary-size](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=go-binary-size&color=yellow)](https://coveritup.app/kevincobain2000/instachart)
+[![unit-test-run-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=unit-test-run-time)](https://coveritup.app/kevincobain2000/instachart)
+
+
+[![build-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=build-time)](https://coveritup.app/kevincobain2000/instachart)
+[![go-mod-dependencies](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=go-mod-dependencies&color=indigo)](https://coveritup.app/kevincobain2000/instachart)
+[![go-sec-issues](https://coveritup.app/embed/kevincobain2000/instachart?branch=develop&type=go-sec-issues&color=green)](https://coveritup.app/kevincobain2000/instachart)
+
 **Quick Setup:** Easy setup. Add charts as images in markdown, emails etc.
 
 **Hassle Free:** Create charts as images with single URL.

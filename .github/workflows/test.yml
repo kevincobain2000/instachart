@@ -6,6 +6,9 @@ on:
       - '**/*.sum'
       - '**/*.yml'
 name: CI
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 jobs:
   test:
     strategy:

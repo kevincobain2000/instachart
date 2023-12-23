@@ -12,14 +12,9 @@ var (
 	log  *logrus.Logger
 )
 
-const (
-	DEFAULT_LOG_FILE = "./logs/instachart.log"
-)
-
 func Logger() *logrus.Logger {
 	once.Do(func() {
 		fmt.Println("Logger initialized")
-		fmt.Println("Logging to file: ", DEFAULT_LOG_FILE)
 		log = logrus.New()
 		log.SetFormatter(&logrus.TextFormatter{
 			DisableColors:   false,

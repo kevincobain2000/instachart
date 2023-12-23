@@ -13,7 +13,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [dev-latest, mod]
+        go-version: [dev-latest]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:

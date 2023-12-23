@@ -48,7 +48,7 @@
 ### Single Line Series
 
 <details>
- <summary><b>Query URL</b></summary>
+ <summary><b>REQUEST URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_label=amount&data={
@@ -65,7 +65,7 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_l
 ### Multiple Line Series
 
 <details>
- <summary><b>Query URL</b></summary>
+ <summary><b>REQUEST URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_label=amount&data={
@@ -84,7 +84,7 @@ https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_la
 ### Continuous Series
 
 <details>
- <summary><b>Query URL</b></summary>
+ <summary><b>REQUEST URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+people&y_label=amount&data={
@@ -124,7 +124,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 ### Bars
 
 <details>
- <summary><b>Query URL</b></summary>
+ <summary><b>REQUEST URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={

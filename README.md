@@ -29,21 +29,21 @@
 
 ## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
 
-| Query     | Required | Description | Example                                                                   |
-| :-------- | :------- | :---------- | :------------------------------------------------------------------------ |
-| `data`    | ◯        | JSON        | `?data={ "x": [["2022-12-23","2022-12-24","2023-12-25"]],"y": [[1,2,3]]}` |
-| `title`   |          | string      |                                                                           |
-| `x_label` |          | string      |                                                                           |
-| `y_label` |          | string      |                                                                           |
-| `height`  |          | int         |                                                                           |
-| `width`   |          | int         |                                                                           |
+| Query     | Required | Description | Example                                                    |
+| :-------- | :------- | :---------- | :--------------------------------------------------------- |
+| `data`    | ◯        | JSON        | `?data={ "x": [["2022-12-23","2023-12-25"]],"y": [[1,2]]}` |
+| `title`   |          | string      |                                                            |
+| `x_label` |          | string      |                                                            |
+| `y_label` |          | string      |                                                            |
+| `height`  |          | int         |                                                            |
+| `width`   |          | int         |                                                            |
 
 
-| `data`  | Required | Description | Example                               |
-| :------ | :------- | :---------- | :------------------------------------ |
-| `x`     | ◯        | []Array     | `"x": [["2022-12-23","2022-12-24"], ` |
-| `y`     | ◯        | []Array     | `"y": [[1,2,3],[3,5,7]]`              |
-| `names` |          | Array       | `"names": ["Series A", "Series B"]`   |
+| `data`  | Required | Description | Example                                                           |
+| :------ | :------- | :---------- | :---------------------------------------------------------------- |
+| `x`     | ◯        | []Array     | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
+| `y`     | ◯        | []Array     | `"y": [[1,2],[3,4]]`                                              |
+| `names` |          | Array       | `"names": ["Series A", "Series B"]`                               |
 
 ### Single Line Series
 

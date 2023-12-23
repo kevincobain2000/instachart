@@ -13,16 +13,21 @@
 
 **Supports:** Choose from Line, bar, donut, pie, scatter, bubble, stacked bar, etc.
 
-# Build Status
-
 
 # API
 
-[https://instachart.coveritup.app/line](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
+**URL** `https://instachart.coveritup.app`
 
-[https://instachart.coveritup.app/bar](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[8,%202%20,14]%20})
+- [API](#api)
+  - [`GET /line`](#get-line)
+    - [Single Line Series](#single-line-series)
+    - [Multiple Line Series](#multiple-line-series)
+    - [Continuous Series](#continuous-series)
+  - [`GET /bar`](#get-bar)
+    - [Bars](#bars)
 
-## `GET /line`
+
+## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
 
 | Query     | Required | Description | Example                                                                   |
 | :-------- | :------- | :---------- | :------------------------------------------------------------------------ |
@@ -43,7 +48,7 @@
 ### Single Line Series
 
 <details>
- <summary><i>Sample url</i></summary>
+ <summary><b>Query URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_label=amount&data={
@@ -53,14 +58,14 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_l
 ```
 </details>
 
----
+<br>
 
 ![Line single series](https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
 
 ### Multiple Line Series
 
 <details>
- <summary><i>Sample url</i></summary>
+ <summary><b>Query URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line??title=Multi+Line+Series&x_label=dates&y_label=amount&data={
@@ -71,7 +76,7 @@ https://instachart.coveritup.app/line??title=Multi+Line+Series&x_label=dates&y_l
 ```
 </details>
 
----
+<br>
 
 ![Multi line series](https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
 
@@ -79,7 +84,7 @@ https://instachart.coveritup.app/line??title=Multi+Line+Series&x_label=dates&y_l
 ### Continuous Series
 
 <details>
- <summary><i>Sample url</i></summary>
+ <summary><b>Query URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line??title=Continuous+Series&x_label=No+of+people&y_label=amount&data={
@@ -91,13 +96,15 @@ https://instachart.coveritup.app/line??title=Continuous+Series&x_label=No+of+peo
 
 </details>
 
----
+<br>
 
 ![Multi line series](https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+people&y_label=amount&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
 
 
 
-## `GET /bar`
+## [`GET /bar`](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[8,%202%20,14]%20})
+
+
 
 | Query     | Required | Description | Example                                              |
 | :-------- | :------- | :---------- | :--------------------------------------------------- |
@@ -117,7 +124,7 @@ https://instachart.coveritup.app/line??title=Continuous+Series&x_label=No+of+peo
 ### Bars
 
 <details>
- <summary><i>Sample url</i></summary>
+ <summary><b>Query URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={
@@ -128,6 +135,6 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data
 
 </details>
 
----
+<br>
 
 ![Bar chart](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[8,%202%20,14]%20})

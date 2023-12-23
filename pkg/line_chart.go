@@ -4,6 +4,7 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/araddon/dateparse"
 	"github.com/wcharczuk/go-chart/v2"
 )
 
@@ -55,7 +56,7 @@ func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []strin
 			series = append(series, chart.TimeSeries{
 				Name:    name,
 				Style:   c.GetChartStroke(i),
-				XValues: c.GetXValuesAsTime(xData[i]),
+				XValues: c.GetXValuesAsDates(xData[i]),
 				YValues: c.GetYValues(yData[i]),
 			})
 		} else {
@@ -71,10 +72,10 @@ func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []strin
 	return series
 }
 
-func (c *LineChart) GetXValuesAsTime(data []string) []time.Time {
+func (c *LineChart) GetXValuesAsDates(data []string) []time.Time {
 	var xValues []time.Time
 	for _, x := range data {
-		t, _ := time.Parse("2006-01-02", x)
+		t, _ := dateparse.ParseAny(x)
 		xValues = append(xValues, t)
 	}
 	return xValues
@@ -93,7 +94,7 @@ func (c *LineChart) GetXValuesAsFloat(data []string) []float64 {
 
 func (c *LineChart) IsTimeseries(str string) bool {
 	isTimeSeries := false
-	if _, err := time.Parse("2006-01-02", str); err == nil {
+	if _, err := dateparse.ParseAny(str); err == nil {
 		isTimeSeries = true
 	}
 	return isTimeSeries

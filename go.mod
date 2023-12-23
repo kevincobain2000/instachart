@@ -3,13 +3,13 @@ module github.com/kevincobain2000/instachart
 go 1.21.3
 
 require (
+	github.com/araddon/dateparse v0.0.0-20210429162001-6b43995a97de
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/labstack/echo/v4 v4.11.3
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.8.4
 	github.com/wcharczuk/go-chart/v2 v2.1.1
-	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 )
 
 require (

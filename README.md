@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/kevincobain2000/instachart">
-    <img alt="c2p" src="https://imgur.com/fNESd6h.png" width="620">
+    <img alt="c2p" src="https://imgur.com/HC5FB7O.png" width="620">
   </a>
 </p>
 <p align="center">
@@ -68,7 +68,7 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_l
  <summary><b>Query URL</b></summary>
 
 ```sh
-https://instachart.coveritup.app/line??title=Multi+Line+Series&x_label=dates&y_label=amount&data={
+https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_label=amount&data={
     "x": [["2022-12-23","2022-12-24","2023-12-25"], ["2022-12-23","2022-12-28","2023-12-30"]],
     "y": [[1,2,3], [1,5,10]],
     "names": ["Series A", "Series B"]
@@ -87,7 +87,7 @@ https://instachart.coveritup.app/line??title=Multi+Line+Series&x_label=dates&y_l
  <summary><b>Query URL</b></summary>
 
 ```sh
-https://instachart.coveritup.app/line??title=Continuous+Series&x_label=No+of+people&y_label=amount&data={
+https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+people&y_label=amount&data={
     "x": [["10","20","30"], ["10","20","30"], ["10","20","30"]],
     "y": [[1,2,3], [10,20,30], [6,3,9]],
     "names": ["Series A", "Series B", "Series C"]

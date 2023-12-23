@@ -5,7 +5,6 @@ import (
 	"sync"
 
 	"github.com/sirupsen/logrus"
-	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 var (
@@ -29,15 +28,6 @@ func Logger() *logrus.Logger {
 		})
 		log.SetReportCaller(false)
 		log.SetLevel(logrus.InfoLevel)
-		// set logs to file and log rotate
-		// Set up lumberjack log file rotation
-		log.SetOutput(&lumberjack.Logger{
-			Filename:   DEFAULT_LOG_FILE, // specify your log file path
-			MaxSize:    10,               // max size in megabytes
-			MaxBackups: 5,                // max number of old log files to keep
-			MaxAge:     28,               // max age in days to keep a log file
-			Compress:   true,             // whether to compress log files
-		})
 	})
 	return log
 }

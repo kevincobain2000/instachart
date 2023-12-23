@@ -9,31 +9,18 @@ import (
 	"github.com/fvbock/endless"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/sirupsen/logrus"
 )
 
 func NewEcho() *echo.Echo {
 	e := echo.New()
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())
-	SetupLogger(e)
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format:           "REQ [${time_custom}] ${method} ${uri} (${latency_human}) ${status}\n",
+		CustomTimeFormat: "2006-01-02 15:04:05",
+	}))
 	SetupRoutes(e)
 	return e
-}
-func SetupLogger(e *echo.Echo) {
-	log := logrus.New()
-	e.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
-		LogURI:    true,
-		LogStatus: true,
-		LogValuesFunc: func(c echo.Context, values middleware.RequestLoggerValues) error {
-			log.WithFields(logrus.Fields{
-				"URI":    values.URI,
-				"status": values.Status,
-			}).Info("request")
-
-			return nil
-		},
-	}))
 }
 
 // GracefulServerWithPid reloads server with pid

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"net/http"
 
 	"github.com/labstack/echo/v4"
 	"github.com/wcharczuk/go-chart/v2"
@@ -36,16 +37,16 @@ type BarChartData struct {
 func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(BarChartRequest)
 	if err := BindRequest(c, req); err != nil {
-		return nil, err
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
 
 	var data BarChartData
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
-		return nil, err
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
 
 	if len(data.XData) == 0 || len(data.XData) != len(data.YData) {
-		return nil, errors.New("data: invalid data")
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, errors.New("data: invalid data"))
 	}
 
 	baseValue := req.BaseValue
@@ -70,5 +71,8 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 	buffer := bytes.NewBuffer([]byte{})
 	err := graph.Render(chart.PNG, buffer)
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+	}
 	return buffer.Bytes(), err
 }

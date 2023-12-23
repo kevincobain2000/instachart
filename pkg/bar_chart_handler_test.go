@@ -36,11 +36,11 @@ func TestGetBarChart(t *testing.T) {
 		},
 		{
 			QueryParams:    `{"x": ["2022-12-23,"2022-12-28","2023-12-30"], "y": [1,2,3]}`,
-			ExpectedStatus: http.StatusInternalServerError,
+			ExpectedStatus: http.StatusUnprocessableEntity,
 		},
 		{
 			QueryParams:    `{"x": [["2022-12-23","2022-12-28","2023-12-30"]], "y": [1,2,3]}`,
-			ExpectedStatus: http.StatusInternalServerError,
+			ExpectedStatus: http.StatusUnprocessableEntity,
 		},
 	}
 

@@ -64,5 +64,8 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 	buffer := bytes.NewBuffer([]byte{})
 	err := graph.Render(chart.PNG, buffer)
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+	}
 	return buffer.Bytes(), err
 }

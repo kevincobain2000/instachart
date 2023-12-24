@@ -3,7 +3,6 @@ package pkg
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -47,7 +46,7 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 
 	if len(data.XData) == 0 || len(data.XData) != len(data.YData) {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, errors.New("data: invalid data"))
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
 	}
 
 	graph := chart.Chart{

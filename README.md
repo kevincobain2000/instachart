@@ -146,4 +146,4 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data
 
 <br>
 
-![Bar chart](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[8,%202%20,14]%20})
+![Bar chart](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Mon%22,%20%22Tue%22,%20%22Wed%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sunday%22],%20%22y%22:%20[2,%203,%206%20,14,%2020,%2021,%2040]%20})

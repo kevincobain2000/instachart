@@ -3,7 +3,6 @@ package pkg
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -46,7 +45,7 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 
 	if len(data.XData) == 0 || len(data.XData) != len(data.YData) {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, errors.New("data: invalid data"))
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
 	}
 
 	baseValue := req.BaseValue
@@ -69,6 +68,7 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 		BaseValue:    baseValue,
 		Bars:         h.chart.GetValues(data.XData, data.YData),
 	}
+
 	buffer := bytes.NewBuffer([]byte{})
 	err := graph.Render(chart.PNG, buffer)
 	if err != nil {

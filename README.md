@@ -116,13 +116,14 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 
 
 
-| Query     | Required | Description | Example                                              |
-| :-------- | :------- | :---------- | :--------------------------------------------------- |
-| `data`    | ◯        | JSON        | `?data={ "x": [["Mon","Tue","Wed"]],"y": [[1,2,3]]}` |
-| `title`   |          | string      |                                                      |
-| `y_label` |          | string      |                                                      |
-| `height`  |          | int         |                                                      |
-| `width`   |          | int         |                                                      |
+| Query        | Required | Description | Example                                              |
+| :----------- | :------- | :---------- | :--------------------------------------------------- |
+| `data`       | ◯        | JSON        | `?data={ "x": [["Mon","Tue","Wed"]],"y": [[1,2,3]]}` |
+| `title`      |          | string      |                                                      |
+| `y_label`    |          | string      |                                                      |
+| `base_value` |          | int         |                                                      |
+| `height`     |          | int         |                                                      |
+| `width`      |          | int         |                                                      |
 
 
 | `data` | Required | Description | Example                        |

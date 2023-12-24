@@ -16,7 +16,7 @@ func NewEcho() *echo.Echo {
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status}\n",
+		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
 		CustomTimeFormat: "2006-01-02 15:04:05",
 	}))
 	SetupRoutes(e)

@@ -10,6 +10,9 @@ func SetupRoutes(e *echo.Echo) {
 	e.GET("/health", func(c echo.Context) error {
 		return c.String(http.StatusOK, "OK")
 	})
+	e.GET("/robots.txt", func(c echo.Context) error {
+		return c.String(http.StatusOK, "User-agent: *\nAllow: /")
+	})
 	e.GET("/", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://github.com/kevincobain2000/instachart")
 	})

@@ -47,6 +47,7 @@
 | `y_label` |          | string      |                                                            |
 | `height`  |          | int         |                                                            |
 | `width`   |          | int         |                                                            |
+| `color`   |          | string      | `blue`,`red`,`green`,`yellow`,`cyan`,`orange`              |
 
 
 | `data`  | Required | Description | Example                                                           |

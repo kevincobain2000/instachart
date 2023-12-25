@@ -22,10 +22,35 @@ func (c *Chart) GetBackground() chart.Style {
 	}
 }
 
-func (c *Chart) GetChartStroke(variant int) chart.Style {
+func (c *Chart) GetChartStroke(variant int, color string) chart.Style {
 	var alpha uint8 = 80
 	strokeColor := chart.ColorBlue
 	fillColor := chart.ColorBlue.WithAlpha(alpha)
+	if color != "" {
+		switch color {
+		case "red":
+			strokeColor = chart.ColorRed
+			fillColor = chart.ColorRed.WithAlpha(alpha)
+		case "green":
+			strokeColor = chart.ColorGreen
+			fillColor = chart.ColorGreen.WithAlpha(alpha)
+		case "yellow":
+			strokeColor = chart.ColorYellow
+			fillColor = chart.ColorYellow.WithAlpha(alpha)
+		case "black":
+			strokeColor = chart.ColorBlack
+			fillColor = chart.ColorBlack.WithAlpha(alpha)
+		case "cyan":
+			strokeColor = chart.ColorCyan
+			fillColor = chart.ColorCyan.WithAlpha(alpha)
+		case "orange":
+			strokeColor = chart.ColorOrange
+			fillColor = chart.ColorOrange.WithAlpha(alpha)
+		case "blue":
+			strokeColor = chart.ColorBlue
+			fillColor = chart.ColorBlue.WithAlpha(alpha)
+		}
+	}
 	switch variant {
 	case 1:
 		strokeColor = chart.ColorRed

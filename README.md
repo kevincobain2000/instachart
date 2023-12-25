@@ -35,6 +35,8 @@
     - [Continuous Series](#continuous-series)
   - [`GET /bar`](#get-bar)
     - [Bars](#bars)
+  - [`GET /donut`](#get-donut)
+    - [Donuts](#donuts)
 
 
 ## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
@@ -127,10 +129,10 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 | `width`      |          | int         |                                                      |
 
 
-| `data` | Required | Description | Example                        |
-| :----- | :------- | :---------- | :----------------------------- |
-| `x`    | ◯        | []Array     | `"x": [["Mon","Tue", "Wed"], ` |
-| `y`    | ◯        | []Array     | `"y": [[1,2,3]]`               |
+| `data` | Required | Description | Example                      |
+| :----- | :------- | :---------- | :--------------------------- |
+| `x`    | ◯        | []Array     | `"x": [["Mon","Tue", "Wed"]` |
+| `y`    | ◯        | []Array     | `"y": [[1,2,3]]`             |
 
 
 ### Bars
@@ -150,3 +152,38 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data
 <br>
 
 ![Bar chart](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Mon%22,%20%22Tue%22,%20%22Wed%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sunday%22],%20%22y%22:%20[2,%203,%206%20,14,%2020,%2021,%2040]%20})
+
+## [`GET /donut`](https://instachart.coveritup.app/donut?title=Donut+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+
+
+| Query    | Required | Description | Example                                                   |
+| :------- | :------- | :---------- | :-------------------------------------------------------- |
+| `data`   | ◯        | JSON        | `?data={ "names": ["Mon","Tue","Wed"],"values": [1,2,3]}` |
+| `title`  |          | string      |                                                           |
+| `height` |          | int         |                                                           |
+| `width`  |          | int         |                                                           |
+
+
+| `data`   | Required | Description    | Example                     |
+| :------- | :------- | :------------- | :-------------------------- |
+| `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
+| `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
+
+
+### Donuts
+
+<details>
+ <summary><b>REQUEST URL</b></summary>
+
+```sh
+https://instachart.coveritup.app/donut?title=Donut+Chart&data={
+    "names": ["Monday", "Friday", "Saturday", "Sunday"],
+    "values": [4, 6 ,7, 9]
+}
+```
+
+</details>
+
+<br>
+
+![Donut chart](https://instachart.coveritup.app/donut?title=Donut+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})

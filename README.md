@@ -195,7 +195,12 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+<p align="center">
+  <a href="https://github.com/kevincobain2000/instachart">
+    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+  </a>
+</p>
+
 
 
 ## [`GET /pie`](https://instachart.coveritup.app/pie?title=Pie+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
@@ -232,7 +237,11 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+<p align="center">
+  <a href="https://github.com/kevincobain2000/instachart">
+    <img alt="pie chart" src='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+  </a>
+</p>
 
 
 ## [`GET /radar`](https://instachart.coveritup.app/radar?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
@@ -270,5 +279,9 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 
 <br>
 
-![Radar chart](https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20})
+<p align="center">
+  <a href="https://github.com/kevincobain2000/instachart">
+    <img alt="radar chart" src='https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
+  </a>
+</p>
 

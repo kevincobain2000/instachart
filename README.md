@@ -224,5 +224,5 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&data={
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&width=512&height=512&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&width=480&height=480&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 

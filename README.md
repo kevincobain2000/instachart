@@ -38,7 +38,7 @@
   - [`GET /donut`](#get-donut)
     - [Donuts](#donuts)
   - [`GET /pie`](#get-pie)
-    - [Donuts](#donuts-1)
+    - [Pies](#pies)
 
 
 ## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
@@ -208,7 +208,7 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 | `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
 
 
-### Donuts
+### Pies
 
 <details>
  <summary><b>REQUEST URL</b></summary>

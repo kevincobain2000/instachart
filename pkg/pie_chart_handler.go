@@ -1,12 +1,11 @@
 package pkg
 
 import (
-	"bytes"
 	"encoding/json"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/wcharczuk/go-chart/v2"
+	charts "github.com/vicanso/go-charts/v2"
 )
 
 type PieChartHandler struct {
@@ -20,10 +19,11 @@ func NewPieChartHandler() *PieChartHandler {
 }
 
 type PieChartRequest struct {
-	ChartData  string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle string `json:"title" query:"title" form:"title"`
-	Height     int    `json:"height" query:"height" form:"height"`
-	Width      int    `json:"width" query:"width" form:"width"`
+	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
+	ChartTitle    string `json:"title" query:"title" form:"title"`
+	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
+	Height        int    `json:"height" query:"height" form:"height"`
+	Width         int    `json:"width" query:"width" form:"width"`
 }
 
 type PieChartData struct {
@@ -46,17 +46,27 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
 	}
 
-	graph := chart.PieChart{
-		Title:  req.ChartTitle,
-		Height: req.Height,
-		Width:  req.Width,
-		Values: h.chart.GetValues(data.Names, data.Values),
-	}
-
-	buffer := bytes.NewBuffer([]byte{})
-	err := graph.Render(chart.PNG, buffer)
+	p, err := charts.PieRender(
+		data.Values,
+		charts.TitleOptionFunc(charts.TitleOption{
+			Text:    req.ChartTitle,
+			Subtext: req.ChartSubtitle,
+			Left:    charts.PositionCenter,
+		}),
+		charts.HeightOptionFunc(req.Height),
+		charts.WidthOptionFunc(req.Width),
+		charts.PaddingOptionFunc(h.chart.GetPadding()),
+		charts.LegendOptionFunc(charts.LegendOption{
+			Orient: charts.OrientVertical,
+			Data:   data.Names,
+			Left:   charts.PositionLeft,
+		}),
+		charts.PieSeriesShowLabel(),
+	)
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
-	return buffer.Bytes(), err
+
+	buf, err := p.Bytes()
+	return buf, err
 }

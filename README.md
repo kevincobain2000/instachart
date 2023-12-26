@@ -4,7 +4,8 @@
   </a>
 </p>
 <p align="center">
-  Chart as Image - service using <a href="https://github.com/wcharczuk/go-chart" target="_blank">go-chart.</a>
+  Chart as Image - service using <a href="https://github.com/wcharczuk/go-chart" target="_blank">go-chart</a>
+ and <a href="https://github.com/vicanso/go-charts" target="_blank">go-charts.</a>
 </p>
 
 [![coverage](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=coverage)](https://coveritup.app/kevincobain2000/instachart)
@@ -196,12 +197,13 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 ## [`GET /pie`](https://instachart.coveritup.app/pie?title=Pie+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
 
-| Query    | Required | Description | Example                                                   |
-| :------- | :------- | :---------- | :-------------------------------------------------------- |
-| `data`   | ◯        | JSON        | `?data={ "names": ["Mon","Tue","Wed"],"values": [1,2,3]}` |
-| `title`  |          | string      |                                                           |
-| `height` |          | int         |                                                           |
-| `width`  |          | int         |                                                           |
+| Query      | Required | Description | Example                                                   |
+| :--------- | :------- | :---------- | :-------------------------------------------------------- |
+| `data`     | ◯        | JSON        | `?data={ "names": ["Mon","Tue","Wed"],"values": [1,2,3]}` |
+| `title`    |          | string      |                                                           |
+| `subtitle` |          | string      |                                                           |
+| `height`   |          | int         |                                                           |
+| `width`    |          | int         |                                                           |
 
 
 | `data`   | Required | Description    | Example                     |
@@ -216,7 +218,7 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
  <summary><b>REQUEST URL</b></summary>
 
 ```sh
-https://instachart.coveritup.app/pie?title=Pie+Chart&data={
+https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&data={
     "names": ["Monday", "Friday", "Saturday", "Sunday"],
     "values": [4, 6 ,7, 9]
 }
@@ -226,10 +228,10 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&data={
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
 
-## [`GET /radar`](https://instachart.coveritup.app/radar?title=Pie+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+## [`GET /radar`](https://instachart.coveritup.app/radar?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
 
 | Query    | Required | Description | Example                                                                                  |

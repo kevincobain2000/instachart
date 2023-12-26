@@ -1,6 +1,8 @@
 package pkg
 
-import "github.com/wcharczuk/go-chart/v2"
+import (
+	charts "github.com/vicanso/go-charts/v2"
+)
 
 type PieChart struct {
 	chart *Chart
@@ -11,13 +13,11 @@ func NewPieChart() *PieChart {
 		chart: NewChart(),
 	}
 }
-func (c *PieChart) GetValues(names []string, values []float64) []chart.Value {
-	var chartValues []chart.Value
-	for i := 0; i < len(names); i++ {
-		chartValues = append(chartValues, chart.Value{
-			Value: values[i],
-			Label: names[i],
-		})
+func (c *PieChart) GetPadding() charts.Box {
+	return charts.Box{
+		Top:    20,
+		Right:  20,
+		Bottom: 20,
+		Left:   20,
 	}
-	return chartValues
 }

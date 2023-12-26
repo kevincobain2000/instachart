@@ -21,8 +21,8 @@ func NewLineChart() *LineChart {
 func (c *LineChart) GetBackground() chart.Style {
 	return c.chart.GetBackground()
 }
-func (c *LineChart) GetChartStroke(variant int, color string) chart.Style {
-	return c.chart.GetChartStroke(variant, color)
+func (c *LineChart) GetChartStroke(variant int, color string, fill bool) chart.Style {
+	return c.chart.GetChartStroke(variant, color, fill)
 }
 
 func (c *LineChart) GetXAxis(label string) chart.XAxis {
@@ -43,7 +43,7 @@ func (c *LineChart) GetYValues(data []float64) []float64 {
 	return yValues
 }
 
-func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []string, color string) []chart.Series {
+func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []string, color string, fill bool) []chart.Series {
 	var series []chart.Series
 	isTimeSeries := c.IsTimeseries(xData[0][0])
 	for i := 0; i < len(xData); i++ {
@@ -55,14 +55,14 @@ func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []strin
 		if isTimeSeries {
 			series = append(series, chart.TimeSeries{
 				Name:    name,
-				Style:   c.GetChartStroke(i, color),
+				Style:   c.GetChartStroke(i, color, fill),
 				XValues: c.GetXValuesAsDates(xData[i]),
 				YValues: c.GetYValues(yData[i]),
 			})
 		} else {
 			series = append(series, chart.ContinuousSeries{
 				Name:    name,
-				Style:   c.GetChartStroke(i, color),
+				Style:   c.GetChartStroke(i, color, fill),
 				XValues: c.GetXValuesAsFloat(xData[i]),
 				YValues: c.GetYValues(yData[i]),
 			})

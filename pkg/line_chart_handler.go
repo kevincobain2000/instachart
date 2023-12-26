@@ -24,6 +24,7 @@ type LineChartRequest struct {
 	XAxisLabel string `json:"x_label" query:"x_label" form:"x_label"`
 	YAxisLabel string `json:"y_label" query:"y_label" form:"y_label"`
 	ChartTitle string `json:"title" query:"title" form:"title"`
+	Fill       bool   `json:"fill" query:"fill" form:"fill"`
 	Color      string `json:"color" query:"color" form:"color"`
 	Height     int    `json:"height" query:"height" form:"height"`
 	Width      int    `json:"width" query:"width" form:"width"`
@@ -57,7 +58,7 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 		Background: h.chart.GetBackground(),
 		XAxis:      h.chart.GetXAxis(req.XAxisLabel),
 		YAxis:      h.chart.GetYAxis(req.YAxisLabel),
-		Series:     h.chart.GetSeries(data.XData, data.YData, data.Names, req.Color),
+		Series:     h.chart.GetSeries(data.XData, data.YData, data.Names, req.Color, req.Fill),
 	}
 	graph.Elements = []chart.Renderable{
 		chart.Legend(&graph),

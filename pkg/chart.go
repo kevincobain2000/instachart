@@ -22,7 +22,7 @@ func (c *Chart) GetBackground() chart.Style {
 	}
 }
 
-func (c *Chart) GetChartStroke(variant int, color string) chart.Style {
+func (c *Chart) GetChartStroke(variant int, color string, fill bool) chart.Style {
 	var alpha uint8 = 80
 	strokeColor := chart.ColorBlue
 	fillColor := chart.ColorBlue.WithAlpha(alpha)
@@ -84,9 +84,12 @@ func (c *Chart) GetChartStroke(variant int, color string) chart.Style {
 		fillColor = chart.ColorAlternateYellow.WithAlpha(alpha + 100)
 	}
 
-	return chart.Style{
-		StrokeColor: strokeColor,
-		FillColor:   fillColor,
-		StrokeWidth: 2,
+	style := chart.Style{}
+	style.StrokeColor = strokeColor
+	style.StrokeWidth = 2
+	if fill {
+		style.FillColor = fillColor
 	}
+
+	return style
 }

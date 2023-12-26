@@ -65,7 +65,11 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 			charts.HeightOptionFunc(req.Height),
 			charts.WidthOptionFunc(req.Width),
 			charts.XAxisDataOptionFunc(data.XData),
-			charts.LegendLabelsOptionFunc(data.Names, charts.PositionRight),
+			charts.LegendOptionFunc(charts.LegendOption{
+				Orient: charts.OrientVertical,
+				Data:   data.Names,
+				Left:   charts.PositionLeft,
+			}),
 			charts.MarkLineOptionFunc(0, charts.SeriesMarkDataTypeAverage),
 			charts.MarkPointOptionFunc(0, charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin),

@@ -57,7 +57,11 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
-		charts.LegendLabelsOptionFunc(data.Labels),
+		charts.LegendOptionFunc(charts.LegendOption{
+			Orient: charts.OrientVertical,
+			Data:   data.Labels,
+			Left:   charts.PositionLeft,
+		}),
 		charts.RadarIndicatorOptionFunc(data.Names, h.chart.GetIndicators(data.Values)),
 	)
 	if err != nil {

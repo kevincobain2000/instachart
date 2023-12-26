@@ -239,7 +239,7 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 
 <p align="center">
   <a href="https://github.com/kevincobain2000/instachart">
-    <img alt="pie chart" src='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+    <img alt="pie chart" src='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
   </a>
 </p>
 

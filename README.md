@@ -39,6 +39,8 @@
     - [Donuts](#donuts)
   - [`GET /pie`](#get-pie)
     - [Pies](#pies)
+  - [`GET /radar`](#get-radar)
+    - [Radars](#radars)
 
 
 ## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
@@ -188,7 +190,7 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/donut?title=Donut+Chart&width=512&height=512&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+![Donut chart](https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
 
 ## [`GET /pie`](https://instachart.coveritup.app/pie?title=Pie+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
@@ -224,5 +226,43 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&data={
 
 <br>
 
-![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&width=480&height=480&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+![Donut chart](https://instachart.coveritup.app/pie?title=Pie+Chart&width=312&height=312&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+
+
+## [`GET /radar`](https://instachart.coveritup.app/radar?title=Pie+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
+
+
+| Query    | Required | Description | Example                                                                                  |
+| :------- | :------- | :---------- | :--------------------------------------------------------------------------------------- |
+| `data`   | ◯        | JSON        | `data={"names": ["Mon","Tue", "Wed"], "labels": ["Work", "Relax"], "values": [[1,2,4]]}` |
+| `title`  |          | string      |                                                                                          |
+| `height` |          | int         |                                                                                          |
+| `width`  |          | int         |                                                                                          |
+
+
+| `data`   | Required | Description    | Example                                 | Valid                              |
+| :------- | :------- | :------------- | :-------------------------------------- | :--------------------------------- |
+| `names`  | ◯        | Array (string) | `"names": ["Mon","Tue", "Wed"]`         | `>=3`                              |
+| `values` | ◯        | []Array (int)  | `"values": [[1,2,3], [3,4,5]]`          | `count(names) == count(values[0])` |
+| `labels` |          | Array (string) | `"labels": ["Work", "Relax", "Travel"]` |                                    |
+
+
+### Radars
+
+<details>
+ <summary><b>REQUEST URL</b></summary>
+
+```sh
+https://instachart.coveritup.app/radar?title=Radar+Chart&data={
+    "names": ["Mon","Tue", "Wed", "Fri"],
+    "labels": ["Work", "Relax", "Travel"],
+    "values": [[1,2,3,4], [15,7,8,9], [15,17,5,7]]
+}
+```
+
+</details>
+
+<br>
+
+![Radar chart](https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20})
 

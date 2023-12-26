@@ -32,6 +32,14 @@ func SetupRoutes(e *echo.Echo) {
 		setHeaders(c)
 		return c.Blob(http.StatusOK, "image/png", img)
 	})
+	e.GET("/radar", func(c echo.Context) error {
+		img, err := NewRadarChartHandler().Get(c)
+		if err != nil {
+			return err
+		}
+		setHeaders(c)
+		return c.Blob(http.StatusOK, "image/png", img)
+	})
 	e.GET("/donut", func(c echo.Context) error {
 		img, err := NewDonutChartHandler().Get(c)
 		if err != nil {

@@ -124,7 +124,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 
 
 
-## [`GET /bar`](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[8,%202%20,14]%20})
+## [`GET /bar`](https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20})
 
 
 
@@ -159,7 +159,11 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data
 
 <br>
 
-![Bar chart](https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={%20%22x%22:%20[%22Mon%22,%20%22Tue%22,%20%22Wed%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sunday%22],%20%22y%22:%20[2,%203,%206%20,14,%2020,%2021,%2040]%20})
+<p align="center">
+  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
+    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
+  </a>
+</p>
 
 ## [`GET /donut`](https://instachart.coveritup.app/donut?title=Donut+Chart&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
@@ -195,7 +199,7 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 <br>
 
 <p align="center">
-  <a href="https://github.com/kevincobain2000/instachart">
+  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
     <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
   </a>
 </p>
@@ -237,7 +241,7 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 <br>
 
 <p align="center">
-  <a href="https://github.com/kevincobain2000/instachart">
+  <a href='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
     <img alt="pie chart" src='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
   </a>
 </p>
@@ -280,7 +284,7 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 <br>
 
 <p align="center">
-  <a href="https://github.com/kevincobain2000/instachart">
+  <a href='https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
     <img alt="radar chart" src='https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
   </a>
 </p>

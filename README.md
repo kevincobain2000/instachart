@@ -31,6 +31,7 @@
 
 - [API](#api)
   - [`GET /line`](#get-line)
+    - [Line Chart Simple](#line-chart-simple)
     - [Single Line Series](#single-line-series)
     - [Multiple Line Series](#multiple-line-series)
     - [Continuous Series](#continuous-series)
@@ -46,16 +47,17 @@
 
 ## [`GET /line`](https://instachart.coveritup.app/line?title=Single+Line+series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]]%20})
 
-| Query     | Required | Description | Example                                                    |
-| :-------- | :------- | :---------- | :--------------------------------------------------------- |
-| `data`    | ◯        | JSON        | `?data={ "x": [["2022-12-23","2023-12-25"]],"y": [[1,2]]}` |
-| `title`   |          | string      |                                                            |
-| `fill`    |          | boolean     |                                                            |
-| `x_label` |          | string      |                                                            |
-| `y_label` |          | string      |                                                            |
-| `height`  |          | int         |                                                            |
-| `width`   |          | int         |                                                            |
-| `color`   |          | string      | `blue`,`red`,`green`,`yellow`,`cyan`,`orange`              |
+| Query      | Required | Description | Example                                                    |
+| :--------- | :------- | :---------- | :--------------------------------------------------------- |
+| `data`     | ◯        | JSON        | `?data={ "x": [["2022-12-23","2023-12-25"]],"y": [[1,2]]}` |
+| `title`    |          | string      |                                                            |
+| `fill`     |          | boolean     |                                                            |
+| `x_label`  |          | string      |                                                            |
+| `y_label`  |          | string      |                                                            |
+| `subtitle` |          | string      |                                                            |
+| `height`   |          | int         |                                                            |
+| `width`    |          | int         |                                                            |
+| `color`    |          | string      | `blue`,`red`,`green`,`yellow`,`cyan`,`orange`              |
 
 
 | `data`  | Required | Description      | Example                                                           |
@@ -63,6 +65,44 @@
 | `x`     | ◯        | []Array (string) | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
 | `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                                              |
 | `names` |          | Array            | `"names": ["Series A", "Series B"]`                               |
+
+
+### Line Chart Simple
+
+<details>
+ <summary><b>REQUEST URL</b></summary>
+
+```sh
+https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&data={
+    "x": [["Mon","Tue","Wed"]],
+    "y": [[4,8,7], [10,20,24]],
+    "names": ["Sleeping", "Awake"]
+}
+```
+
+</details>
+
+<br>
+
+![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&fill=truedata={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+
+<details>
+ <summary><b>REQUEST URL</b></summary>
+
+```sh
+https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&fill=true&data={
+    "x": [["Mon","Tue","Wed"]],
+    "y": [[4,8,7], [10,20,24]],
+    "names": ["Sleeping", "Awake"]
+}
+```
+
+</details>
+
+<br>
+
+
+![Continuous area series](https://instachart.coveritup.app/line?title=Line+Chart+Area&subtitle=Sleeping+Hours&fill=truedata={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
 
 ### Single Line Series
 
@@ -79,7 +119,7 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_l
 
 <br>
 
-![Line single](https://instachart.coveritup.app/line?title=Single+Line&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
+![Line single](https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -94,7 +134,7 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&fill=true&x_label
 
 <br>
 
-![Area single](https://instachart.coveritup.app/line?title=Single+Area&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
+![Area single](https://instachart.coveritup.app/line?title=Single+Area+Series&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
 
 ### Multiple Line Series
 
@@ -112,7 +152,7 @@ https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_la
 
 <br>
 
-![Multi line series](https://instachart.coveritup.app/line?title=Multi+Lines&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
+![Multi line series](https://instachart.coveritup.app/line?title=Multi+Lines+Series&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -126,7 +166,7 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&fill=true&x_label
 </details>
 <br>
 
-![Multi area series](https://instachart.coveritup.app/line?title=Multi+Areas&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
+![Multi area series](https://instachart.coveritup.app/line?title=Multi+Areas+Series&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
 
 
 ### Continuous Series
@@ -146,7 +186,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 
 <br>
 
-![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Lines&x_label=No+of+people&y_label=amount&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
+![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Lines+Series&x_label=No+of+people&y_label=amount&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -164,7 +204,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&fill=true&x_label=
 <br>
 
 
-![Continuous area series](https://instachart.coveritup.app/line?title=Continuous+Areas&x_label=No+of+people&y_label=amount&fill=true&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
+![Continuous area series](https://instachart.coveritup.app/line?title=Continuous+Areas+Series&x_label=No+of+people&y_label=amount&fill=true&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
 
 
 

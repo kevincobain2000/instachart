@@ -43,6 +43,25 @@ func (c *LineChart) GetYValues(data []float64) []float64 {
 	return yValues
 }
 
+func (c *LineChart) ContainsDateOrFloat(xData [][]string) bool {
+	for _, xSlice := range xData {
+		for _, x := range xSlice {
+			if c.IsTimeseries(x) {
+				return true
+			}
+		}
+	}
+	for _, xSlice := range xData {
+		for _, x := range xSlice {
+			if _, err := strconv.ParseFloat(x, 32); err == nil {
+				return true
+			} else {
+				return false
+			}
+		}
+	}
+	return false
+}
 func (c *LineChart) GetSeries(xData [][]string, yData [][]float64, names []string, color string, fill bool) []chart.Series {
 	var series []chart.Series
 	isTimeSeries := c.IsTimeseries(xData[0][0])

@@ -79,8 +79,8 @@ https://instachart.coveritup.app/line?title=Single+Line+Series&x_label=dates&y_l
 
 <br>
 
-![Line single series](https://instachart.coveritup.app/line?title=Single+Line+Series&width=460&height=310&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
-![Line single series](https://instachart.coveritup.app/line?title=Single+Line+Series&width=460&height=310&&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
+![Line single series](https://instachart.coveritup.app/line?title=Single+Line&width=420&height=300&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
+![Line single series](https://instachart.coveritup.app/line?title=Single+Area&width=420&height=300&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22]],%20%22y%22:%20[[1,2,3]],%20%22names%22:%20[%22Series%20A%22]%20})
 
 ### Multiple Line Series
 
@@ -98,8 +98,8 @@ https://instachart.coveritup.app/line?title=Multi+Line+Series&x_label=dates&y_la
 
 <br>
 
-![Multi line series](https://instachart.coveritup.app/line?title=Multi+Line+Series&width=460&height=310&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
-![Multi line series](https://instachart.coveritup.app/line?title=Multi+Line+Series&width=460&height=310&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
+![Multi line series](https://instachart.coveritup.app/line?title=Multi+Lines&width=420&height=300&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
+![Multi line series](https://instachart.coveritup.app/line?title=Multi+Areas&width=420&height=300&fill=true&x_label=dates&y_label=amount&data={%20%22x%22:%20[[%222022-12-23%22,%222022-12-24%22,%222023-12-25%22],%20[%222022-12-23%22,%222022-12-28%22,%222023-12-30%22]],%20%22y%22:%20[[1,2,3],%20[1,5,10]],%20%22names%22:%20[%22Series%20A%22,%20%22Series%20B%22]%20})
 
 
 ### Continuous Series
@@ -119,8 +119,8 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 
 <br>
 
-![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+people&y_label=amount&width=460&height=310&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
-![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+people&y_label=amount&width=460&height=310&fill=true&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
+![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Lines&x_label=No+of+people&y_label=amount&width=420&height=300&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
+![Continuous line series](https://instachart.coveritup.app/line?title=Continuous+Areas&x_label=No+of+people&y_label=amount&width=420&height=300&fill=true&data={%20"x":%20[["10","20","30"],%20["10","20","30"],%20["10","20","30"]],%20"y":%20[[1,2,3],%20[10,20,30],%20[6,3,9]]%20})
 
 
 

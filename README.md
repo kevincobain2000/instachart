@@ -54,11 +54,11 @@
 | `color`   |          | string      | `blue`,`red`,`green`,`yellow`,`cyan`,`orange`              |
 
 
-| `data`  | Required | Description | Example                                                           |
-| :------ | :------- | :---------- | :---------------------------------------------------------------- |
-| `x`     | ◯        | []Array     | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
-| `y`     | ◯        | []Array     | `"y": [[1,2],[3,4]]`                                              |
-| `names` |          | Array       | `"names": ["Series A", "Series B"]`                               |
+| `data`  | Required | Description      | Example                                                           |
+| :------ | :------- | :--------------- | :---------------------------------------------------------------- |
+| `x`     | ◯        | []Array (string) | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
+| `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                                              |
+| `names` |          | Array            | `"names": ["Series A", "Series B"]`                               |
 
 ### Single Line Series
 
@@ -131,10 +131,10 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 | `width`      |          | int         |                                                      |
 
 
-| `data` | Required | Description | Example                      |
-| :----- | :------- | :---------- | :--------------------------- |
-| `x`    | ◯        | []Array     | `"x": [["Mon","Tue", "Wed"]` |
-| `y`    | ◯        | []Array     | `"y": [[1,2,3]]`             |
+| `data` | Required | Description      | Example                      |
+| :----- | :------- | :--------------- | :--------------------------- |
+| `x`    | ◯        | []Array (string) | `"x": [["Mon","Tue", "Wed"]` |
+| `y`    | ◯        | []Array (int)    | `"y": [[1,2,3]]`             |
 
 
 ### Bars

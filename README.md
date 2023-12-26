@@ -84,13 +84,13 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 
 <br>
 
-![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&fill=truedata={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
 
 <details>
  <summary><b>REQUEST URL</b></summary>
 
 ```sh
-https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&fill=true&data={
+https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&data={
     "x": [["Mon","Tue","Wed"]],
     "y": [[4,8,7], [10,20,24]],
     "names": ["Sleeping", "Awake"]
@@ -102,7 +102,7 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 <br>
 
 
-![Continuous area series](https://instachart.coveritup.app/line?title=Line+Chart+Area&subtitle=Sleeping+Hours&fill=truedata={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+![Continuous area series](https://instachart.coveritup.app/line?title=Line+Chart+Area&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
 
 ### Single Line Series
 

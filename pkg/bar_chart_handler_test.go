@@ -31,8 +31,12 @@ func TestGetBarChart(t *testing.T) {
 	}
 	testCases := []TestCase{
 		{
-			QueryParams:    `{"x": ["2022-12-23","2022-12-28","2023-12-30"], "y": [1,2,3]}`,
+			QueryParams:    `{"x": ["2022-12-23","2022-12-28","2023-12-30"], "y": [[1,2,3]]}`,
 			ExpectedStatus: http.StatusOK,
+		},
+		{
+			QueryParams:    `{"x": ["2022-12-23","2022-12-28","2023-12-30"], "y": [1,2,3]}`,
+			ExpectedStatus: http.StatusUnprocessableEntity,
 		},
 		{
 			QueryParams:    `{"x": ["2022-12-23,"2022-12-28","2023-12-30"], "y": [1,2,3]}`,

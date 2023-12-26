@@ -132,8 +132,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 | :----------- | :------- | :---------- | :--------------------------------------------------- |
 | `data`       | ◯        | JSON        | `?data={ "x": [["Mon","Tue","Wed"]],"y": [[1,2,3]]}` |
 | `title`      |          | string      |                                                      |
-| `y_label`    |          | string      |                                                      |
-| `base_value` |          | int         |                                                      |
+| `subtitle`   |          | string      |                                                      |
 | `height`     |          | int         |                                                      |
 | `width`      |          | int         |                                                      |
 
@@ -152,7 +151,7 @@ https://instachart.coveritup.app/line?title=Continuous+Series&x_label=No+of+peop
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&y_label=Sleeping+hours&data={
     "x": ["Monday", "Friday", "Sunday"],
-    "y": [8, 2 ,14]
+    "y": [[8, 2 ,14]]
 }
 ```
 
@@ -247,12 +246,13 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 ## [`GET /radar`](https://instachart.coveritup.app/radar?title=Pie+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20})
 
 
-| Query    | Required | Description | Example                                                                                  |
-| :------- | :------- | :---------- | :--------------------------------------------------------------------------------------- |
-| `data`   | ◯        | JSON        | `data={"names": ["Mon","Tue", "Wed"], "labels": ["Work", "Relax"], "values": [[1,2,4]]}` |
-| `title`  |          | string      |                                                                                          |
-| `height` |          | int         |                                                                                          |
-| `width`  |          | int         |                                                                                          |
+| Query      | Required | Description | Example                                                                                  |
+| :--------- | :------- | :---------- | :--------------------------------------------------------------------------------------- |
+| `data`     | ◯        | JSON        | `data={"names": ["Mon","Tue", "Wed"], "labels": ["Work", "Relax"], "values": [[1,2,4]]}` |
+| `title`    |          | string      |                                                                                          |
+| `subtitle` |          | string      |                                                                                          |
+| `height`   |          | int         |                                                                                          |
+| `width`    |          | int         |                                                                                          |
 
 
 | `data`   | Required | Description    | Example                                 | Valid                              |

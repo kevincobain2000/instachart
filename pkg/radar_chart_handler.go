@@ -19,10 +19,11 @@ func NewRadarChartHandler() *RadarChartHandler {
 }
 
 type RadarChartRequest struct {
-	ChartData  string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle string `json:"title" query:"title" form:"title"`
-	Height     int    `json:"height" query:"height" form:"height"`
-	Width      int    `json:"width" query:"width" form:"width"`
+	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
+	ChartTitle    string `json:"title" query:"title" form:"title"`
+	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
+	Height        int    `json:"height" query:"height" form:"height"`
+	Width         int    `json:"width" query:"width" form:"width"`
 }
 
 type RadarChartData struct {
@@ -49,9 +50,13 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 
 	graph, err := charts.RadarRender(
 		data.Values,
+		charts.TitleOptionFunc(charts.TitleOption{
+			Text:    req.ChartTitle,
+			Subtext: req.ChartSubtitle,
+			Left:    charts.PositionCenter,
+		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
-		charts.TitleTextOptionFunc(req.ChartTitle),
 		charts.LegendLabelsOptionFunc(data.Labels),
 		charts.RadarIndicatorOptionFunc(data.Names, h.chart.GetIndicators(data.Values)),
 	)

@@ -50,9 +50,10 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 	p, err := charts.PieRender(
 		data.Values,
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:    req.ChartTitle,
-			Subtext: req.ChartSubtitle,
-			Left:    charts.PositionCenter,
+			Text:            req.ChartTitle,
+			Subtext:         req.ChartSubtitle,
+			SubtextFontSize: 9,
+			Left:            charts.PositionCenter,
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),

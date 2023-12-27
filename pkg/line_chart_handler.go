@@ -76,12 +76,17 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 
 			idx := len(opt.SeriesList) - 1
 			if len(opt.SeriesList) > 1 {
-				idx = 1
+				opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
+					charts.SeriesMarkDataTypeMax,
+					charts.SeriesMarkDataTypeMin,
+				)
+			} else {
+				opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
+					charts.SeriesMarkDataTypeMax,
+					charts.SeriesMarkDataTypeMax,
+				)
 			}
-			opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
-				charts.SeriesMarkDataTypeMax,
-				charts.SeriesMarkDataTypeMin,
-			)
+
 			opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 				charts.SeriesMarkDataTypeAverage,
 			)

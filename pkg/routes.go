@@ -6,17 +6,17 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func SetupRoutes(e *echo.Echo) {
-	e.GET("/health", func(c echo.Context) error {
+func SetupRoutes(e *echo.Echo, baseURL string) {
+	e.GET(baseURL+"health", func(c echo.Context) error {
 		return c.String(http.StatusOK, "OK")
 	})
-	e.GET("/robots.txt", func(c echo.Context) error {
+	e.GET(baseURL+"robots.txt", func(c echo.Context) error {
 		return c.String(http.StatusOK, "User-agent: *\nAllow: /")
 	})
-	e.GET("/", func(c echo.Context) error {
+	e.GET(baseURL+"", func(c echo.Context) error {
 		return c.Redirect(http.StatusMovedPermanently, "https://github.com/kevincobain2000/instachart")
 	})
-	e.GET("/line", func(c echo.Context) error {
+	e.GET(baseURL+"line", func(c echo.Context) error {
 		img, err := NewLineChartHandler().Get(c)
 		if err != nil {
 			return err
@@ -24,7 +24,7 @@ func SetupRoutes(e *echo.Echo) {
 		setHeaders(c)
 		return c.Blob(http.StatusOK, "image/png", img)
 	})
-	e.GET("/bar", func(c echo.Context) error {
+	e.GET(baseURL+"bar", func(c echo.Context) error {
 		img, err := NewBarChartHandler().Get(c)
 		if err != nil {
 			return err
@@ -32,7 +32,7 @@ func SetupRoutes(e *echo.Echo) {
 		setHeaders(c)
 		return c.Blob(http.StatusOK, "image/png", img)
 	})
-	e.GET("/radar", func(c echo.Context) error {
+	e.GET(baseURL+"radar", func(c echo.Context) error {
 		img, err := NewRadarChartHandler().Get(c)
 		if err != nil {
 			return err
@@ -40,7 +40,7 @@ func SetupRoutes(e *echo.Echo) {
 		setHeaders(c)
 		return c.Blob(http.StatusOK, "image/png", img)
 	})
-	e.GET("/donut", func(c echo.Context) error {
+	e.GET(baseURL+"donut", func(c echo.Context) error {
 		img, err := NewDonutChartHandler().Get(c)
 		if err != nil {
 			return err
@@ -48,7 +48,7 @@ func SetupRoutes(e *echo.Echo) {
 		setHeaders(c)
 		return c.Blob(http.StatusOK, "image/png", img)
 	})
-	e.GET("/pie", func(c echo.Context) error {
+	e.GET(baseURL+"pie", func(c echo.Context) error {
 		img, err := NewPieChartHandler().Get(c)
 		if err != nil {
 			return err

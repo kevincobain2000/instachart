@@ -11,7 +11,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func NewEcho() *echo.Echo {
+func NewEcho(baseURL string) *echo.Echo {
 	e := echo.New()
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())
@@ -19,7 +19,7 @@ func NewEcho() *echo.Echo {
 		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
 		CustomTimeFormat: "2006-01-02 15:04:05",
 	}))
-	SetupRoutes(e)
+	SetupRoutes(e, baseURL)
 	return e
 }
 

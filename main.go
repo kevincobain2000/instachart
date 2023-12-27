@@ -9,7 +9,8 @@ import (
 )
 
 var (
-	port string
+	port    string
+	baseURL string
 )
 var version = "dev"
 
@@ -19,12 +20,13 @@ func main() {
 		return
 	}
 	flags()
-	e := pkg.NewEcho()
+	e := pkg.NewEcho(baseURL)
 
 	pkg.GracefulServerWithPid(e, port)
 }
 
 func flags() {
 	flag.StringVar(&port, "port", "3001", "port to serve")
+	flag.StringVar(&baseURL, "baseURL", "/", "base url with slash")
 	flag.Parse()
 }

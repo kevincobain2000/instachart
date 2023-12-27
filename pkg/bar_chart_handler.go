@@ -50,10 +50,6 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	if len(data.XData) == 0 || len(data.XData) != len(data.YData[0]) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
 	}
-	if len(data.YData) == 1 && !req.Horizontal {
-		// append [0,0,...0] to data.YData
-		data.YData = append(data.YData, make([]float64, len(data.YData[0])))
-	}
 
 	if !req.Horizontal {
 		p, err := charts.BarRender(
@@ -82,16 +78,12 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 				}
 				idx := len(opt.SeriesList) - 1
 				if len(opt.SeriesList) > 1 {
-					opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
-						charts.SeriesMarkDataTypeMax,
-						charts.SeriesMarkDataTypeMin,
-					)
-				} else {
-					opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
-						charts.SeriesMarkDataTypeMax,
-						charts.SeriesMarkDataTypeMax,
-					)
+					idx = 1
 				}
+				opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
+					charts.SeriesMarkDataTypeMax,
+					charts.SeriesMarkDataTypeMin,
+				)
 				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 					charts.SeriesMarkDataTypeAverage,
 				)

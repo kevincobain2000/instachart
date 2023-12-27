@@ -24,46 +24,39 @@
 
 **Lightweight:** Written in Go. No external dependencies. Download and self-host binary.
 
+**API Documentation** Restful API with `image/png` response.
+
+- [API](#api)
+  - [`GET /line`](#get-line)
+  - [`GET /bar`](#get-bar)
+  - [`GET /donut`](#get-donut)
+  - [`GET /pie`](#get-pie)
+  - [`GET /radar`](#get-radar)
 
 # API
 
 **URL** `https://instachart.coveritup.app`
 
-- [API](#api)
-  - [`GET /line`](#get-line)
-    - [Line Chart Simple](#line-chart-simple)
-  - [`GET /bar`](#get-bar)
-    - [Bars](#bars)
-  - [`GET /donut`](#get-donut)
-    - [Donuts](#donuts)
-  - [`GET /pie`](#get-pie)
-    - [Pies](#pies)
-  - [`GET /radar`](#get-radar)
-    - [Radars](#radars)
+| Query      | Required | Description | Default           |
+| :--------- | :------- | :---------- | :---------------- |
+| `data`     | ◯        | JSON        |                   |
+| `title`    |          | string      |                   |
+| `fill`     |          | boolean     | `false`           |
+| `subtitle` |          | string      |                   |
+| `theme`    |          | string      | `light` or `dark` |
+| `metric`   |          | string      |                   |
+| `height`   |          | int         | 400               |
+| `width`    |          | int         | 600               |
+
 
 
 ## `GET /line`
-
-| Query      | Required | Description | Example                                                    |
-| :--------- | :------- | :---------- | :--------------------------------------------------------- |
-| `data`     | ◯        | JSON        | `?data={ "x": [["2022-12-23","2023-12-25"]],"y": [[1,2]]}` |
-| `title`    |          | string      |                                                            |
-| `fill`     |          | boolean     |                                                            |
-| `subtitle` |          | string      |                                                            |
-| `theme`    |          | string      |                                                            |
-| `metric`   |          | string      |                                                            |
-| `height`   |          | int         |                                                            |
-| `width`    |          | int         |                                                            |
-
 
 | `data`  | Required | Description      | Example                                                           |
 | :------ | :------- | :--------------- | :---------------------------------------------------------------- |
 | `x`     | ◯        | []Array (string) | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
 | `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                                              |
 | `names` |          | Array            | `"names": ["Series A", "Series B"]`                               |
-
-
-### Line Chart Simple
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -105,24 +98,10 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 ## `GET /bar`
 
 
-
-| Query      | Required | Description | Example                                              |
-| :--------- | :------- | :---------- | :--------------------------------------------------- |
-| `data`     | ◯        | JSON        | `?data={ "x": [["Mon","Tue","Wed"]],"y": [[1,2,3]]}` |
-| `title`    |          | string      |                                                      |
-| `subtitle` |          | string      |                                                      |
-| `theme`    |          | string      |                                                      |
-| `height`   |          | int         |                                                      |
-| `width`    |          | int         |                                                      |
-
-
 | `data` | Required | Description      | Example                      |
 | :----- | :------- | :--------------- | :--------------------------- |
 | `x`    | ◯        | []Array (string) | `"x": [["Mon","Tue", "Wed"]` |
 | `y`    | ◯        | []Array (int)    | `"y": [[1,2,3]]`             |
-
-
-### Bars
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -139,8 +118,8 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 <br>
 
 <p align="center">
-  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
+  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
+    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
   </a>
 </p>
 
@@ -159,9 +138,6 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 | :------- | :------- | :------------- | :-------------------------- |
 | `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
 | `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
-
-
-### Donuts
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -187,24 +163,11 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 
 ## `GET /pie`
 
-
-| Query      | Required | Description | Example                                                   |
-| :--------- | :------- | :---------- | :-------------------------------------------------------- |
-| `data`     | ◯        | JSON        | `?data={ "names": ["Mon","Tue","Wed"],"values": [1,2,3]}` |
-| `title`    |          | string      |                                                           |
-| `subtitle` |          | string      |                                                           |
-| `theme`    |          | string      |                                                           |
-| `height`   |          | int         |                                                           |
-| `width`    |          | int         |                                                           |
-
-
 | `data`   | Required | Description    | Example                     |
 | :------- | :------- | :------------- | :-------------------------- |
 | `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
 | `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
 
-
-### Pies
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -229,25 +192,11 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 
 ## `GET /radar`
 
-
-| Query      | Required | Description | Example                                                                                  |
-| :--------- | :------- | :---------- | :--------------------------------------------------------------------------------------- |
-| `data`     | ◯        | JSON        | `data={"names": ["Mon","Tue", "Wed"], "labels": ["Work", "Relax"], "values": [[1,2,4]]}` |
-| `title`    |          | string      |                                                                                          |
-| `subtitle` |          | string      |                                                                                          |
-| `theme`    |          | string      |                                                                                          |
-| `height`   |          | int         |                                                                                          |
-| `width`    |          | int         |                                                                                          |
-
-
-| `data`   | Required | Description    | Example                                 | Valid                              |
+| `data`   | Required | Description    | Example                                 | Validation                         |
 | :------- | :------- | :------------- | :-------------------------------------- | :--------------------------------- |
 | `names`  | ◯        | Array (string) | `"names": ["Mon","Tue", "Wed"]`         | `>=3`                              |
 | `values` | ◯        | []Array (int)  | `"values": [[1,2,3], [3,4,5]]`          | `count(names) == count(values[0])` |
 | `labels` |          | Array (string) | `"labels": ["Work", "Relax", "Travel"]` |                                    |
-
-
-### Radars
 
 <details>
  <summary><b>REQUEST URL</b></summary>

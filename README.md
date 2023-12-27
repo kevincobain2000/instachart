@@ -32,6 +32,7 @@
   - [`GET /donut`](#get-donut)
   - [`GET /pie`](#get-pie)
   - [`GET /radar`](#get-radar)
+- [CHANGE LOG](#change-log)
 
 # API
 
@@ -219,3 +220,7 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
   </a>
 </p>
 
+
+# CHANGE LOG
+
+- **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar` charts.

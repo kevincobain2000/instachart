@@ -1,13 +1,12 @@
 package pkg
 
 import (
-	"bytes"
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 	charts "github.com/vicanso/go-charts/v2"
-	"github.com/wcharczuk/go-chart/v2"
 )
 
 type LineChartHandler struct {
@@ -22,11 +21,11 @@ func NewLineChartHandler() *LineChartHandler {
 
 type LineChartRequest struct {
 	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	XAxisLabel    string `json:"x_label" query:"x_label" form:"x_label"`
-	YAxisLabel    string `json:"y_label" query:"y_label" form:"y_label"`
 	ChartTitle    string `json:"title" query:"title" form:"title"`
 	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
+	Metric        string `json:"metric" query:"metric" form:"metric"`
 	Fill          bool   `json:"fill" query:"fill" form:"fill"`
+	Theme         string `json:"theme" query:"theme" form:"theme"`
 	Color         string `json:"color" query:"color" form:"color"`
 	Height        int    `json:"height" query:"height" form:"height"`
 	Width         int    `json:"width" query:"width" form:"width"`
@@ -48,32 +47,6 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
-
-	isSeries := h.chart.ContainsDateOrFloat(data.XData)
-
-	if isSeries {
-		if len(data.XData) == 0 || len(data.XData) != len(data.YData) {
-			return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
-		}
-		graph := chart.Chart{
-			Title:      req.ChartTitle,
-			Height:     req.Height,
-			Width:      req.Width,
-			Background: h.chart.GetBackground(),
-			XAxis:      h.chart.GetXAxis(req.XAxisLabel),
-			YAxis:      h.chart.GetYAxis(req.YAxisLabel),
-			Series:     h.chart.GetSeries(data.XData, data.YData, data.Names, req.Color, req.Fill),
-		}
-		graph.Elements = []chart.Renderable{
-			chart.Legend(&graph),
-		}
-		buffer := bytes.NewBuffer([]byte{})
-		err := graph.Render(chart.PNG, buffer)
-		if err != nil {
-			return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
-		}
-		return buffer.Bytes(), err
-	}
 	p, err := charts.LineRender(
 		data.YData,
 		charts.HeightOptionFunc(req.Height),
@@ -91,12 +64,25 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 			Left:   charts.PositionLeft,
 		}),
 		func(opt *charts.ChartOption) {
+			opt.Theme = req.Theme
+			opt.Legend.Padding = charts.Box{
+				Top:    25,
+				Bottom: 25,
+			}
+			opt.ValueFormatter = func(f float64) string {
+				return fmt.Sprintf("%.0f%s", f, req.Metric)
+			}
 			opt.FillArea = req.Fill
-			opt.SeriesList[1].MarkPoint = charts.NewMarkPoint(
+
+			idx := len(opt.SeriesList) - 1
+			if len(opt.SeriesList) > 1 {
+				idx = 1
+			}
+			opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
 			)
-			opt.SeriesList[1].MarkLine = charts.NewMarkLine(
+			opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 				charts.SeriesMarkDataTypeAverage,
 			)
 		},

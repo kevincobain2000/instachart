@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -19,13 +20,14 @@ func NewBarChartHandler() *BarChartHandler {
 }
 
 type BarChartRequest struct {
-	ChartData     string  `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle    string  `json:"title" query:"title" form:"title"`
-	ChartSubtitle string  `json:"subtitle" query:"subtitle" form:"subtitle"`
-	BaseValue     float64 `json:"base_value" query:"base_value" form:"base_value"`
-	Height        int     `json:"height" query:"height" form:"height"`
-	Width         int     `json:"width" query:"width" form:"width"`
-	Horizontal    bool    `json:"horizontal" query:"horizontal" form:"horizontal"`
+	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
+	ChartTitle    string `json:"title" query:"title" form:"title"`
+	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
+	Metric        string `json:"metric" query:"metric" form:"metric"`
+	Height        int    `json:"height" query:"height" form:"height"`
+	Theme         string `json:"theme" query:"theme" form:"theme"`
+	Width         int    `json:"width" query:"width" form:"width"`
+	Horizontal    bool   `json:"horizontal" query:"horizontal" form:"horizontal"`
 }
 
 type BarChartData struct {
@@ -74,11 +76,19 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 			charts.MarkPointOptionFunc(0, charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin),
 			func(opt *charts.ChartOption) {
-				opt.SeriesList[1].MarkPoint = charts.NewMarkPoint(
+				opt.Theme = req.Theme
+				opt.ValueFormatter = func(f float64) string {
+					return fmt.Sprintf("%.0f%s", f, req.Metric)
+				}
+				idx := len(opt.SeriesList) - 1
+				if len(opt.SeriesList) > 1 {
+					idx = 1
+				}
+				opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 					charts.SeriesMarkDataTypeMax,
 					charts.SeriesMarkDataTypeMin,
 				)
-				opt.SeriesList[1].MarkLine = charts.NewMarkLine(
+				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 					charts.SeriesMarkDataTypeAverage,
 				)
 			},

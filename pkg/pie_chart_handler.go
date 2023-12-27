@@ -22,6 +22,7 @@ type PieChartRequest struct {
 	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
 	ChartTitle    string `json:"title" query:"title" form:"title"`
 	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
+	Theme         string `json:"theme" query:"theme" form:"theme"`
 	Height        int    `json:"height" query:"height" form:"height"`
 	Width         int    `json:"width" query:"width" form:"width"`
 }
@@ -62,6 +63,9 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 			Left:   charts.PositionLeft,
 		}),
 		charts.PieSeriesShowLabel(),
+		func(opt *charts.ChartOption) {
+			opt.Theme = req.Theme
+		},
 	)
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())

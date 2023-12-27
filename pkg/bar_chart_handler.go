@@ -26,6 +26,7 @@ type BarChartRequest struct {
 	Metric        string `json:"metric" query:"metric" form:"metric"`
 	Height        int    `json:"height" query:"height" form:"height"`
 	Theme         string `json:"theme" query:"theme" form:"theme"`
+	Type          string `json:"type" query:"type" form:"type"`
 	Width         int    `json:"width" query:"width" form:"width"`
 	Horizontal    bool   `json:"horizontal" query:"horizontal" form:"horizontal"`
 }
@@ -107,6 +108,12 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
 		charts.YAxisDataOptionFunc(data.XData),
+		func(opt *charts.ChartOption) {
+			opt.Theme = req.Theme
+			opt.ValueFormatter = func(f float64) string {
+				return fmt.Sprintf("%.0f%s", f, req.Metric)
+			}
+		},
 	)
 
 	if err != nil {

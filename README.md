@@ -38,16 +38,17 @@
 
 **URL** `https://instachart.coveritup.app`
 
-| Query      | Required | Description | Default           |
-| :--------- | :------- | :---------- | :---------------- |
-| `data`     | ◯        | JSON        |                   |
-| `title`    |          | string      |                   |
-| `fill`     |          | boolean     | `false`           |
-| `subtitle` |          | string      |                   |
-| `theme`    |          | string      | `light` or `dark` |
-| `metric`   |          | string      |                   |
-| `height`   |          | int         | 400               |
-| `width`    |          | int         | 600               |
+| Query        | Required | Description | Default               |
+| :----------- | :------- | :---------- | :-------------------- |
+| `data`       | ◯        | JSON        |                       |
+| `title`      |          | string      |                       |
+| `subtitle`   |          | string      |                       |
+| `theme`      |          | string      | `light` or `dark`     |
+| `metric`     |          | string      |                       |
+| `height`     |          | int         | 400                   |
+| `width`      |          | int         | 600                   |
+| `fill`       |          | boolean     | `false` for `/line`   |
+| `horizontal` |          | boolean     | `false` for `/bar`    |
 
 
 

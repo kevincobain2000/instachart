@@ -84,7 +84,7 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 
 <br>
 
-![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&width=1020&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -102,7 +102,7 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 <br>
 
 
-![Continuous area series](https://instachart.coveritup.app/line?title=Line+Chart+Area&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
 
 ### Single Line Series
 
@@ -283,8 +283,8 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 <br>
 
 <p align="center">
-  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=420&height=420&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=350&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=350&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
   </a>
 </p>
 
@@ -369,7 +369,7 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 
 <p align="center">
   <a href='https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
-    <img alt="radar chart" src='https://instachart.coveritup.app/radar?title=Radar+Chart&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
+    <img alt="radar chart" src='https://instachart.coveritup.app/radar?title=Radar+Chart&&height=520&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
   </a>
 </p>
 

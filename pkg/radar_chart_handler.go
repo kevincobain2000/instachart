@@ -28,16 +28,22 @@ type RadarChartData struct {
 func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}
 
 	var data RadarChartData
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		msgs := map[string]string{
+			"data": "Invalid JSON",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	if len(data.Names) == 0 || len(data.Names) != len(data.Values[0]) {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data count is invalid")
+		msgs := map[string]string{
+			"data": "Counts are invalid",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	graph, err := charts.RadarRender(

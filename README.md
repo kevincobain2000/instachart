@@ -138,14 +138,6 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 ## `GET /donut`
 
 
-| Query    | Required | Description | Example                                                   |
-| :------- | :------- | :---------- | :-------------------------------------------------------- |
-| `data`   | ◯        | JSON        | `?data={ "names": ["Mon","Tue","Wed"],"values": [1,2,3]}` |
-| `title`  |          | string      |                                                           |
-| `height` |          | int         |                                                           |
-| `width`  |          | int         |                                                           |
-
-
 | `data`   | Required | Description    | Example                     |
 | :------- | :------- | :------------- | :-------------------------- |
 | `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |

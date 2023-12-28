@@ -28,12 +28,15 @@ type LineChartData struct {
 func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}
 
 	var data LineChartData
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		msgs := map[string]string{
+			"data": "Invalid JSON",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 	p, err := charts.LineRender(
 		data.YData,

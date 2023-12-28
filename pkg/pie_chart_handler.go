@@ -26,16 +26,22 @@ type PieChartData struct {
 func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}
 
 	var data PieChartData
 	if err := json.Unmarshal([]byte(req.ChartData), &data); err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		msgs := map[string]string{
+			"data": "Invalid JSON",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	if len(data.Values) == 0 || len(data.Values) != len(data.Names) {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "data provided is invalid")
+		msgs := map[string]string{
+			"data": "Counts are invalid",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	p, err := charts.PieRender(

@@ -28,6 +28,7 @@
 
 - [API](#api)
   - [`GET /line`](#get-line)
+  - [`GET /bar`](#get-bar)
   - [`GET /donut`](#get-donut)
   - [`GET /pie`](#get-pie)
   - [`GET /radar`](#get-radar)
@@ -83,6 +84,7 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
     "y": [[4,8,7], [10,20,24]],
     "names": ["Sleeping", "Awake"]
 }
+```
 
 <br>
 

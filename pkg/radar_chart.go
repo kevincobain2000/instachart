@@ -1,5 +1,12 @@
 package pkg
 
+import (
+	"net/http"
+
+	"github.com/labstack/echo/v4"
+	charts "github.com/vicanso/go-charts/v2"
+)
+
 type RadarChart struct {
 }
 
@@ -25,4 +32,33 @@ func (c *RadarChart) GetIndicators(values [][]float64) []float64 {
 		}
 	}
 	return maxValues
+}
+
+func (c *RadarChart) Get(values [][]float64, names []string, labels []string, req *ChartRequest) ([]byte, error) {
+	p, err := charts.RadarRender(
+		values,
+		charts.TitleOptionFunc(charts.TitleOption{
+			Text:            req.ChartTitle,
+			Subtext:         req.ChartSubtitle,
+			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
+			Left:            charts.PositionCenter,
+		}),
+		charts.HeightOptionFunc(req.Height),
+		charts.WidthOptionFunc(req.Width),
+		charts.LegendOptionFunc(charts.LegendOption{
+			Orient: charts.OrientVertical,
+			Data:   labels,
+			Left:   charts.PositionLeft,
+		}),
+		charts.RadarIndicatorOptionFunc(names, c.GetIndicators(values)),
+		func(opt *charts.ChartOption) {
+			opt.Theme = req.Theme
+		},
+	)
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+	}
+
+	buf, err := p.Bytes()
+	return buf, err
 }

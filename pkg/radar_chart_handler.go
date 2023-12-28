@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	charts "github.com/vicanso/go-charts/v2"
 )
 
 type RadarChartHandler struct {
@@ -19,10 +18,9 @@ func NewRadarChartHandler() *RadarChartHandler {
 }
 
 type RadarChartData struct {
-	Labels     []string    `json:"labels"`
-	Names      []string    `json:"names"`
-	Indicators []float64   `json:"indicators"`
-	Values     [][]float64 `json:"values"`
+	Labels []string    `json:"labels"`
+	Names  []string    `json:"names"`
+	Values [][]float64 `json:"values"`
 }
 
 func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
@@ -46,34 +44,6 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	graph, err := charts.RadarRender(
-		data.Values,
-		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: 9,
-			Left:            charts.PositionCenter,
-		}),
-		charts.HeightOptionFunc(req.Height),
-		charts.WidthOptionFunc(req.Width),
-		charts.LegendOptionFunc(charts.LegendOption{
-			Orient: charts.OrientVertical,
-			Data:   data.Labels,
-			Left:   charts.PositionLeft,
-		}),
-		charts.RadarIndicatorOptionFunc(data.Names, h.chart.GetIndicators(data.Values)),
-		func(opt *charts.ChartOption) {
-			opt.Theme = req.Theme
-		},
-	)
-	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
-	}
-
-	buf, err := graph.Bytes()
-	if err != nil {
-		return nil, err
-	}
 	SetHeaders(c.Response().Header())
-	return buf, nil
+	return h.chart.Get(data.Values, data.Names, data.Labels, req)
 }

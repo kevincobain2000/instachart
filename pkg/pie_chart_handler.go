@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	charts "github.com/vicanso/go-charts/v2"
 )
 
 type PieChartHandler struct {
@@ -44,32 +43,7 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	p, err := charts.PieRender(
-		data.Values,
-		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: 9,
-			Left:            charts.PositionCenter,
-		}),
-		charts.HeightOptionFunc(req.Height),
-		charts.WidthOptionFunc(req.Width),
-		charts.PaddingOptionFunc(h.chart.GetPadding()),
-		charts.LegendOptionFunc(charts.LegendOption{
-			Orient: charts.OrientVertical,
-			Data:   data.Names,
-			Left:   charts.PositionLeft,
-		}),
-		charts.PieSeriesShowLabel(),
-		func(opt *charts.ChartOption) {
-			opt.Theme = req.Theme
-		},
-	)
-	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
-	}
-
-	buf, err := p.Bytes()
+	buf, err := h.chart.Get(data.Values, data.Names, req)
 	SetHeaders(c.Response().Header())
 	return buf, err
 }

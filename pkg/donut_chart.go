@@ -1,6 +1,10 @@
 package pkg
 
-import "github.com/wcharczuk/go-chart/v2"
+import (
+	"bytes"
+
+	"github.com/wcharczuk/go-chart/v2"
+)
 
 type DonutChart struct {
 	chart *Chart
@@ -11,7 +15,8 @@ func NewDonutChart() *DonutChart {
 		chart: NewChart(),
 	}
 }
-func (c *DonutChart) GetValues(names []string, values []float64) []chart.Value {
+
+func (c *DonutChart) Get(values []float64, names []string, req *ChartRequest) ([]byte, error) {
 	var chartValues []chart.Value
 	for i := 0; i < len(names); i++ {
 		chartValues = append(chartValues, chart.Value{
@@ -19,5 +24,14 @@ func (c *DonutChart) GetValues(names []string, values []float64) []chart.Value {
 			Label: names[i],
 		})
 	}
-	return chartValues
+	graph := chart.DonutChart{
+		Title:  req.ChartTitle,
+		Height: req.Height,
+		Width:  req.Width,
+		Values: chartValues,
+	}
+
+	buffer := bytes.NewBuffer([]byte{})
+	err := graph.Render(chart.PNG, buffer)
+	return buffer.Bytes(), err
 }

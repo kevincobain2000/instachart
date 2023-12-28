@@ -50,6 +50,10 @@ func TestGetLineChart(t *testing.T) {
 		assert.NoError(t, err)
 		assert.Equal(t, tc.ExpectedStatus, resp.StatusCode)
 
-		// Additional checks for response body, etc.
+		if resp.StatusCode == http.StatusOK {
+			assert.Equal(t, "image/png", resp.Header.Get("Content-Type"))
+		} else {
+			assert.Equal(t, "application/json; charset=UTF-8", resp.Header.Get("Content-Type"))
+		}
 	}
 }

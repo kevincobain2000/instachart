@@ -33,6 +33,7 @@
   - [`GET /pie`](#get-pie)
   - [`GET /radar`](#get-radar)
   - [`GET /funnel`](#get-funnel)
+  - [`GET /table`](#get-table)
 - [CHANGE LOG](#change-log)
 
 # API
@@ -214,9 +215,31 @@ https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
   </a>
 </p>
 
+## `GET /table`
+
+| `data`   | Required | Description                 | Example                                     |
+| :------- | :------- | :-------------------------- | :------------------------------------------ |
+| `names`  | ◯        | Array (string) `aka header` | `"names": ["Mon","Tue", "Wed"]`             |
+| `values` | ◯        | []Array (string) `aka rows` | `"values": [["Busy","Busy","No Meetings"]]` |
+
+```sh
+https://instachart.coveritup.app/table?title=Table+Chart&data={
+    "names": ["Branch","Code Coverage", "Quality"],
+    "values": [["master","80","90"], ["develop","70","79"]]
+}
+```
+
+<br>
+
+<p align="center">
+  <a href='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
+    <img alt="radar chart" src='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
+  </a>
+</p>
+
 
 # CHANGE LOG
 
-- **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar`
+- **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar`.
 - **v1.0.1** - Bug fixes and code refactor.
-- **v1.0.2** - `funnel` and `table` charts.
+- **v1.0.2** - `funnel` charts and `table` as image.

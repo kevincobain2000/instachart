@@ -87,4 +87,12 @@ func SetupRoutes(e *echo.Echo, baseURL string) {
 		}
 		return c.Blob(http.StatusOK, "", img)
 	})
+	// /funnel
+	e.GET(baseURL+"table", func(c echo.Context) error {
+		img, err := NewTableChartHandler().Get(c)
+		if err != nil {
+			return err
+		}
+		return c.Blob(http.StatusOK, "", img)
+	})
 }

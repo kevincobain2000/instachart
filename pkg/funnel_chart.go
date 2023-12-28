@@ -14,26 +14,6 @@ func NewFunnelChart() *FunnelChart {
 	return &FunnelChart{}
 }
 
-func (c *FunnelChart) GetIndicators(values [][]float64) []float64 {
-	if len(values) == 0 {
-		return nil
-	}
-
-	// Initialize maxValues with the first set of values
-	maxValues := make([]float64, len(values[0]))
-	copy(maxValues, values[0])
-
-	// Iterate over each set of values
-	for _, set := range values {
-		for i, value := range set {
-			if value > maxValues[i] {
-				maxValues[i] = value
-			}
-		}
-	}
-	return maxValues
-}
-
 func (c *FunnelChart) Get(values []float64, names []string, req *ChartRequest) ([]byte, error) {
 	values, names = c.Sort(values, names)
 	p, err := charts.FunnelRender(

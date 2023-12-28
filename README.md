@@ -75,7 +75,12 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 
 <br>
 
-![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart&width=1020&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+
+<p align="center">
+  <a href='https://instachart.coveritup.app/line?title=Line+Chart&width=1024&height=620&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
+    <img alt="line chart" src='https://instachart.coveritup.app/line?title=Line+Chart&width=1024&height=620&subtitle=Sleeping+Hours&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
+  </a>
+</p>
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -92,8 +97,13 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 
 <br>
 
+<p align="center">
+  <a href='https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&height=620&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
+    <img alt="line area chart" src='https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&height=620&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
+  </a>
+</p>
 
-![Line chart area](https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20[["Mon","Tue","Wed"]],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20})
+
 
 
 
@@ -120,8 +130,8 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 <br>
 
 <p align="center">
-  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
+  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&width=1024&height=620&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
+    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&width=1024&height=620&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
   </a>
 </p>
 

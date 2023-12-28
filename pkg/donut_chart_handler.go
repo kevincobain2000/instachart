@@ -19,20 +19,13 @@ func NewDonutChartHandler() *DonutChartHandler {
 	}
 }
 
-type DonutChartRequest struct {
-	ChartData  string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle string `json:"title" query:"title" form:"title"`
-	Height     int    `json:"height" query:"height" form:"height"`
-	Width      int    `json:"width" query:"width" form:"width"`
-}
-
 type DonutChartData struct {
 	Names  []string  `json:"names"`
 	Values []float64 `json:"values"`
 }
 
 func (h *DonutChartHandler) Get(c echo.Context) ([]byte, error) {
-	req := new(DonutChartRequest)
+	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
@@ -58,5 +51,6 @@ func (h *DonutChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
+	SetHeaders(c.Response().Header())
 	return buffer.Bytes(), err
 }

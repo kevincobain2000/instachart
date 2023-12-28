@@ -19,18 +19,6 @@ func NewBarChartHandler() *BarChartHandler {
 	}
 }
 
-type BarChartRequest struct {
-	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle    string `json:"title" query:"title" form:"title"`
-	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
-	Metric        string `json:"metric" query:"metric" form:"metric"`
-	Height        int    `json:"height" query:"height" form:"height"`
-	Theme         string `json:"theme" query:"theme" form:"theme"`
-	Type          string `json:"type" query:"type" form:"type"`
-	Width         int    `json:"width" query:"width" form:"width"`
-	Horizontal    bool   `json:"horizontal" query:"horizontal" form:"horizontal"`
-}
-
 type BarChartData struct {
 	XData []string    `json:"x"`
 	YData [][]float64 `json:"y"`
@@ -38,7 +26,7 @@ type BarChartData struct {
 }
 
 func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
-	req := new(BarChartRequest)
+	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
@@ -121,5 +109,6 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 
 	buf, err := p.Bytes()
+	SetHeaders(c.Response().Header())
 	return buf, err
 }

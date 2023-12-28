@@ -18,15 +18,6 @@ func NewRadarChartHandler() *RadarChartHandler {
 	}
 }
 
-type RadarChartRequest struct {
-	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle    string `json:"title" query:"title" form:"title"`
-	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
-	Theme         string `json:"theme" query:"theme" form:"theme"`
-	Height        int    `json:"height" query:"height" form:"height"`
-	Width         int    `json:"width" query:"width" form:"width"`
-}
-
 type RadarChartData struct {
 	Labels     []string    `json:"labels"`
 	Names      []string    `json:"names"`
@@ -35,7 +26,7 @@ type RadarChartData struct {
 }
 
 func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
-	req := new(RadarChartRequest)
+	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
@@ -77,5 +68,6 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	SetHeaders(c.Response().Header())
 	return buf, nil
 }

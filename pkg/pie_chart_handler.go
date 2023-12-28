@@ -18,22 +18,13 @@ func NewPieChartHandler() *PieChartHandler {
 	}
 }
 
-type PieChartRequest struct {
-	ChartData     string `json:"data" query:"data" form:"data" validate:"required" message:"data is required"`
-	ChartTitle    string `json:"title" query:"title" form:"title"`
-	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
-	Theme         string `json:"theme" query:"theme" form:"theme"`
-	Height        int    `json:"height" query:"height" form:"height"`
-	Width         int    `json:"width" query:"width" form:"width"`
-}
-
 type PieChartData struct {
 	Names  []string  `json:"names"`
 	Values []float64 `json:"values"`
 }
 
 func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
-	req := new(PieChartRequest)
+	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
 	}
@@ -73,5 +64,6 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 
 	buf, err := p.Bytes()
+	SetHeaders(c.Response().Header())
 	return buf, err
 }

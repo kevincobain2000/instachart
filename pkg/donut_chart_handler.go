@@ -1,12 +1,10 @@
 package pkg
 
 import (
-	"bytes"
 	"encoding/json"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/wcharczuk/go-chart/v2"
 )
 
 type DonutChartHandler struct {
@@ -45,18 +43,6 @@ func (h *DonutChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	graph := chart.DonutChart{
-		Title:  req.ChartTitle,
-		Height: req.Height,
-		Width:  req.Width,
-		Values: h.chart.GetValues(data.Names, data.Values),
-	}
-
-	buffer := bytes.NewBuffer([]byte{})
-	err := graph.Render(chart.PNG, buffer)
-	if err != nil {
-		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
-	}
 	SetHeaders(c.Response().Header())
-	return buffer.Bytes(), err
+	return h.chart.Get(data.Values, data.Names, req)
 }

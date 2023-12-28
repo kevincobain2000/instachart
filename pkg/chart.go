@@ -4,6 +4,14 @@ import (
 	"net/http"
 )
 
+const (
+	DEFAULT_PADDING_TOP        = 20
+	DEFAULT_PADDING_RIGHT      = 20
+	DEFAULT_PADDING_BOTTOM     = 20
+	DEFAULT_PADDING_LEFT       = 20
+	DEFAULT_SUBTITLE_FONT_SIZE = 9
+)
+
 type Chart struct {
 }
 

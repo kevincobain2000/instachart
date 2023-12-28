@@ -104,16 +104,13 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 </p>
 
 
-
-
-
 ## `GET /bar`
 
 
-| `data` | Required | Description      | Example                      |
-| :----- | :------- | :--------------- | :--------------------------- |
-| `x`    | ◯        | []Array (string) | `"x": [["Mon","Tue", "Wed"]` |
-| `y`    | ◯        | []Array (int)    | `"y": [[1,2,3]]`             |
+| `data` | Required | Description    | Example                     |
+| :----- | :------- | :------------- | :-------------------------- |
+| `x`    | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
+| `y`    | ◯        | []Array (int)  | `"y": [[1,2,3]]`            |
 
 <details>
  <summary><b>REQUEST URL</b></summary>
@@ -121,7 +118,7 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={
     "x": ["Monday", "Friday", "Sunday"],
-    "y": [[8, 2 ,14]]
+    "y": [[8,2,14]]
 }
 ```
 
@@ -130,8 +127,8 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 <br>
 
 <p align="center">
-  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&width=1024&height=620&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&width=1024&height=620&subtitle=Sleeping+hours&metric=h&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}'>
+  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
+    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202,14]]%20}'>
   </a>
 </p>
 

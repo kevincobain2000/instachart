@@ -13,11 +13,38 @@ func NewPieChart() *PieChart {
 		chart: NewChart(),
 	}
 }
-func (c *PieChart) GetPadding() charts.Box {
-	return charts.Box{
-		Top:    20,
-		Right:  20,
-		Bottom: 20,
-		Left:   20,
+
+func (c *PieChart) Get(values []float64, names []string, req *ChartRequest) ([]byte, error) {
+	p, err := charts.PieRender(
+		values,
+		charts.TitleOptionFunc(charts.TitleOption{
+			Text:            req.ChartTitle,
+			Subtext:         req.ChartSubtitle,
+			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
+			Left:            charts.PositionCenter,
+		}),
+		charts.HeightOptionFunc(req.Height),
+		charts.WidthOptionFunc(req.Width),
+		charts.PaddingOptionFunc(charts.Box{
+			Top:    DEFAULT_PADDING_TOP,
+			Right:  DEFAULT_PADDING_RIGHT,
+			Bottom: DEFAULT_PADDING_BOTTOM,
+			Left:   DEFAULT_PADDING_LEFT,
+		}),
+		charts.LegendOptionFunc(charts.LegendOption{
+			Orient: charts.OrientVertical,
+			Data:   names,
+			Left:   charts.PositionLeft,
+		}),
+		charts.PieSeriesShowLabel(),
+		func(opt *charts.ChartOption) {
+			opt.Theme = req.Theme
+		},
+	)
+	if err != nil {
+		return nil, err
 	}
+
+	buf, err := p.Bytes()
+	return buf, err
 }

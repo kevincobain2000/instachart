@@ -28,7 +28,6 @@
 
 - [API](#api)
   - [`GET /line`](#get-line)
-  - [`GET /bar`](#get-bar)
   - [`GET /donut`](#get-donut)
   - [`GET /pie`](#get-pie)
   - [`GET /radar`](#get-radar)
@@ -54,24 +53,20 @@
 
 ## `GET /line`
 
-| `data`  | Required | Description      | Example                                                           |
-| :------ | :------- | :--------------- | :---------------------------------------------------------------- |
-| `x`     | ◯        | []Array (string) | `"x": [["2022-12-23","2022-12-24"], ["2022-12-23","2022-12-24"]]` |
-| `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                                              |
-| `names` |          | Array            | `"names": ["Series A", "Series B"]`                               |
+| `data`  | Required | Description      | Example                             |
+| :------ | :------- | :--------------- | :---------------------------------- |
+| `x`     | ◯        | Array (string) | `"x": ["Mon","Tue"]]`               |
+| `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                |
+| `names` |          | Array            | `"names": ["Series A", "Series B"]` |
 
-<details>
- <summary><b>REQUEST URL</b></summary>
 
 ```sh
 https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&data={
-    "x": [["Mon","Tue","Wed"]],
+    "x": ["Mon","Tue","Wed"],
     "y": [[4,8,7], [10,20,24]],
     "names": ["Sleeping", "Awake"]
 }
 ```
-
-</details>
 
 <br>
 
@@ -82,18 +77,12 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
   </a>
 </p>
 
-<details>
- <summary><b>REQUEST URL</b></summary>
-
 ```sh
 https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&data={
     "x": [["Mon","Tue","Wed"]],
     "y": [[4,8,7], [10,20,24]],
     "names": ["Sleeping", "Awake"]
 }
-```
-
-</details>
 
 <br>
 
@@ -112,17 +101,12 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 | `x`    | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
 | `y`    | ◯        | []Array (int)  | `"y": [[1,2,3]]`            |
 
-<details>
- <summary><b>REQUEST URL</b></summary>
-
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={
     "x": ["Monday", "Friday", "Sunday"],
     "y": [[8,2,14]]
 }
 ```
-
-</details>
 
 <br>
 
@@ -140,17 +124,12 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 | `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
 | `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
 
-<details>
- <summary><b>REQUEST URL</b></summary>
-
 ```sh
 https://instachart.coveritup.app/donut?title=Donut+Chart&data={
     "names": ["Monday", "Friday", "Saturday", "Sunday"],
     "values": [4, 6 ,7, 9]
 }
 ```
-
-</details>
 
 <br>
 
@@ -170,17 +149,12 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 | `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
 
 
-<details>
- <summary><b>REQUEST URL</b></summary>
-
 ```sh
 https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&data={
     "names": ["Monday", "Friday", "Saturday", "Sunday"],
     "values": [4, 6 ,7, 9]
 }
 ```
-
-</details>
 
 <br>
 
@@ -199,9 +173,6 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 | `values` | ◯        | []Array (int)  | `"values": [[1,2,3], [3,4,5]]`          | `count(names) == count(values[0])` |
 | `labels` |          | Array (string) | `"labels": ["Work", "Relax", "Travel"]` |                                    |
 
-<details>
- <summary><b>REQUEST URL</b></summary>
-
 ```sh
 https://instachart.coveritup.app/radar?title=Radar+Chart&data={
     "names": ["Mon","Tue", "Wed", "Fri"],
@@ -209,8 +180,6 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
     "values": [[1,2,3,4], [15,7,8,9], [15,17,5,7]]
 }
 ```
-
-</details>
 
 <br>
 

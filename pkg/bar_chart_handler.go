@@ -44,9 +44,9 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 	SetHeaders(c.Response().Header())
-	if !req.Horizontal {
-		return h.chart.GetVertical(data.XData, data.YData, data.Names, req)
+	if req.Horizontal {
+		return h.chart.GetHorizontal(data.XData, data.YData, data.Names, req)
 	}
 
-	return h.chart.GetHorizontal(data.XData, data.YData, data.Names, req)
+	return h.chart.GetVertical(data.XData, data.YData, data.Names, req)
 }

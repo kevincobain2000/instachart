@@ -32,33 +32,34 @@
   - [`GET /donut`](#get-donut)
   - [`GET /pie`](#get-pie)
   - [`GET /radar`](#get-radar)
+  - [`GET /funnel`](#get-funnel)
 - [CHANGE LOG](#change-log)
 
 # API
 
 **URL** `https://instachart.coveritup.app`
 
-| Query        | Required | Description | Default               |
-| :----------- | :------- | :---------- | :-------------------- |
-| `data`       | ◯        | JSON        |                       |
-| `title`      |          | string      |                       |
-| `subtitle`   |          | string      |                       |
-| `theme`      |          | string      | `light` or `dark`     |
-| `metric`     |          | string      |                       |
-| `height`     |          | int         | 400                   |
-| `width`      |          | int         | 600                   |
-| `fill`       |          | boolean     | `false` for `/line`   |
-| `horizontal` |          | boolean     | `false` for `/bar`    |
+| Query        | Required | Description | Default                 |
+| :----------- | :------- | :---------- | :---------------------- |
+| `data`       | ◯        | JSON        |                         |
+| `title`      |          | string      |                         |
+| `subtitle`   |          | string      |                         |
+| `theme`      |          | string      | `light` or `dark`       |
+| `metric`     |          | string      |                         |
+| `height`     |          | int         | 400                     |
+| `width`      |          | int         | 600                     |
+| `fill`       |          | boolean     | `false` Used by `/line` |
+| `horizontal` |          | boolean     | `false` Used by `/bar`  |
 
 
 
 ## `GET /line`
 
-| `data`  | Required | Description      | Example                             |
-| :------ | :------- | :--------------- | :---------------------------------- |
+| `data`  | Required | Description    | Example                             |
+| :------ | :------- | :------------- | :---------------------------------- |
 | `x`     | ◯        | Array (string) | `"x": ["Mon","Tue"]]`               |
-| `y`     | ◯        | []Array (int)    | `"y": [[1,2],[3,4]]`                |
-| `names` |          | Array            | `"names": ["Series A", "Series B"]` |
+| `y`     | ◯        | []Array (int)  | `"y": [[1,2],[3,4]]`                |
+| `names` |          | Array          | `"names": ["Series A", "Series B"]` |
 
 
 ```sh
@@ -191,8 +192,31 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
   </a>
 </p>
 
+## `GET /funnel`
+
+| `data`   | Required | Description    | Example                         |
+| :------- | :------- | :------------- | :------------------------------ |
+| `names`  | ◯        | Array (string) | `"names": ["Mon","Tue", "Wed"]` |
+| `values` | ◯        | Array (int)    | `"values": [1,3,4]`             |
+
+```sh
+https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
+    "names": ["Mon","Tue", "Wed", "Sat"],
+    "values": [2,1,4,6]
+}
+```
+
+<br>
+
+<p align="center">
+  <a href='https://instachart.coveritup.app/funnel?title=Funnel+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
+    <img alt="radar chart" src='https://instachart.coveritup.app/funnel?title=Funnel+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
+  </a>
+</p>
+
 
 # CHANGE LOG
 
-- **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar` charts.
+- **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar`
 - **v1.0.1** - Bug fixes and code refactor.
+- **v1.0.2** - `funnel` and `table` charts.

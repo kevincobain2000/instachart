@@ -224,3 +224,4 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 # CHANGE LOG
 
 - **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar` charts.
+- **v1.0.1** - Bug fixes and code refactor.

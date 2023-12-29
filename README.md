@@ -40,27 +40,29 @@
 
 **URL** `https://instachart.coveritup.app`
 
-| Query        | Required | Description | Default                 |
-| :----------- | :------- | :---------- | :---------------------- |
-| `data`       | ◯        | JSON        |                         |
-| `title`      |          | string      |                         |
-| `subtitle`   |          | string      |                         |
-| `theme`      |          | string      | `light` or `dark`       |
-| `metric`     |          | string      |                         |
-| `height`     |          | int         | 400                     |
-| `width`      |          | int         | 600                     |
-| `fill`       |          | boolean     | `false` Used by `/line` |
-| `horizontal` |          | boolean     | `false` Used by `/bar`  |
+| Common Queries | Required | Description | Default           |
+| :------------- | :------- | :---------- | :---------------- |
+| `data`         | ◯        | JSON        |                   |
+| `title`        |          | string      |                   |
+| `subtitle`     |          | string      |                   |
+| `theme`        |          | string      | `light` or `dark` |
+| `metric`       |          | string      |                   |
+| `height`       |          | int         | 400               |
+| `width`        |          | int         | 600               |
 
 
 
 ## `GET /line`
 
-| `data`  | Required | Description    | Example                             |
-| :------ | :------- | :------------- | :---------------------------------- |
-| `x`     | ◯        | Array (string) | `"x": ["Mon","Tue"]]`               |
-| `y`     | ◯        | []Array (int)  | `"y": [[1,2],[3,4]]`                |
-| `names` |          | Array          | `"names": ["Series A", "Series B"]` |
+| Query  | Required | Description | Default |
+| :----- | :------- | :---------- | :------ |
+| `fill` |          | boolean     | `false` |
+
+| `data`  | Required | Description    |
+| :------ | :------- | :------------- |
+| `x`     | ◯        | Array (string) |
+| `y`     | ◯        | []Array (int)  |
+| `names` |          | Array          |
 
 
 ```sh
@@ -99,11 +101,15 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 
 ## `GET /bar`
 
+| Query        | Required | Description | Default |
+| :----------- | :------- | :---------- | :------ |
+| `horizontal` |          | boolean     | `false` |
 
-| `data` | Required | Description    | Example                     |
-| :----- | :------- | :------------- | :-------------------------- |
-| `x`    | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
-| `y`    | ◯        | []Array (int)  | `"y": [[1,2,3]]`            |
+
+| `data` | Required | Description    |
+| :----- | :------- | :------------- |
+| `x`    | ◯        | Array (string) |
+| `y`    | ◯        | []Array (int)  |
 
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={
@@ -123,10 +129,10 @@ https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&dat
 ## `GET /donut`
 
 
-| `data`   | Required | Description    | Example                     |
-| :------- | :------- | :------------- | :-------------------------- |
-| `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
-| `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
+| `data`   | Required | Description    |
+| :------- | :------- | :------------- |
+| `names`  | ◯        | Array (string) |
+| `values` | ◯        | Array (int)    |
 
 ```sh
 https://instachart.coveritup.app/donut?title=Donut+Chart&data={
@@ -147,10 +153,10 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 
 ## `GET /pie`
 
-| `data`   | Required | Description    | Example                     |
-| :------- | :------- | :------------- | :-------------------------- |
-| `names`  | ◯        | Array (string) | `"x": ["Mon","Tue", "Wed"]` |
-| `values` | ◯        | Array (int)    | `"y": [1,2,3]`              |
+| `data`   | Required | Description    |
+| :------- | :------- | :------------- |
+| `names`  | ◯        | Array (string) |
+| `values` | ◯        | Array (int)    |
 
 
 ```sh
@@ -171,11 +177,11 @@ https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&dat
 
 ## `GET /radar`
 
-| `data`   | Required | Description    | Example                                 | Validation                         |
-| :------- | :------- | :------------- | :-------------------------------------- | :--------------------------------- |
-| `names`  | ◯        | Array (string) | `"names": ["Mon","Tue", "Wed"]`         | `>=3`                              |
-| `values` | ◯        | []Array (int)  | `"values": [[1,2,3], [3,4,5]]`          | `count(names) == count(values[0])` |
-| `labels` |          | Array (string) | `"labels": ["Work", "Relax", "Travel"]` |                                    |
+| `data`   | Required | Description    |  Validation                         |
+| :------- | :------- | :------------- |  :--------------------------------- |
+| `names`  | ◯        | Array (string) |  `>=3`                              |
+| `values` | ◯        | []Array (int)  |  `count(names) == count(values[0])` |
+| `labels` |          | Array (string) |                                     |
 
 ```sh
 https://instachart.coveritup.app/radar?title=Radar+Chart&data={
@@ -195,10 +201,10 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 
 ## `GET /funnel`
 
-| `data`   | Required | Description    | Example                         |
-| :------- | :------- | :------------- | :------------------------------ |
-| `names`  | ◯        | Array (string) | `"names": ["Mon","Tue", "Wed"]` |
-| `values` | ◯        | Array (int)    | `"values": [1,3,4]`             |
+| `data`   | Required | Description    |
+| :------- | :------- | :------------- |
+| `names`  | ◯        | Array (string) |
+| `values` | ◯        | Array (int)    |
 
 ```sh
 https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
@@ -217,10 +223,10 @@ https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
 
 ## `GET /table`
 
-| `data`   | Required | Description                 | Example                                     |
-| :------- | :------- | :-------------------------- | :------------------------------------------ |
-| `names`  | ◯        | Array (string) `aka header` | `"names": ["Mon","Tue", "Wed"]`             |
-| `values` | ◯        | []Array (string) `aka rows` | `"values": [["Busy","Busy","No Meetings"]]` |
+| `data`   | Required | Description                 |
+| :------- | :------- | :-------------------------- |
+| `names`  | ◯        | Array (string) `aka header` |
+| `values` | ◯        | []Array (string) `aka rows` |
 
 ```sh
 https://instachart.coveritup.app/table?title=Table+Chart&data={

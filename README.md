@@ -58,16 +58,17 @@
 | :----- | :------- | :---------- | :------ |
 | `fill` |          | boolean     | `false` |
 
-| `data`  | Required | Description    |
-| :------ | :------- | :------------- |
-| `x`     | ◯        | Array (string) |
-| `y`     | ◯        | []Array (int)  |
-| `names` |          | Array          |
+
+| `data`  | Required | Description      |
+| :------ | :------- | :--------------- |
+| `x`     | ◯        | []Array (string) |
+| `y`     | ◯        | []Array (int)    |
+| `names` |          | Array            |
 
 
 ```sh
 https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&data={
-    "x": ["Mon","Tue","Wed"],
+    "x": [["Mon","Tue","Wed"]],
     "y": [[4,8,7], [10,20,24]],
     "names": ["Sleeping", "Awake"]
 }

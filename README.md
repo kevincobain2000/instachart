@@ -145,8 +145,8 @@ https://instachart.coveritup.app/donut?title=Donut+Chart&data={
 <br>
 
 <p align="center">
-  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=350&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=350&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=450&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
+    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=450&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
   </a>
 </p>
 

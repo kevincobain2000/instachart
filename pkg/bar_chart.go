@@ -40,6 +40,10 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 			charts.SeriesMarkDataTypeMin),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.Legend.Padding = charts.Box{
+				Top:    DEFAULT_PADDING_TOP,
+				Bottom: DEFAULT_PADDING_BOTTOM,
+			}
 			opt.ValueFormatter = func(f float64) string {
 				return fmt.Sprintf("%.0f%s", f, req.Metric)
 			}

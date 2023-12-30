@@ -13,6 +13,8 @@ import (
 
 func NewEcho(baseURL string) *echo.Echo {
 	e := echo.New()
+	//recover
+	e.Use(middleware.Recover())
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{

@@ -63,6 +63,9 @@ func HTTPErrorHandler(err error, c echo.Context) {
 	}
 
 	Logger().Error(message)
+	if code == http.StatusInternalServerError {
+		message = "Internal Server Error"
+	}
 	if err = c.JSON(code, &HTTPErrorResponse{Error: message}); err != nil {
 		Logger().Error(err)
 	}

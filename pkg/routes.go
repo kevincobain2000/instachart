@@ -2,33 +2,32 @@ package pkg
 
 import (
 	"embed"
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
 )
-
-//go:embed favicon.ico
-var faviconEmbed embed.FS
 
 const (
 	DOCS_URL     = "https://github.com/kevincobain2000/instachart"
 	FAVICON_FILE = "favicon.ico"
 	ROBOTS_FILE  = "robots.txt"
 	ROBOTS_TXT   = "User-agent: *\nAllow: /"
+	DIST_DIR     = "frontend/dist"
 )
 
-func SetupRoutes(e *echo.Echo, baseURL string) {
-	fav, _ := faviconEmbed.ReadFile(FAVICON_FILE)
+func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 
-	// /
 	e.GET(baseURL+"", func(c echo.Context) error {
-		return c.Redirect(http.StatusMovedPermanently, DOCS_URL)
+		filename := fmt.Sprintf("%s/%s", DIST_DIR, "index.html")
+		content, err := publicDir.ReadFile(filename)
+		if err != nil {
+			return c.String(http.StatusNotFound, "404")
+		}
+		SetHeadersResponseHTML(c.Response().Header())
+		return c.Blob(http.StatusOK, "text/html", content)
 	})
 
-	// /health
-	e.GET(baseURL+"health", func(c echo.Context) error {
-		return c.String(http.StatusOK, "OK")
-	})
 	// /robots.txt
 	e.GET(baseURL+ROBOTS_FILE, func(c echo.Context) error {
 		return c.String(http.StatusOK, ROBOTS_TXT)
@@ -36,7 +35,12 @@ func SetupRoutes(e *echo.Echo, baseURL string) {
 
 	// /favicon.ico
 	e.GET(baseURL+FAVICON_FILE, func(c echo.Context) error {
-		return c.Blob(http.StatusOK, "image/x-icon", fav)
+		filename := fmt.Sprintf("%s/%s", DIST_DIR, "favicon.ico")
+		content, err := publicDir.ReadFile(filename)
+		if err != nil {
+			return c.String(http.StatusNotFound, "404")
+		}
+		return c.Blob(http.StatusOK, "image/x-icon", content)
 	})
 
 	// /line

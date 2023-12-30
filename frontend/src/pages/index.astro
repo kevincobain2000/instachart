@@ -1,0 +1,172 @@
+---
+import Layout from "@components/Layout.astro";
+import Nav from "@components/Nav.astro";
+import linechart from '@assets/linechart.svg?raw'
+---
+
+<Layout
+  title="InstaChart - Generate charts as images online. Embed dynamic charts as images."
+  description="Discover InstaChart: Your go-to online tool for effortlessly creating, customizing, and sharing professional charts as images. Ideal for business, academic, or personal use, our platform supports dynamic, real-time chart updates. Perfect for data visualization in presentations, websites, and social media. Easy, fast, and versatile – InstaChart transforms your data into impactful visuals!"
+>
+  <div class="h-full">
+    <!--Nav-->
+    <Nav />
+
+    <!--Main-->
+    <div
+      class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center"
+    >
+      <!--Left Col-->
+      <div
+        class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden"
+      >
+        <h1
+          class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left"
+        >
+          Insta
+          <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500"
+          >
+            Chart
+          </span>
+          <br />
+          <span class="text-2xl">Chart as Image</span>
+        </h1>
+        <p
+          class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left"
+        >
+          Discover InstaChart: Instantly generate charts as images online. Embed
+          dynamic charts as images.
+        </p>
+
+        <div
+          class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+        >
+          <div class="mb-4">
+            <label
+              class="block text-blue-300 py-2 font-bold mb-2"
+              for="emailaddress"
+            >
+              Ideal for business, academic, or personal use, our platform
+              supports dynamic, real-time chart updates. Perfect for data
+              visualization in presentations, websites, and social media.
+            </label>
+            <p>
+              Easy, fast, and versatile – InstaChart transforms your data into
+              impactful visuals!
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!--Right Col-->
+      <div class="w-full xl:w-3/5 p-12 overflow-hidden">
+        <img
+          class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
+          src="https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&width=760&height=560&data={%20%22x%22:%20[[%22Mon%22,%22Tue%22,%22Wed%22]],%20%22y%22:%20[[4,8,7],%20[10,20,24]],%20%22names%22:%20[%22Sleeping%22,%20%22Awake%22]%20}&theme=dark"
+        />
+      </div>
+
+      <div class="mx-auto md:pt-16">
+        <p class="text-violet-400 font-bold pb-6 lg:pb-6 text-center text-3xl">
+          Multiple Themes
+        </p>
+        <p class="text-center pb-10">
+          Choose from multiple themes to suit your needs.
+        </p>
+        <p class="text-center font-bold pb-2 text-white">Light</p>
+        <div
+          class="flex w-full justify-center md:justify-start lg:pb-0 fade-in"
+        >
+          <img
+            src="https://instachart.coveritup.app/line?title=Line+Chart&subtitle=Sleeping+Hours&fill=true&width=690&height=390&data={%20%22x%22:%20[[%22Mon%22,%22Tue%22,%22Wed%22]],%20%22y%22:%20[[4,8,7],%20[10,20,24]],%20%22names%22:%20[%22Sleeping%22,%20%22Awake%22]%20}&theme=light"
+            class="transform hover:scale-125 duration-300 ease-in-out"
+          />
+        </div>
+        <br />
+        <p class="text-center font-bold pb-2 text-gray-400">Dark</p>
+        <div
+          class="flex w-full justify-center md:justify-start lg:pb-0 fade-in"
+        >
+          <img
+            src="https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&width=690&height=390&data={%20%22x%22:%20[[%22Mon%22,%22Tue%22,%22Wed%22]],%20%22y%22:%20[[4,8,7],%20[10,20,24]],%20%22names%22:%20[%22Sleeping%22,%20%22Awake%22]%20}&theme=dark"
+            class="transform hover:scale-125 duration-300 ease-in-out"
+          />
+        </div>
+      </div>
+
+      <!--Main-->
+      <div
+        class="container pt-24 md:pt-36 mx-auto flex flex-wrap flex-col md:flex-row items-center"
+      >
+        <!--Left Col-->
+        <div
+          class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden"
+        >
+          <h1
+            class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left"
+          >
+            Beautiful
+            <span
+              class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500"
+            >
+              Line Charts
+            </span>
+          </h1>
+          <p
+            class="leading-normal text-slate-300 md:text-2xl mb-8 text-center md:text-left"
+          >
+
+          <Fragment set:html={linechart} />
+
+            Your go-to online tool for effortlessly creating, customizing, and
+            sharing professional charts as images.
+          </p>
+
+          <div
+            class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4"
+          >
+            <div class="mb-4">
+              <label
+                class="block text-blue-300 py-2 font-bold mb-2"
+                for="code"
+              >
+                <pre class="">{`
+https://instachart.coveritup.app/line?title=Line+Chart
+&subtitle=Sleeping+Hours
+&data={
+    "x": [["Mon","Tue","Wed"]],
+    "y": [[4,8,7], [10,20,24]],
+    "names": ["Sleeping", "Awake"]
+}`}</pre>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!--Right Col-->
+        <div class="w-full xl:w-3/5 pt-5 overflow-hidden">
+          <img
+            class="mx-auto w-full md:w-4/5 transform transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
+            src="https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+Hours&width=760&height=560&data={%20%22x%22:%20[[%22Mon%22,%22Tue%22,%22Wed%22]],%20%22y%22:%20[[4,8,7],%20[10,20,24]],%20%22names%22:%20[%22Sleeping%22,%20%22Awake%22]%20}&theme=dark"
+          />
+        </div>
+
+        <!--Footer-->
+        <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+          <a class="text-gray-500 no-underline hover:no-underline" href="#"
+            >&copy; 2023</a
+          >
+           - InstaChart by
+          <a
+            class="text-gray-500 no-underline hover:no-underline"
+            href="https://github.com/kevincobain2000">kevincobain2000</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style></style>
+</Layout>

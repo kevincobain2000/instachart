@@ -34,6 +34,7 @@
   - [`GET /radar`](#get-radar)
   - [`GET /funnel`](#get-funnel)
   - [`GET /table`](#get-table)
+- [Self Hosting](#self-hosting)
 - [CHANGE LOG](#change-log)
 
 # API
@@ -245,6 +246,12 @@ https://instachart.coveritup.app/table?title=Table+Chart&data={
   </a>
 </p>
 
+
+# Self Hosting
+
+```sh
+curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/install.sh | sh
+```
 
 # CHANGE LOG
 

@@ -29,7 +29,7 @@ func (c *LineChart) Get(xData [][]string, yData [][]float64, names []string, req
 		}),
 		charts.XAxisDataOptionFunc(xData[0]),
 		charts.LegendOptionFunc(charts.LegendOption{
-			Orient: charts.OrientVertical,
+			Orient: charts.OrientHorizontal,
 			Data:   names,
 			Left:   charts.PositionLeft,
 		}),
@@ -37,7 +37,7 @@ func (c *LineChart) Get(xData [][]string, yData [][]float64, names []string, req
 			opt.Theme = req.Theme
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP,
-				Bottom: DEFAULT_PADDING_BOTTOM,
+				Bottom: DEFAULT_PADDING_BOTTOM * 2,
 			}
 			opt.ValueFormatter = func(f float64) string {
 				return fmt.Sprintf("%.0f%s", f, req.Metric)

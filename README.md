@@ -217,8 +217,8 @@ https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
 <br>
 
 <p align="center">
-  <a href='https://instachart.coveritup.app/funnel?title=Funnel+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
-    <img alt="radar chart" src='https://instachart.coveritup.app/funnel?title=Funnel+Chart&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
+  <a href='https://instachart.coveritup.app/funnel?title=Funnel+Chart&width=520&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
+    <img alt="funnel chart" src='https://instachart.coveritup.app/funnel?title=Funnel+Chart&width=520&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
   </a>
 </p>
 
@@ -240,7 +240,7 @@ https://instachart.coveritup.app/table?title=Table+Chart&data={
 
 <p align="center">
   <a href='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
-    <img alt="radar chart" src='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
+    <img alt="table" src='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
   </a>
 </p>
 

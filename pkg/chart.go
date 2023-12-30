@@ -36,4 +36,10 @@ func SetHeaders(header http.Header) {
 	header.Set("Cache-Control", "max-age=31536000")
 	header.Set("Expires", "31536000")
 	header.Set("Content-Type", "image/png")
+	// security headers
+	header.Set("X-Content-Type-Options", "nosniff")
+	header.Set("X-Frame-Options", "DENY")
+	header.Set("X-XSS-Protection", "1; mode=block")
+	// content policy
+	header.Set("Content-Security-Policy", "default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; connect-src 'self'; script-src 'self';")
 }

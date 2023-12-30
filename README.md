@@ -115,7 +115,8 @@ https://instachart.coveritup.app/line?title=Line+Chart+Simple&subtitle=Sleeping+
 ```sh
 https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={
     "x": ["Monday", "Friday", "Sunday"],
-    "y": [[8,2,14]]
+    "y": [[8,2,14]],
+    "names": ["Sleeping", "Awake"]
 }
 ```
 

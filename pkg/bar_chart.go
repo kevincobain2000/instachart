@@ -31,7 +31,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 		charts.WidthOptionFunc(req.Width),
 		charts.XAxisDataOptionFunc(xData),
 		charts.LegendOptionFunc(charts.LegendOption{
-			Orient: charts.OrientVertical,
+			Orient: charts.OrientHorizontal,
 			Data:   names,
 			Left:   charts.PositionLeft,
 		}),
@@ -41,7 +41,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
 			opt.Legend.Padding = charts.Box{
-				Top:    DEFAULT_PADDING_TOP,
+				Top:    DEFAULT_PADDING_TOP * 2,
 				Bottom: DEFAULT_PADDING_BOTTOM,
 			}
 			opt.ValueFormatter = func(f float64) string {

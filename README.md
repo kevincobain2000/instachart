@@ -258,3 +258,5 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.0** - Initial release with `line`, `bar`, `donut`, `pie`, `radar`.
 - **v1.0.1** - Bug fixes and code refactor.
 - **v1.0.2** - `funnel` charts and `table` as image.
+- **v1.0.3** - Fixes a few padding issues.
+- **v1.0.4** - Adds `/` for frontend. And Installation instructions for self-hosting.

@@ -12,8 +12,16 @@ const (
 	DOCS_URL     = "https://github.com/kevincobain2000/instachart"
 	FAVICON_FILE = "favicon.ico"
 	ROBOTS_FILE  = "robots.txt"
-	ROBOTS_TXT   = "User-agent: *\nAllow: /"
-	DIST_DIR     = "frontend/dist"
+	ROBOTS_TXT   = `User-agent: *\n
+Allow: /
+Disallow: /line
+Disallow: /bar
+Disallow: /radar
+Disallow: /funnel
+Disallow: /donut
+Disallow: /pie
+Disallow: /table`
+	DIST_DIR = "frontend/dist"
 )
 
 func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {

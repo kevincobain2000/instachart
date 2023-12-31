@@ -35,6 +35,41 @@ jobs:
           go install github.com/axw/gocov/gocov@latest
           go install github.com/AlekSi/gocov-xml@latest
         shell: bash
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Prepare frontend
+        working-directory: frontend
+        run: |
+          BUILD_START=$SECONDS
+          npm install
+          echo SCORE=$(($SECONDS-BUILD_START)) >> "$GITHUB_ENV"
+      - uses: kevincobain2000/action-coveritup@v1
+        with:
+          type: npm-install-time
+
+      - name: Node Modules Size
+        working-directory: frontend
+        run: |
+          echo SCORE=`du -sm node_modules/ | awk '{print $1}'` >> "$GITHUB_ENV"
+      - uses: kevincobain2000/action-coveritup@v1
+        with:
+          type: npm-modules-size
+
+      - name: Build
+        run: |
+          BUILD_START=$SECONDS
+          cd frontend
+          npm run build
+          cd ..
+          go build -ldflags '-s -w' -o main main.go
+          echo SCORE=$(($SECONDS-BUILD_START)) >> "$GITHUB_ENV"
+      - uses: kevincobain2000/action-coveritup@v1
+        with:
+          type: build-time
+
       - name: Test
         run: |
           BUILD_START=$SECONDS
@@ -49,23 +84,12 @@ jobs:
         run: |
           go tool cover -html=coverage.out -o coverage.html
           gocov convert coverage.out | gocov-xml > coverage.xml
-      - name: Build
-        run: |
-          BUILD_START=$SECONDS
-          go build -ldflags '-s -w' -o main
-          echo SCORE=$(($SECONDS-BUILD_START)) >> "$GITHUB_ENV"
-        shell: bash
-
-      - uses: kevincobain2000/action-coveritup@v1
-        with:
-          type: build-time
 
       - name: Coveritup
         run: |
           curl -sLk https://raw.githubusercontent.com/kevincobain2000/cover-totalizer/master/install.sh | sh
           echo SCORE=`./cover-totalizer coverage.xml` >> "$GITHUB_ENV"
         shell: bash
-
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: coverage
@@ -74,7 +98,6 @@ jobs:
         run: |
           echo SCORE=`du -sk main | awk '{print $1}'` >> "$GITHUB_ENV"
         shell: bash
-
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: go-binary-size
@@ -83,7 +106,6 @@ jobs:
         run: |
           echo SCORE=`go list -m all|wc -l|awk '{$1=$1};1'` >> "$GITHUB_ENV"
         shell: bash
-
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: go-mod-dependencies
@@ -92,7 +114,6 @@ jobs:
         run: |
           echo SCORE=`gosec -no-fail --quiet ./...|grep Issues | tail -1 |awk '{print $3}'` >> "$GITHUB_ENV"
         shell: bash
-
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: go-sec-issues

@@ -1,12 +1,16 @@
 package main
 
 import (
+	"embed"
 	"flag"
 	"fmt"
 	"os"
 
 	"github.com/kevincobain2000/instachart/pkg"
 )
+
+//go:embed all:frontend/dist/*
+var publicDir embed.FS
 
 var (
 	port    string
@@ -20,7 +24,7 @@ func main() {
 		return
 	}
 	flags()
-	e := pkg.NewEcho(baseURL)
+	e := pkg.NewEcho(baseURL, publicDir)
 
 	pkg.GracefulServerWithPid(e, port)
 }

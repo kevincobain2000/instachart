@@ -43,6 +43,6 @@ func (h *FunnelChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	SetHeaders(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header())
 	return h.chart.Get(data.Values, data.Names, req)
 }

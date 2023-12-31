@@ -16,7 +16,6 @@ tmp/
 
 .env
 *.pid
-dist/
 bin/
 build/
 

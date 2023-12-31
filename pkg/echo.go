@@ -1,6 +1,7 @@
 package pkg
 
 import (
+	"embed"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -11,7 +12,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func NewEcho(baseURL string) *echo.Echo {
+func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
 	e := echo.New()
 	//recover
 	e.Use(middleware.Recover())
@@ -21,7 +22,7 @@ func NewEcho(baseURL string) *echo.Echo {
 		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
 		CustomTimeFormat: "2006-01-02 15:04:05",
 	}))
-	SetupRoutes(e, baseURL)
+	SetupRoutes(e, baseURL, publicDir)
 	return e
 }
 

@@ -51,6 +51,6 @@ func (h *TableChartHandler) Get(c echo.Context) ([]byte, error) {
 		}
 	}
 
-	SetHeaders(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header())
 	return h.chart.Get(data.Names, data.Values, req)
 }

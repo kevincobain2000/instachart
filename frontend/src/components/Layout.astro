@@ -34,4 +34,13 @@ const { title, description } = Astro.props;
     background: -webkit-linear-gradient(to right, #061161, #780206);
     background: linear-gradient(to right, #061161, #780206);
   }
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+     /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+    }
 </style>

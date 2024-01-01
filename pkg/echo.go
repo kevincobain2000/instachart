@@ -30,9 +30,9 @@ func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
 // kill -HUP when binary is changed
 // kill -9 when want to kill the process and make the application dead and want to restart
 // kill -9 is NOT FOR FAINT HEARTED and must not be done on prod unless SOUT
-func GracefulServerWithPid(e *echo.Echo, port string) {
+func GracefulServerWithPid(e *echo.Echo, host string, port string) {
 	log := Logger()
-	server := endless.NewServer("localhost:"+port, e)
+	server := endless.NewServer(host+":"+port, e)
 	server.BeforeBegin = func(add string) {
 		pidFile := filepath.Join(port + ".pid")
 		_ = os.Remove(pidFile)

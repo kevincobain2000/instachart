@@ -210,17 +210,17 @@ https://instachart.coveritup.app/radar?title=Radar+Chart&data={
 | `values` | ◯        | Array (int)    |
 
 ```sh
-https://instachart.coveritup.app/funnel?title=Radar+Chart&data={
-    "names": ["Mon","Tue", "Wed", "Sat"],
-    "values": [2,1,4,6]
+https://instachart.coveritup.app/funnel?title=Radar+Chart&width=500&data={
+    "names": ["Mon","Tue", "Thu", "Fri", "Sat", "Sun"],
+    "values": [100,80,60,40,20,10]
 }
 ```
 
 <br>
 
 <p align="center">
-  <a href='https://instachart.coveritup.app/funnel?title=Funnel+Chart&width=520&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
-    <img alt="funnel chart" src='https://instachart.coveritup.app/funnel?title=Funnel+Chart&width=520&subtitle=Sleeping+Hours&data={%20"names":%20["Mon","Tue",%20"Wed",%20"Sat"],%20"values":%20[2,1,4,6]%20}'>
+  <a href='https://instachart.coveritup.app/funnel?title=Radar+Chart&width=620&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sun%22],%20%22values%22:%20[100,80,60,40,20,10]%20}'>
+    <img alt="funnel chart" src='https://instachart.coveritup.app/funnel?title=Radar+Chart&width=620&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sun%22],%20%22values%22:%20[100,80,60,40,20,10]%20}'>
   </a>
 </p>
 
@@ -260,3 +260,4 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.2** - `funnel` charts and `table` as image.
 - **v1.0.3** - Fixes a few padding issues.
 - **v1.0.4** - Adds `/` for frontend. And Installation instructions for self-hosting.
+- **v1.0.5** - Frontend page with examples.

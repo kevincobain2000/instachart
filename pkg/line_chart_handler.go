@@ -36,6 +36,20 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 		}
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
+	if len(data.XData) == 0 || len(data.YData) == 0 {
+		msgs := map[string]string{
+			"data": "Counts are invalid",
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
+	}
+	for _, y := range data.YData {
+		if len(y) != len(data.XData) {
+			msgs := map[string]string{
+				"data": "Counts are invalid",
+			}
+			return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
+		}
+	}
 
 	SetHeadersResponseImage(c.Response().Header())
 	return h.chart.Get(data.XData, data.YData, data.Names, req)

@@ -31,15 +31,19 @@ func TestGetLineChart(t *testing.T) {
 	}
 	testCases := []TestCase{
 		{
+			QueryParams:    `{"x": ["2022-12-23","2022-12-24","2023-12-25"], "y": [[1,2,3], [2,5,3]]}`,
+			ExpectedStatus: http.StatusOK,
+		},
+		{
 			QueryParams:    `{"x": [["2022-12-23","2022-12-24","2023-12-25"], ["2022-12-23","2022-12-28","2023-12-30"]], "y": [[1,2,3], [2,5,3]]}`,
+			ExpectedStatus: http.StatusUnprocessableEntity,
+		},
+		{
+			QueryParams:    `{"x": ["abc","2022-12-24","2023-12-25"], "y": [[1,2,3], [2,5,3]]}`,
 			ExpectedStatus: http.StatusOK,
 		},
 		{
-			QueryParams:    `{"x": [["abc","2022-12-24","2023-12-25"], ["2022-12-23","2022-12-28","2023-12-30"]], "y": [[1,2,3], [2,5,3]]}`,
-			ExpectedStatus: http.StatusOK,
-		},
-		{
-			QueryParams:    `{"x": [[2022-12-23,"2022-12-24","2023-12-25"], ["2022-12-23","2022-12-28","2023-12-30"]], "y": [[1,2,3], [2,5,3]]}`,
+			QueryParams:    `{"x": [2022-12-23,"2022-12-24","2023-12-25"], ["2022-12-23","2022-12-28","2023-12-30"], "y": [[1,2,3], [2,5,3]]}`,
 			ExpectedStatus: http.StatusUnprocessableEntity,
 		},
 	}

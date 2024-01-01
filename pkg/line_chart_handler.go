@@ -18,7 +18,7 @@ func NewLineChartHandler() *LineChartHandler {
 }
 
 type LineChartData struct {
-	XData [][]string  `json:"x"`
+	XData []string    `json:"x"`
 	YData [][]float64 `json:"y"`
 	Names []string    `json:"names"`
 }

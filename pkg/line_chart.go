@@ -16,7 +16,7 @@ func NewLineChart() *LineChart {
 	}
 }
 
-func (c *LineChart) Get(xData [][]string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
+func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
 	p, err := charts.LineRender(
 		yData,
 		charts.HeightOptionFunc(req.Height),
@@ -27,7 +27,7 @@ func (c *LineChart) Get(xData [][]string, yData [][]float64, names []string, req
 			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
 			Left:            charts.PositionCenter,
 		}),
-		charts.XAxisDataOptionFunc(xData[0]),
+		charts.XAxisDataOptionFunc(xData),
 		charts.LegendOptionFunc(charts.LegendOption{
 			Orient: charts.OrientHorizontal,
 			Data:   names,

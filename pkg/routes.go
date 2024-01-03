@@ -63,7 +63,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /bar
 	e.GET(baseURL+"bar", func(c echo.Context) error {
-		img, err := NewBarChartHandler().Get(c)
+		img, err := NewBarChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -71,7 +71,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /radar
 	e.GET(baseURL+"radar", func(c echo.Context) error {
-		img, err := NewRadarChartHandler().Get(c)
+		img, err := NewRadarChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -79,7 +79,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /donut
 	e.GET(baseURL+"donut", func(c echo.Context) error {
-		img, err := NewDonutChartHandler().Get(c)
+		img, err := NewDonutChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -87,7 +87,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /pie
 	e.GET(baseURL+"pie", func(c echo.Context) error {
-		img, err := NewPieChartHandler().Get(c)
+		img, err := NewPieChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -95,7 +95,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /funnel
 	e.GET(baseURL+"funnel", func(c echo.Context) error {
-		img, err := NewFunnelChartHandler().Get(c)
+		img, err := NewFunnelChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -103,7 +103,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 	})
 	// /table
 	e.GET(baseURL+"table", func(c echo.Context) error {
-		img, err := NewTableChartHandler().Get(c)
+		img, err := NewTableChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}

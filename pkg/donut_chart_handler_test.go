@@ -14,7 +14,7 @@ func TestGetDonutChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/donut", func(c echo.Context) error {
-		img, err := NewDonutChartHandler().Get(c)
+		img, err := NewDonutChartHandler("").Get(c)
 		if err != nil {
 			return err
 		}

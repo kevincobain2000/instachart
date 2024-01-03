@@ -43,7 +43,7 @@
 
 | Common Queries | Required | Description | Default           |
 | :------------- | :------- | :---------- | :---------------- |
-| `data`         | ◯        | JSON        |                   |
+| `data`         | ◯        | JSON or URL |                   |
 | `title`        |          | string      |                   |
 | `subtitle`     |          | string      |                   |
 | `theme`        |          | string      | `light` or `dark` |

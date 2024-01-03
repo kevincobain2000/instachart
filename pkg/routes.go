@@ -48,6 +48,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 		if err != nil {
 			return c.String(http.StatusNotFound, "404")
 		}
+		SetHeadersResponseImage(c.Response().Header())
 		return c.Blob(http.StatusOK, "image/x-icon", content)
 	})
 

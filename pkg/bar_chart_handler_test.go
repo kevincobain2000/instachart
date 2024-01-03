@@ -14,7 +14,7 @@ func TestGetBarChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/bar", func(c echo.Context) error {
-		img, err := NewBarChartHandler().Get(c)
+		img, err := NewBarChartHandler("").Get(c)
 		if err != nil {
 			return err
 		}

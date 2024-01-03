@@ -8,12 +8,14 @@ import (
 )
 
 type RadarChartHandler struct {
-	chart *RadarChart
+	chart                *RadarChart
+	allowedRemoteDomains string
 }
 
-func NewRadarChartHandler() *RadarChartHandler {
+func NewRadarChartHandler(allowedRemoteDomains string) *RadarChartHandler {
 	return &RadarChartHandler{
-		chart: NewRadarChart(),
+		chart:                NewRadarChart(),
+		allowedRemoteDomains: allowedRemoteDomains,
 	}
 }
 
@@ -27,6 +29,13 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
+	}
+	err := SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	if err != nil {
+		msgs := map[string]string{
+			"data": err.Error(),
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	var data RadarChartData

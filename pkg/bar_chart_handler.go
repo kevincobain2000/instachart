@@ -8,12 +8,14 @@ import (
 )
 
 type BarChartHandler struct {
-	chart *BarChart
+	chart                *BarChart
+	allowedRemoteDomains string
 }
 
-func NewBarChartHandler() *BarChartHandler {
+func NewBarChartHandler(allowedRemoteDomains string) *BarChartHandler {
 	return &BarChartHandler{
-		chart: NewBarChart(),
+		chart:                NewBarChart(),
+		allowedRemoteDomains: allowedRemoteDomains,
 	}
 }
 
@@ -27,6 +29,13 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
+	}
+	err := SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	if err != nil {
+		msgs := map[string]string{
+			"data": err.Error(),
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	var data BarChartData

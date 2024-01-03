@@ -8,12 +8,14 @@ import (
 )
 
 type FunnelChartHandler struct {
-	chart *FunnelChart
+	chart                *FunnelChart
+	allowedRemoteDomains string
 }
 
-func NewFunnelChartHandler() *FunnelChartHandler {
+func NewFunnelChartHandler(allowedRemoteDomains string) *FunnelChartHandler {
 	return &FunnelChartHandler{
-		chart: NewFunnelChart(),
+		chart:                NewFunnelChart(),
+		allowedRemoteDomains: allowedRemoteDomains,
 	}
 }
 
@@ -26,6 +28,13 @@ func (h *FunnelChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
+	}
+	err := SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	if err != nil {
+		msgs := map[string]string{
+			"data": err.Error(),
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	var data FunnelChartData

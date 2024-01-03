@@ -8,12 +8,14 @@ import (
 )
 
 type TableChartHandler struct {
-	chart *TableChart
+	chart                *TableChart
+	allowedRemoteDomains string
 }
 
-func NewTableChartHandler() *TableChartHandler {
+func NewTableChartHandler(allowedRemoteDomains string) *TableChartHandler {
 	return &TableChartHandler{
-		chart: NewTableChart(),
+		chart:                NewTableChart(),
+		allowedRemoteDomains: allowedRemoteDomains,
 	}
 }
 
@@ -26,6 +28,13 @@ func (h *TableChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
+	}
+	err := SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	if err != nil {
+		msgs := map[string]string{
+			"data": err.Error(),
+		}
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
 	var data TableChartData

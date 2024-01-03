@@ -38,6 +38,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 
 	// /robots.txt
 	e.GET(baseURL+ROBOTS_FILE, func(c echo.Context) error {
+		c.Response().Header().Set("Cache-Control", "public, max-age=86400")
 		return c.String(http.StatusOK, ROBOTS_TXT)
 	})
 

@@ -12,8 +12,7 @@ const (
 	DOCS_URL     = "https://github.com/kevincobain2000/instachart"
 	FAVICON_FILE = "favicon.ico"
 	ROBOTS_FILE  = "robots.txt"
-	ROBOTS_TXT   = `
-User-agent: *
+	ROBOTS_TXT   = `User-agent: *
 Allow: *
 Disallow: /line
 Disallow: /bar

@@ -24,7 +24,7 @@ Disallow: /table`
 	DIST_DIR = "frontend/dist"
 )
 
-func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
+func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemoteDomains string) {
 
 	e.GET(baseURL+"", func(c echo.Context) error {
 		filename := fmt.Sprintf("%s/%s", DIST_DIR, "index.html")
@@ -38,7 +38,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 
 	// /robots.txt
 	e.GET(baseURL+ROBOTS_FILE, func(c echo.Context) error {
-		c.Response().Header().Set("Cache-Control", "public, max-age=86400")
+		SetHeadersResponseTxt(c.Response().Header())
 		return c.String(http.StatusOK, ROBOTS_TXT)
 	})
 
@@ -55,7 +55,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 
 	// /line
 	e.GET(baseURL+"line", func(c echo.Context) error {
-		img, err := NewLineChartHandler().Get(c)
+		img, err := NewLineChartHandler(allowedRemoteDomains).Get(c)
 		if err != nil {
 			return err
 		}
@@ -101,7 +101,7 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS) {
 		}
 		return c.Blob(http.StatusOK, "", img)
 	})
-	// /funnel
+	// /table
 	e.GET(baseURL+"table", func(c echo.Context) error {
 		img, err := NewTableChartHandler().Get(c)
 		if err != nil {

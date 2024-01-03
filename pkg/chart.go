@@ -1,7 +1,12 @@
 package pkg
 
 import (
+	"errors"
 	"net/http"
+	"net/url"
+	"strings"
+
+	"github.com/imroc/req/v3"
 )
 
 const (
@@ -51,4 +56,65 @@ func SetHeadersResponseHTML(header http.Header) {
 	header.Set("X-Content-Type-Options", "nosniff")
 	header.Set("X-Frame-Options", "DENY")
 	header.Set("X-XSS-Protection", "1; mode=block")
+}
+
+func SetHeadersResponseTxt(header http.Header) {
+	header.Set("Cache-Control", "max-age=86400")
+	header.Set("Expires", "86400")
+	header.Set("Content-Type", "text/plain; charset=utf-8")
+	// security headers
+	header.Set("X-Content-Type-Options", "nosniff")
+	header.Set("X-Frame-Options", "DENY")
+	header.Set("X-XSS-Protection", "1; mode=block")
+}
+
+func IsURL(urlStr string) bool {
+	parsedURL, err := url.ParseRequestURI(urlStr)
+	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != ""
+}
+func IsAllowedDomain(urlStr string, allowedDomains string) bool {
+	if allowedDomains == "" {
+		return false // default do not allow any urls
+	}
+
+	// Parse the URL to extract the domain
+	parsedURL, err := url.Parse(urlStr)
+	if err != nil {
+		return false // If the URL is invalid, do not allow
+	}
+	domain := parsedURL.Hostname()
+
+	// Split the allowedDomains into a slice
+	domains := strings.Split(allowedDomains, ",")
+
+	// Check if the domain is in the list of allowed domains
+	for _, d := range domains {
+		if domain == d {
+			return true
+		}
+	}
+
+	return false
+}
+
+func GetURL(urlStr string) (string, error) {
+	resp, err := req.Get(urlStr)
+	if err != nil {
+		return "", err
+	}
+	return resp.ToString()
+}
+
+func SetDataIfRemoteURL(req *ChartRequest, allowedRemoteDomains string) error {
+	if IsURL(req.ChartData) {
+		if !IsAllowedDomain(req.ChartData, allowedRemoteDomains) {
+			return errors.New("URL is not allowed")
+		}
+		data, err := GetURL(req.ChartData)
+		if err != nil {
+			return err
+		}
+		req.ChartData = string(data)
+	}
+	return nil
 }

@@ -12,7 +12,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
+func NewEcho(baseURL string, publicDir embed.FS, allowedRemoteDomains string) *echo.Echo {
 	e := echo.New()
 	//recover
 	e.Use(middleware.Recover())
@@ -22,7 +22,7 @@ func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
 		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
 		CustomTimeFormat: "2006-01-02 15:04:05",
 	}))
-	SetupRoutes(e, baseURL, publicDir)
+	SetupRoutes(e, baseURL, publicDir, allowedRemoteDomains)
 	return e
 }
 

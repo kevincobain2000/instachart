@@ -305,3 +305,5 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.3** - Fixes a few padding issues.
 - **v1.0.4** - Adds `/` for frontend. And Installation instructions for self-hosting.
 - **v1.0.5** - Frontend page with examples.
+- **v1.0.6** - Code improvements and bug fixes.
+- **v1.0.7** - Adds trends for `bar` charts.

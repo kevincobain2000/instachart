@@ -159,8 +159,8 @@ https://instachart.coveritup.app/bar?title=Bar+Chart
 <br>
 
 <p align="center">
-  <a href='bar?title=Bar+Chart%20&subtitle=Sleeping+hours&metric=hours&zmetric=days&theme=dark&data={%20"x":%20["Monday",%20"Friday",%20"Sunday"],%20"y":%20[[8,2,14]],%20"z":%20[[9,3,15]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart%20&subtitle=Sleeping+hours&metric=hours&zmetric=days&theme=dark&data={%20"x":%20["Monday",%20"Friday",%20"Sunday"],%20"y":%20[[8,2,14]],%20"z":%20[[9,3,15]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
+  <a href='https://instachart.coveritup.app/bar?title=Medidation+times&width=860&theme=dark&subtitle=Yoga&theme=light&metric=mins&width=1024&height=512&data={%22x%22:[%22Sunday%22,%22Monday%22,%22Monday%22,%22Monday%22,%22Tuesday%22,%22Tuesday%22,%22Tuesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Friday%22,%22Friday%22,%22Friday%22,%22Saturday%22],%22y%22:[[19,19,72,66,80,86,148,145,152,126,107,150,133,106,204,105,106,103,18,104]],%22z%22:[[20,20,73,67,81,87,149,146,153,127,108,151,134,107,205,106,107,104,19,105]]}'>
+    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Medidation+times&width=860&theme=dark&subtitle=Yoga&theme=light&metric=mins&width=1024&height=512&data={%22x%22:[%22Sunday%22,%22Monday%22,%22Monday%22,%22Monday%22,%22Tuesday%22,%22Tuesday%22,%22Tuesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Friday%22,%22Friday%22,%22Friday%22,%22Saturday%22],%22y%22:[[19,19,72,66,80,86,148,145,152,126,107,150,133,106,204,105,106,103,18,104]],%22z%22:[[20,20,73,67,81,87,149,146,153,127,108,151,134,107,205,106,107,104,19,105]]}'>
   </a>
 </p>
 

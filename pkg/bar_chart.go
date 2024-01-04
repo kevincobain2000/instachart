@@ -45,7 +45,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 				Bottom: DEFAULT_PADDING_BOTTOM,
 			}
 			opt.ValueFormatter = func(f float64) string {
-				return fmt.Sprintf("%.0f%s", f, req.Metric)
+				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}
 			idx := len(opt.SeriesList) - 1
 			if len(opt.SeriesList) > 1 {
@@ -164,7 +164,7 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
 			opt.ValueFormatter = func(f float64) string {
-				return fmt.Sprintf("%.0f%s", f, req.Metric)
+				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}
 		},
 	)

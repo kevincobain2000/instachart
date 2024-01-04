@@ -40,7 +40,7 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 				Bottom: DEFAULT_PADDING_BOTTOM * 2,
 			}
 			opt.ValueFormatter = func(f float64) string {
-				return fmt.Sprintf("%.0f%s", f, req.Metric)
+				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}
 			opt.FillArea = req.Fill
 

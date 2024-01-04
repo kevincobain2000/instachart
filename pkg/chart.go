@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 
 	"github.com/imroc/req/v3"
@@ -121,4 +122,21 @@ func SetDataIfRemoteURL(req *ChartRequest, allowedRemoteDomains string) error {
 		req.ChartData = string(data)
 	}
 	return nil
+}
+
+// NumberToK converts a number to a string with 'k' for thousands and 'm' for millions.
+func NumberToK(num *float64) string {
+	if num == nil {
+		return "0"
+	}
+
+	if *num < 1000 {
+		return strconv.FormatFloat(*num, 'f', -1, 64)
+	}
+
+	if *num < 1000000 {
+		return strconv.FormatFloat(*num/1000, 'f', 1, 64) + "k"
+	}
+
+	return strconv.FormatFloat(*num/1000000, 'f', 1, 64) + "m"
 }

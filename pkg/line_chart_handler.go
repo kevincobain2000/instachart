@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"github.com/mcuadros/go-defaults"
 )
 
 type LineChartHandler struct {
@@ -12,10 +13,10 @@ type LineChartHandler struct {
 	allowedRemoteDomains string
 }
 
-func NewLineChartHandler(allowedRemoteURLS string) *LineChartHandler {
+func NewLineChartHandler(allowedRemoteDomains string) *LineChartHandler {
 	return &LineChartHandler{
 		chart:                NewLineChart(),
-		allowedRemoteDomains: allowedRemoteURLS,
+		allowedRemoteDomains: allowedRemoteDomains,
 	}
 }
 
@@ -27,6 +28,7 @@ type LineChartData struct {
 
 func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
+	defaults.SetDefaults(req)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}

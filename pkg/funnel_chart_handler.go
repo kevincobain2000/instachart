@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"github.com/mcuadros/go-defaults"
 )
 
 type FunnelChartHandler struct {
@@ -26,6 +27,7 @@ type FunnelChartData struct {
 
 func (h *FunnelChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
+	defaults.SetDefaults(req)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}

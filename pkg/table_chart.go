@@ -12,16 +12,19 @@ func NewTableChart() *TableChart {
 }
 
 func (c *TableChart) Get(names []string, values [][]string, req *ChartRequest) ([]byte, error) {
-	header := names
-	rows := values
+	opts := charts.TableChartOption{
+		Type:   req.Output,
+		Header: names,
+		Data:   values,
+	}
 
 	if req.Theme == "dark" {
 		charts.SetDefaultTableSetting(charts.TableDarkThemeSetting)
 	} else {
 		charts.SetDefaultTableSetting(charts.TableLightThemeSetting)
 	}
-	charts.SetDefaultWidth(req.Width)
-	p, err := charts.TableRender(header, rows)
+	p, err := charts.TableOptionRender(opts)
+
 	if err != nil {
 		return nil, err
 	}

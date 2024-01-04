@@ -34,6 +34,7 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 			Left:   charts.PositionLeft,
 		}),
 		func(opt *charts.ChartOption) {
+			opt.Type = req.Output
 			opt.Theme = req.Theme
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP,

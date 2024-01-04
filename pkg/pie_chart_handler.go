@@ -55,6 +55,6 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 	}
 
 	buf, err := h.chart.Get(data.Values, data.Names, req)
-	SetHeadersResponseImage(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header(), req.Output)
 	return buf, err
 }

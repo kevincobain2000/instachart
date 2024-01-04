@@ -40,6 +40,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 			charts.SeriesMarkDataTypeMin),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.Type = req.Output
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP * 2,
 				Bottom: DEFAULT_PADDING_BOTTOM,
@@ -120,6 +121,7 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 		},
 		SeriesList: series,
 	}
+	opt.Type = req.Output
 	opt.Theme = req.Theme
 	opt.Legend.Padding = charts.Box{
 		Top:    DEFAULT_PADDING_TOP * 2,
@@ -163,6 +165,7 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 		charts.YAxisDataOptionFunc(xData),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.Type = req.Output
 			opt.ValueFormatter = func(f float64) string {
 				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}

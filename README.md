@@ -44,15 +44,16 @@
 
 **URL** `https://instachart.coveritup.app`
 
-| Common Queries | Required | Type   | Default           | Description |
-| :------------- | :------- | :----- | :---------------- | :---------- |
-| `data`         | ◯        | string |                   | JSON Format |
-| `title`        |          | string |                   |             |
-| `subtitle`     |          | string |                   |             |
-| `theme`        |          | string | `light` or `dark` |             |
-| `metric`       |          | string |                   |             |
-| `height`       |          | int    | 768               |             |
-| `width`        |          | int    | 1024              |             |
+| Common Queries | Required | Type   | Default | Description       |
+| :------------- | :------- | :----- | :------ | :---------------- |
+| `data`         | ◯        | string |         | JSON Format       |
+| `title`        |          | string |         |                   |
+| `subtitle`     |          | string |         |                   |
+| `theme`        |          | string | `light` | `light` or `dark` |
+| `metric`       |          | string |         |                   |
+| `height`       |          | int    | 768     |                   |
+| `width`        |          | int    | 1024    |                   |
+| `output`       |          | string | `png`   | `png` or `svg`    |
 
 
 
@@ -310,3 +311,4 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.5** - Frontend page with examples.
 - **v1.0.6** - Code improvements and bug fixes.
 - **v1.0.7** - Adds trends for `bar` charts.
+- **v1.0.8** - Adds support for `svg` charts.

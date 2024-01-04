@@ -62,6 +62,6 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 		}
 	}
 
-	SetHeadersResponseImage(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header(), req.Output)
 	return h.chart.Get(data.XData, data.YData, data.Names, req)
 }

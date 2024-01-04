@@ -53,6 +53,7 @@ func (c *RadarChart) Get(values [][]float64, names []string, labels []string, re
 		charts.RadarIndicatorOptionFunc(names, c.GetIndicators(values)),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.Type = req.Output
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP,
 				Bottom: DEFAULT_PADDING_BOTTOM,

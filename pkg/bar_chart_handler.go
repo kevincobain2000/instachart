@@ -75,7 +75,7 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 		req.Style = BAR_STYLE_STACKED
 	}
 
-	SetHeadersResponseImage(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header(), req.Output)
 	switch req.Style {
 	case BAR_STYLE_VERTICAL:
 		return h.chart.GetVertical(data.XData, data.YData, data.Names, req)

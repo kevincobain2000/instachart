@@ -55,6 +55,6 @@ func (h *RadarChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	SetHeadersResponseImage(c.Response().Header())
+	SetHeadersResponseImage(c.Response().Header(), req.Output)
 	return h.chart.Get(data.Values, data.Names, data.Labels, req)
 }

@@ -39,6 +39,7 @@ func (c *PieChart) Get(values []float64, names []string, req *ChartRequest) ([]b
 		charts.PieSeriesShowLabel(),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.Type = req.Output
 		},
 	)
 	if err != nil {

@@ -40,18 +40,23 @@ type ChartRequest struct {
 	Height        int    `json:"height" query:"height" form:"height" default:"768"`
 	Style         string `json:"style" query:"style" form:"style" default:"vertical"`
 	Fill          bool   `json:"fill" query:"fill" form:"fill" default:"false"`
+	Output        string `json:"output" query:"output" form:"output" default:"png"`
 }
 
-func SetHeadersResponseImage(header http.Header) {
+func SetHeadersResponseImage(header http.Header, output string) {
 	header.Set("Cache-Control", "max-age=31536000")
 	header.Set("Expires", "31536000")
-	header.Set("Content-Type", "image/png")
-	// security headers
+	if output == "svg" {
+		header.Set("Content-Type", "image/svg+xml; charset=utf-8")
+	} else {
+		header.Set("Content-Type", "image/png")
+	}
+	// // security headers
 	header.Set("X-Content-Type-Options", "nosniff")
 	header.Set("X-Frame-Options", "DENY")
 	header.Set("X-XSS-Protection", "1; mode=block")
-	// content policy
-	header.Set("Content-Security-Policy", "default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; connect-src 'self'; script-src 'self';")
+	// Strict-Transport-Security
+	header.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
 }
 func SetHeadersResponseHTML(header http.Header) {
 	header.Set("Cache-Control", "max-age=31536000")

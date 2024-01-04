@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
+	"github.com/mcuadros/go-defaults"
 )
 
 type BarChartHandler struct {
@@ -22,11 +23,13 @@ func NewBarChartHandler(allowedRemoteDomains string) *BarChartHandler {
 type BarChartData struct {
 	XData []string    `json:"x"`
 	YData [][]float64 `json:"y"`
+	ZData [][]float64 `json:"z"`
 	Names []string    `json:"names"`
 }
 
 func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
+	defaults.SetDefaults(req)
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}
@@ -46,16 +49,42 @@ func (h *BarChartHandler) Get(c echo.Context) ([]byte, error) {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
 
-	if len(data.XData) == 0 || len(data.XData) != len(data.YData[0]) {
+	if len(data.XData) == 0 || len(data.YData) == 0 {
 		msgs := map[string]string{
-			"data": "Counts are invalid",
+			"data": "X or Y Counts are invalid",
 		}
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
-	SetHeadersResponseImage(c.Response().Header())
-	if req.Horizontal {
-		return h.chart.GetHorizontal(data.XData, data.YData, data.Names, req)
+	for _, y := range data.YData {
+		if len(y) != len(data.XData) {
+			msgs := map[string]string{
+				"data": "Y Counts are invalid",
+			}
+			return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
+		}
+	}
+	if len(data.ZData) != 0 {
+		for _, z := range data.ZData {
+			if len(z) != len(data.XData) {
+				msgs := map[string]string{
+					"data": "Z Counts are invalid",
+				}
+				return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
+			}
+		}
+		req.Style = BAR_STYLE_STACKED
 	}
 
-	return h.chart.GetVertical(data.XData, data.YData, data.Names, req)
+	SetHeadersResponseImage(c.Response().Header())
+	switch req.Style {
+	case BAR_STYLE_VERTICAL:
+		return h.chart.GetVertical(data.XData, data.YData, data.Names, req)
+	case BAR_STYLE_HORIZONTAL:
+		return h.chart.GetHorizontal(data.XData, data.YData, data.Names, req)
+	case BAR_STYLE_STACKED:
+		return h.chart.GetStacked(data.XData, data.YData, data.ZData, data.Names, req)
+	}
+
+	return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, "Invalid style")
+
 }

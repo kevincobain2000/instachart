@@ -15,6 +15,10 @@ const (
 	DEFAULT_PADDING_BOTTOM     = 20
 	DEFAULT_PADDING_LEFT       = 20
 	DEFAULT_SUBTITLE_FONT_SIZE = 10
+
+	BAR_STYLE_VERTICAL   = "vertical"
+	BAR_STYLE_HORIZONTAL = "horizontal"
+	BAR_STYLE_STACKED    = "stacked"
 )
 
 type Chart struct {
@@ -29,12 +33,12 @@ type ChartRequest struct {
 	ChartTitle    string `json:"title" query:"title" form:"title"`
 	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
 	Metric        string `json:"metric" query:"metric" form:"metric"`
-	Height        int    `json:"height" query:"height" form:"height"`
-	Theme         string `json:"theme" query:"theme" form:"theme"`
-	Type          string `json:"type" query:"type" form:"type"`
-	Width         int    `json:"width" query:"width" form:"width"`
-	Horizontal    bool   `json:"horizontal" query:"horizontal" form:"horizontal"`
-	Fill          bool   `json:"fill" query:"fill" form:"fill"`
+	ZMetric       string `json:"zmetric" query:"zmetric" form:"zmetric"`
+	Theme         string `json:"theme" query:"theme" form:"theme" default:"light"`
+	Width         int    `json:"width" query:"width" form:"width" default:"1024"`
+	Height        int    `json:"height" query:"height" form:"height" default:"768"`
+	Style         string `json:"style" query:"style" form:"style" default:"vertical"`
+	Fill          bool   `json:"fill" query:"fill" form:"fill" default:"false"`
 }
 
 func SetHeadersResponseImage(header http.Header) {

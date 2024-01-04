@@ -7,6 +7,9 @@
   Chart as Image - service using <a href="https://github.com/wcharczuk/go-chart" target="_blank">go-chart</a>
  and <a href="https://github.com/vicanso/go-charts" target="_blank">go-charts.</a>
 </p>
+<p align="center">
+    <a href="https://www.producthunt.com/posts/instachart?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-instachart" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=432315&theme=neutral" alt="InstaChart - Generate&#0032;charts&#0032;as&#0032;images | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+</p>
 
 [![coverage](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=coverage)](https://coveritup.app/kevincobain2000/instachart)
 

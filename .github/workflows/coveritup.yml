@@ -132,9 +132,3 @@ jobs:
       - uses: kevincobain2000/action-coveritup@v1
         with:
           pr_comment: true
-          type: coverage
-
-      - uses: kevincobain2000/action-coveritup@v1
-        with:
-          destroy: true
-          type: build-time

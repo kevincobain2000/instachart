@@ -60,17 +60,24 @@ jobs:
         with:
           type: npm-modules-size
 
-      - name: Build
+      - name: NPM Build time
+        working-directory: frontend
         run: |
           BUILD_START=$SECONDS
-          cd frontend
           npm run build
-          cd ..
+          echo SCORE=$(($SECONDS-BUILD_START)) >> "$GITHUB_ENV"
+      - uses: kevincobain2000/action-coveritup@v1
+        with:
+          type: npm-build-time
+
+      - name: Go Build time
+        run: |
+          BUILD_START=$SECONDS
           go build -ldflags '-s -w' -o main main.go
           echo SCORE=$(($SECONDS-BUILD_START)) >> "$GITHUB_ENV"
       - uses: kevincobain2000/action-coveritup@v1
         with:
-          type: build-time
+          type: go-build-time
 
       - name: Test
         run: |

@@ -69,6 +69,7 @@ jobs:
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: npm-build-time
+          metric: sec
 
       - name: Go Build time
         run: |
@@ -78,6 +79,7 @@ jobs:
       - uses: kevincobain2000/action-coveritup@v1
         with:
           type: go-build-time
+          metric: sec
 
       - name: Test
         run: |
@@ -130,3 +132,9 @@ jobs:
       - uses: kevincobain2000/action-coveritup@v1
         with:
           pr_comment: true
+          type: coverage
+
+      - uses: kevincobain2000/action-coveritup@v1
+        with:
+          destroy: true
+          type: build-time

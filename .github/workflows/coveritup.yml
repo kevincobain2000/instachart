@@ -5,12 +5,14 @@ on:
       - '**/*.mod'
       - '**/*.sum'
       - '**/*.yml'
+      - '**/*.astro'
   push:
     paths:
       - '**/*.go'
       - '**/*.mod'
       - '**/*.sum'
       - '**/*.yml'
+      - '**/*.astro'
 
 name: "Cover It Up"
 concurrency:

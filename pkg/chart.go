@@ -136,12 +136,12 @@ func NumberToK(num *float64) string {
 	}
 
 	if *num < 1000 {
-		return strconv.FormatFloat(*num, 'f', 2, 64)
+		return strconv.FormatFloat(*num, 'f', 1, 64)
 	}
 
 	if *num < 1000000 {
-		return strconv.FormatFloat(*num/1000, 'f', 2, 64) + "k"
+		return strconv.FormatFloat(*num/1000, 'f', 1, 64) + "k"
 	}
 
-	return strconv.FormatFloat(*num/1000000, 'f', 2, 64) + "m"
+	return strconv.FormatFloat(*num/1000000, 'f', 1, 64) + "m"
 }

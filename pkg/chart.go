@@ -135,13 +135,22 @@ func NumberToK(num *float64) string {
 		return "0"
 	}
 
+	formatNumber := func(n float64) string {
+		if n == float64(int64(n)) {
+			// If n is an integer, format without decimal places.
+			return strconv.FormatFloat(n, 'f', 0, 64)
+		}
+		// Otherwise, format with one decimal place.
+		return strconv.FormatFloat(n, 'f', 1, 64)
+	}
+
 	if *num < 1000 {
-		return strconv.FormatFloat(*num, 'f', 1, 64)
+		return formatNumber(*num)
 	}
 
 	if *num < 1000000 {
-		return strconv.FormatFloat(*num/1000, 'f', 1, 64) + "k"
+		return formatNumber(*num/1000) + "k"
 	}
 
-	return strconv.FormatFloat(*num/1000000, 'f', 1, 64) + "m"
+	return formatNumber(*num/1000000) + "m"
 }

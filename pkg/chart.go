@@ -82,6 +82,7 @@ func IsURL(urlStr string) bool {
 	parsedURL, err := url.ParseRequestURI(urlStr)
 	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != ""
 }
+
 func IsAllowedDomain(urlStr string, allowedDomains string) bool {
 	if allowedDomains == "" {
 		return false // default do not allow any urls

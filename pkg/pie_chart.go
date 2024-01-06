@@ -18,10 +18,11 @@ func (c *PieChart) Get(values []float64, names []string, req *ChartRequest) ([]b
 	p, err := charts.PieRender(
 		values,
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
+			Left:             charts.PositionCenter,
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),

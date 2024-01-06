@@ -38,10 +38,11 @@ func (c *RadarChart) Get(values [][]float64, names []string, labels []string, re
 	p, err := charts.RadarRender(
 		values,
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
+			Left:             charts.PositionCenter,
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),

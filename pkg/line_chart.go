@@ -22,10 +22,11 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			Left:             charts.PositionCenter,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
 		}),
 		charts.XAxisDataOptionFunc(xData),
 		charts.LegendOptionFunc(charts.LegendOption{

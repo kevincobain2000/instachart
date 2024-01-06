@@ -22,10 +22,11 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 	p, err := charts.BarRender(
 		yData,
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			Left:             charts.PositionCenter,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
@@ -92,10 +93,11 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 
 	opt := charts.ChartOption{
 		Title: charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
+			Left:             charts.PositionCenter,
 		},
 		XAxis:  charts.NewXAxisOption(xData),
 		Legend: charts.NewLegendOption(names),
@@ -155,10 +157,11 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 	p, err := charts.HorizontalBarRender(
 		yData,
 		charts.TitleOptionFunc(charts.TitleOption{
-			Text:            req.ChartTitle,
-			Subtext:         req.ChartSubtitle,
-			SubtextFontSize: DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:            charts.PositionCenter,
+			Text:             req.ChartTitle,
+			Subtext:          req.ChartSubtitle,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
+			Left:             charts.PositionCenter,
 		}),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),

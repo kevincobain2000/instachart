@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/imroc/req/v3"
+	"github.com/wcharczuk/go-chart/v2/drawing"
 )
 
 const (
@@ -15,12 +16,20 @@ const (
 	DEFAULT_PADDING_RIGHT      = 20
 	DEFAULT_PADDING_BOTTOM     = 20
 	DEFAULT_PADDING_LEFT       = 20
-	DEFAULT_SUBTITLE_FONT_SIZE = 10
+	DEFAULT_SUBTITLE_FONT_SIZE = 11
 
 	BAR_STYLE_VERTICAL   = "vertical"
 	BAR_STYLE_HORIZONTAL = "horizontal"
 	BAR_STYLE_STACKED    = "stacked"
 )
+
+// slate
+var DEFAULT_SUBTITLE_COLOR = drawing.Color{
+	R: 112,
+	G: 128,
+	B: 144,
+	A: 255,
+}
 
 type Chart struct {
 }
@@ -82,6 +91,7 @@ func IsURL(urlStr string) bool {
 	parsedURL, err := url.ParseRequestURI(urlStr)
 	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != ""
 }
+
 func IsAllowedDomain(urlStr string, allowedDomains string) bool {
 	if allowedDomains == "" {
 		return false // default do not allow any urls

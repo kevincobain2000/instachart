@@ -16,6 +16,7 @@ func (c *TableChart) Get(names []string, values [][]string, req *ChartRequest) (
 		Type:   req.Output,
 		Header: names,
 		Data:   values,
+		Width:  req.Width,
 	}
 
 	if req.Theme == "dark" {

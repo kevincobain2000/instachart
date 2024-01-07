@@ -68,8 +68,8 @@ func SetHeadersResponseImage(header http.Header, output string) {
 	header.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
 }
 func SetHeadersResponseHTML(header http.Header) {
-	header.Set("Cache-Control", "max-age=31536000")
-	header.Set("Expires", "31536000")
+	header.Set("Cache-Control", "max-age=86400")
+	header.Set("Expires", "86400")
 	header.Set("Content-Type", "text/html; charset=utf-8")
 	// security headers
 	header.Set("X-Content-Type-Options", "nosniff")

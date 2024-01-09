@@ -11,6 +11,7 @@ import (
 const (
 	DOCS_URL     = "https://github.com/kevincobain2000/instachart"
 	FAVICON_FILE = "favicon.ico"
+	LOGO_FILE    = "logo.png"
 	ROBOTS_FILE  = "robots.txt"
 	ROBOTS_TXT   = `User-agent: *
 Allow: *
@@ -51,6 +52,16 @@ func SetupRoutes(e *echo.Echo, baseURL string, publicDir embed.FS, allowedRemote
 		}
 		SetHeadersResponseImage(c.Response().Header(), "png")
 		return c.Blob(http.StatusOK, "image/x-icon", content)
+	})
+	// /logo.png
+	e.GET(baseURL+LOGO_FILE, func(c echo.Context) error {
+		filename := fmt.Sprintf("%s/%s", DIST_DIR, "logo.png")
+		content, err := publicDir.ReadFile(filename)
+		if err != nil {
+			return c.String(http.StatusNotFound, "404")
+		}
+		SetHeadersResponseImage(c.Response().Header(), "png")
+		return c.Blob(http.StatusOK, "image/png", content)
 	})
 
 	// /line

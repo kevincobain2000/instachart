@@ -59,9 +59,9 @@
 
 ## `GET /line`
 
-| Query  | Required | Type    | Default |
-| :----- | :------- | :------ | :------ |
-| `fill` |          | boolean | `false` |
+| Query  | Required | Type   | Default | Description        |
+| :----- | :------- | :----- | :------ | :----------------- |
+| `line` |          | string | `fill`  | `fill` or `nofill` |
 
 
 | `data`  | Required | Type     |

@@ -17,6 +17,10 @@ func NewLineChart() *LineChart {
 }
 
 func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
+	fill := false
+	if req.Line == "fill" {
+		fill = true
+	}
 	p, err := charts.LineRender(
 		yData,
 		charts.HeightOptionFunc(req.Height),
@@ -44,7 +48,7 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 			opt.ValueFormatter = func(f float64) string {
 				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}
-			opt.FillArea = req.Fill
+			opt.FillArea = fill
 
 			idx := len(opt.SeriesList) - 1
 			if len(opt.SeriesList) > 1 {

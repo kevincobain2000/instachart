@@ -48,7 +48,7 @@ type ChartRequest struct {
 	Width         int    `json:"width" query:"width" form:"width" default:"1024"`
 	Height        int    `json:"height" query:"height" form:"height" default:"768"`
 	Style         string `json:"style" query:"style" form:"style" default:"vertical"`
-	Fill          bool   `json:"fill" query:"fill" form:"fill" default:"false"`
+	Line          string `json:"line" query:"line" default:"nofill" validate:"oneof=nofill fill" message:"line must be fill"`
 	Output        string `json:"output" query:"output" form:"output" default:"png"`
 }
 

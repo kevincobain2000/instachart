@@ -10,7 +10,7 @@ require (
 	github.com/mcuadros/go-defaults v1.2.0
 	github.com/sirupsen/logrus v1.9.3
 	github.com/stretchr/testify v1.8.4
-	github.com/vicanso/go-charts/v2 v2.6.1
+	github.com/vicanso/go-charts/v2 v2.6.3
 	github.com/wcharczuk/go-chart/v2 v2.1.1
 )
 

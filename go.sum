@@ -97,8 +97,8 @@ github.com/valyala/bytebufferpool v1.0.0/go.mod h1:6bBcMArwyJ5K/AmCkWv1jt77kVWyC
 github.com/valyala/fasttemplate v1.2.1/go.mod h1:KHLXt3tVN2HBp8eijSv/kGJopbvo7S+qRAEEKiv+SiQ=
 github.com/valyala/fasttemplate v1.2.2 h1:lxLXG0uE3Qnshl9QyaK6XJxMXlQZELvChBOCmQD0Loo=
 github.com/valyala/fasttemplate v1.2.2/go.mod h1:KHLXt3tVN2HBp8eijSv/kGJopbvo7S+qRAEEKiv+SiQ=
-github.com/vicanso/go-charts/v2 v2.6.1 h1:xWODVa4KtzkZrbUNd6WQunqGyFWXgaUeeXMQkFm9RuE=
-github.com/vicanso/go-charts/v2 v2.6.1/go.mod h1:Ii2KDI3udTG1wPtiTnntzjlUBJVJTqNscMzh3oYHzUk=
+github.com/vicanso/go-charts/v2 v2.6.3 h1:AP+zVZw27nt7kjxY5js70M3YfroDRCodrpdqW/Gdxh4=
+github.com/vicanso/go-charts/v2 v2.6.3/go.mod h1:Ii2KDI3udTG1wPtiTnntzjlUBJVJTqNscMzh3oYHzUk=
 github.com/wcharczuk/go-chart/v2 v2.1.1 h1:2u7na789qiD5WzccZsFz4MJWOJP72G+2kUuJoSNqWnE=
 github.com/wcharczuk/go-chart/v2 v2.1.1/go.mod h1:CyCAUt2oqvfhCl6Q5ZvAZwItgpQKZOkCJGb+VGv6l14=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=

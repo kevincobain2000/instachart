@@ -33,12 +33,6 @@ func BindRequest[T any](c echo.Context, request T) error {
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	// validate request
-	msgs, err := ValidateRequest(request)
-	if err != nil {
-		return echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
-	}
-	// set defaults from struct tags
 
 	return nil
 }

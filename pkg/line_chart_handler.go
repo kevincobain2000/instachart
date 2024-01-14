@@ -28,11 +28,16 @@ type LineChartData struct {
 
 func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	req := new(ChartRequest)
-	defaults.SetDefaults(req)
+
 	if err := BindRequest(c, req); err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, err)
 	}
-	err := SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	defaults.SetDefaults(req)
+	msgs, err := ValidateRequest(req)
+	if err != nil {
+		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
+	}
+	err = SetDataIfRemoteURL(req, h.allowedRemoteDomains)
 	if err != nil {
 		msgs := map[string]string{
 			"data": err.Error(),

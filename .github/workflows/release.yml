@@ -27,6 +27,7 @@ jobs:
         run: |
           npm install
           npm run build
+          echo "You are running MIT License version" > dist/index.html
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v3

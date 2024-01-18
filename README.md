@@ -15,7 +15,7 @@
 
 [![go-binary-size](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-binary-size&color=pink)](https://coveritup.app/kevincobain2000/instachart)
 [![unit-test-run-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=unit-test-run-time)](https://coveritup.app/kevincobain2000/instachart)
-[![build-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=build-time&color=lightblue)](https://coveritup.app/kevincobain2000/instachart)
+[![go-build-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-build-time&color=lightblue)](https://coveritup.app/kevincobain2000/instachart)
 [![go-mod-dependencies](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-mod-dependencies&color=indigo)](https://coveritup.app/kevincobain2000/instachart)
 [![go-sec-issues](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-sec-issues&color=green)](https://coveritup.app/kevincobain2000/instachart)
 

@@ -313,4 +313,4 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.7** - Adds trends for `bar` charts.
 - **v1.0.8** - Adds support for `svg` charts.
 - **v1.0.9** - Validations improvements.
-- **v1.0.10** - No LP on release version.
+- **v1.0.11** - No LP on release version.

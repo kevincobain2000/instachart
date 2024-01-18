@@ -18,6 +18,7 @@ func NewEcho(baseURL string, publicDir embed.FS, allowedRemoteDomains string) *e
 	e.Use(middleware.Recover())
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())
+	e.Use(middleware.Gzip())
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
 		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
 		CustomTimeFormat: "2006-01-02 15:04:05",

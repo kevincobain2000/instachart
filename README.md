@@ -11,13 +11,17 @@
     <a href="https://www.producthunt.com/posts/instachart?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-instachart" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=432315&theme=neutral" alt="InstaChart - Generate&#0032;charts&#0032;as&#0032;images | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 </p>
 
-[![coverage](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=coverage)](https://coveritup.app/kevincobain2000/instachart)
 
-[![go-binary-size](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-binary-size&color=pink)](https://coveritup.app/kevincobain2000/instachart)
-[![unit-test-run-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=unit-test-run-time)](https://coveritup.app/kevincobain2000/instachart)
-[![go-build-time](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-build-time&color=lightblue)](https://coveritup.app/kevincobain2000/instachart)
-[![go-mod-dependencies](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-mod-dependencies&color=indigo)](https://coveritup.app/kevincobain2000/instachart)
-[![go-sec-issues](https://coveritup.app/embed/kevincobain2000/instachart?branch=master&type=go-sec-issues&color=green)](https://coveritup.app/kevincobain2000/instachart)
+![unit-test-run-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=unit-test-run-time&branch=master)
+![coverage](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=coverage&branch=master)
+![go-binary-size](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-binary-size&branch=master)
+![go-mod-dependencies](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-mod-dependencies&branch=master)
+![go-sec-issues](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-sec-issues&branch=master)
+![npm-install-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=npm-install-time&branch=master)
+![npm-modules-size](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=npm-modules-size&branch=master)
+![npm-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=npm-build-time&branch=master)
+![go-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-build-time&branch=master)
+
 
 **Quick Setup:** Easy setup. Add charts as images in markdown, emails etc.
 

@@ -10,17 +10,19 @@ import (
 
 var validate = validator.New()
 
-func ValidateRequest[T any](request T) (map[string]string, error) {
+type ValidationErrs map[string][]string
+
+func ValidateRequest[T any](request T) (ValidationErrs, error) {
 	errs := validate.Struct(request)
-	msgs := make(map[string]string)
+	validationErrs := ValidationErrs{}
 	if errs != nil {
 		for _, err := range errs.(validator.ValidationErrors) {
 			field, _ := reflect.TypeOf(request).Elem().FieldByName(err.Field())
 			queryTag := getStructTag(field, "query")
-			message := getStructTag(field, "message")
-			msgs[queryTag] = message
+			message := err.Tag() + ":" + getStructTag(field, "message")
+			validationErrs[queryTag] = append(validationErrs[queryTag], message)
 		}
-		return msgs, errs
+		return validationErrs, errs
 	}
 	return nil, nil
 }

@@ -8,8 +8,10 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+var validate = validator.New()
+
 func ValidateRequest[T any](request T) (map[string]string, error) {
-	errs := validator.New().Struct(request)
+	errs := validate.Struct(request)
 	msgs := make(map[string]string)
 	if errs != nil {
 		for _, err := range errs.(validator.ValidationErrors) {

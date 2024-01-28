@@ -9,14 +9,12 @@ import (
 )
 
 type LineChartHandler struct {
-	chart                *LineChart
-	allowedRemoteDomains string
+	chart *LineChart
 }
 
-func NewLineChartHandler(allowedRemoteDomains string) *LineChartHandler {
+func NewLineChartHandler() *LineChartHandler {
 	return &LineChartHandler{
-		chart:                NewLineChart(),
-		allowedRemoteDomains: allowedRemoteDomains,
+		chart: NewLineChart(),
 	}
 }
 
@@ -37,7 +35,7 @@ func (h *LineChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
-	err = SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	err = SetDataIfRemoteURL(req)
 	if err != nil {
 		msgs := map[string]string{
 			"data": err.Error(),

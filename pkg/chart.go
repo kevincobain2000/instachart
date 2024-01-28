@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 	"net/url"
+	"os"
 	"strconv"
 	"strings"
 
@@ -125,7 +126,11 @@ func GetURL(urlStr string) (string, error) {
 	return resp.ToString()
 }
 
-func SetDataIfRemoteURL(req *ChartRequest, allowedRemoteDomains string) error {
+func SetDataIfRemoteURL(req *ChartRequest) error {
+	allowedRemoteDomains := os.Getenv("ALLOWED_REMOTE_DOMAINS")
+	if allowedRemoteDomains == "" {
+		return nil
+	}
 	if IsURL(req.ChartData) {
 		if !IsAllowedDomain(req.ChartData, allowedRemoteDomains) {
 			return errors.New("URL is not allowed")

@@ -14,7 +14,7 @@ func TestGetRadarChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/radar", func(c echo.Context) error {
-		img, err := NewRadarChartHandler("").Get(c)
+		img, err := NewRadarChartHandler().Get(c)
 		if err != nil {
 			return err
 		}

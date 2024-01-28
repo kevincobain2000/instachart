@@ -9,14 +9,12 @@ import (
 )
 
 type DonutChartHandler struct {
-	chart                *DonutChart
-	allowedRemoteDomains string
+	chart *DonutChart
 }
 
-func NewDonutChartHandler(allowedRemoteDomains string) *DonutChartHandler {
+func NewDonutChartHandler() *DonutChartHandler {
 	return &DonutChartHandler{
-		chart:                NewDonutChart(),
-		allowedRemoteDomains: allowedRemoteDomains,
+		chart: NewDonutChart(),
 	}
 }
 
@@ -36,7 +34,7 @@ func (h *DonutChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
-	err = SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	err = SetDataIfRemoteURL(req)
 	if err != nil {
 		msgs := map[string]string{
 			"data": err.Error(),

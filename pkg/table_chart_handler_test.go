@@ -14,7 +14,7 @@ func TestGetTableChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/table", func(c echo.Context) error {
-		img, err := NewTableChartHandler("").Get(c)
+		img, err := NewTableChartHandler().Get(c)
 		if err != nil {
 			return err
 		}

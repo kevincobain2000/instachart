@@ -30,7 +30,7 @@ func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.Gzip())
 	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format:           "REQUEST[${time_custom}] ${method} ${uri} (${latency_human}) ${status} ${remote_ip}\n",
+		Format:           ltsv(),
 		CustomTimeFormat: "2006-01-02 15:04:05",
 	}))
 	SetupRoutes(e, baseURL, publicDir)
@@ -81,4 +81,29 @@ func HTTPErrorHandler(err error, c echo.Context) {
 	if err = c.JSON(code, &HTTPErrorResponse{Error: message}); err != nil {
 		Logger().Error(err)
 	}
+}
+
+func ltsv() string {
+	time_custom := "2006-01-02 15:04:05"
+	_ = time_custom
+	var format string
+	format += "time:${time_custom}\t"
+	format += "host:${remote_ip}\t"
+	format += "forwardedfor:${header:x-forwarded-for}\t"
+	format += "req:-\t"
+	format += "status:${status}\t"
+	format += "method:${method}\t"
+	format += "uri:${uri}\t"
+	format += "size:${bytes_out}\t"
+	format += "referer:${referer}\t"
+	format += "ua:${user_agent}\t"
+	format += "reqtime_ns:${latency}\t"
+	format += "cache:-\t"
+	format += "runtime:-\t"
+	format += "apptime:-\t"
+	format += "vhost:${host}\t"
+	format += "reqtime_human:${latency_human}\t"
+	format += "x-request-id:${id}\t"
+	format += "host:${host}\n"
+	return format
 }

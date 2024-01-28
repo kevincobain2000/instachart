@@ -17,7 +17,8 @@ const (
 	DEFAULT_PADDING_RIGHT      = 20
 	DEFAULT_PADDING_BOTTOM     = 20
 	DEFAULT_PADDING_LEFT       = 20
-	DEFAULT_SUBTITLE_FONT_SIZE = 11
+	DEFAULT_TITLE_FONT_SIZE    = 12
+	DEFAULT_SUBTITLE_FONT_SIZE = 10
 
 	BAR_STYLE_VERTICAL   = "vertical"
 	BAR_STYLE_HORIZONTAL = "horizontal"
@@ -168,4 +169,11 @@ func NumberToK(num *float64) string {
 	}
 
 	return formatNumber(*num/1000000) + "m"
+}
+
+func Truncate(s string, max int) string {
+	if len(s) > max {
+		return s[:max] + "..."
+	}
+	return s
 }

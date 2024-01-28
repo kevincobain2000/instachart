@@ -8,13 +8,23 @@ import (
 	"strconv"
 
 	"github.com/fvbock/endless"
+	"github.com/go-echarts/statsview"
+	"github.com/go-echarts/statsview/viewer"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func NewEcho(baseURL string, publicDir embed.FS) *echo.Echo {
+	if os.Getenv("PPROF_HOST") != "" && os.Getenv("PPROF_PORT") != "" {
+		Logger().Info("pprof enabled and listening on: ", os.Getenv("PPROF_HOST")+":"+os.Getenv("PPROF_PORT"))
+		addr := os.Getenv("PPROF_HOST") + ":" + os.Getenv("PPROF_PORT")
+		viewer.SetConfiguration(viewer.WithTheme(viewer.ThemeWesteros), viewer.WithAddr(addr))
+		mgr := statsview.New()
+		_ = mgr
+		go mgr.Start()
+		// mgr.Stop()
+	}
 	e := echo.New()
-	//recover
 	e.Use(middleware.Recover())
 	e.HTTPErrorHandler = HTTPErrorHandler
 	e.Pre(middleware.RemoveTrailingSlash())

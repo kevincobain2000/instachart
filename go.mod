@@ -4,6 +4,7 @@ go 1.21.3
 
 require (
 	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
+	github.com/go-echarts/statsview v0.3.4
 	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/imroc/req/v3 v3.42.2
 	github.com/labstack/echo/v4 v4.11.3
@@ -21,6 +22,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/gaukas/godicttls v0.0.4 // indirect
+	github.com/go-echarts/go-echarts/v2 v2.2.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
@@ -42,6 +44,7 @@ require (
 	github.com/quic-go/qtls-go1-20 v0.3.3 // indirect
 	github.com/quic-go/quic-go v0.38.1 // indirect
 	github.com/refraction-networking/utls v1.5.3 // indirect
+	github.com/rs/cors v1.7.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	golang.org/x/crypto v0.14.0 // indirect

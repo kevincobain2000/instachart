@@ -30,7 +30,7 @@ func main() {
 		return
 	}
 	SetupFlags()
-	e := pkg.NewEcho(f.baseUrl, publicDir, f.allowedRemoteDomains)
+	e := pkg.NewEcho(f.baseUrl, publicDir)
 
 	pkg.GracefulServerWithPid(e, f.host, f.port)
 }

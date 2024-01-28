@@ -9,14 +9,12 @@ import (
 )
 
 type PieChartHandler struct {
-	chart                *PieChart
-	allowedRemoteDomains string
+	chart *PieChart
 }
 
-func NewPieChartHandler(allowedRemoteDomains string) *PieChartHandler {
+func NewPieChartHandler() *PieChartHandler {
 	return &PieChartHandler{
-		chart:                NewPieChart(),
-		allowedRemoteDomains: allowedRemoteDomains,
+		chart: NewPieChart(),
 	}
 }
 
@@ -36,7 +34,7 @@ func (h *PieChartHandler) Get(c echo.Context) ([]byte, error) {
 	if err != nil {
 		return nil, echo.NewHTTPError(http.StatusUnprocessableEntity, msgs)
 	}
-	err = SetDataIfRemoteURL(req, h.allowedRemoteDomains)
+	err = SetDataIfRemoteURL(req)
 	if err != nil {
 		msgs := map[string]string{
 			"data": err.Error(),

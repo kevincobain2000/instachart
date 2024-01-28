@@ -14,7 +14,7 @@ func TestGetPieChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/pie", func(c echo.Context) error {
-		img, err := NewPieChartHandler("").Get(c)
+		img, err := NewPieChartHandler().Get(c)
 		if err != nil {
 			return err
 		}

@@ -14,7 +14,7 @@ func TestGetFunnelChart(t *testing.T) {
 	e := echo.New()
 
 	e.GET("/funnel", func(c echo.Context) error {
-		img, err := NewFunnelChartHandler("").Get(c)
+		img, err := NewFunnelChartHandler().Get(c)
 		if err != nil {
 			return err
 		}

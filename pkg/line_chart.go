@@ -17,43 +17,17 @@ func NewLineChart() *LineChart {
 }
 
 func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
-	fill := true
+	fill := false
 	if req.Line == "fill" {
 		fill = true
 	}
-	isMini := false
+	isMini := IsMiniChart(req)
+
 	showLegend := true
-	paddings := charts.Box{
-		Top:    10,
-		Bottom: 10,
-		Left:   10,
-		Right:  10,
-	}
-	titleSizes := charts.TitleOption{
-		Text:             req.ChartTitle,
-		Subtext:          req.ChartSubtitle,
-		FontSize:         DEFAULT_TITLE_FONT_SIZE,
-		SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-		Left:             charts.PositionCenter,
-		SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-	}
-	if req.Width <= 300 && req.Height <= 300 {
+	paddings := GetPaddings(req)
+	titleSizes := GetTitleSizes(req)
+	if isMini {
 		showLegend = false
-		isMini = true
-		paddings = charts.Box{
-			Top:    10,
-			Bottom: -20,
-			Left:   -10,
-			Right:  10,
-		}
-		titleSizes = charts.TitleOption{
-			Text:             Truncate(req.ChartTitle, 17),
-			Subtext:          Truncate(req.ChartSubtitle, 17),
-			FontSize:         DEFAULT_TITLE_FONT_SIZE,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:             charts.PositionCenter,
-			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-		}
 	}
 	p, err := charts.LineRender(
 		yData,
@@ -72,8 +46,8 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 			opt.Type = req.Output
 			opt.Theme = req.Theme
 			opt.Legend.Padding = charts.Box{
-				Top:    0,
-				Bottom: 0,
+				Top:    DEFAULT_PADDING_TOP * 2,
+				Bottom: DEFAULT_PADDING_BOTTOM,
 			}
 			opt.ValueFormatter = func(f float64) string {
 				if isMini {

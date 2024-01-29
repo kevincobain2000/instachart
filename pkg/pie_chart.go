@@ -40,6 +40,7 @@ func (c *PieChart) Get(values []float64, names []string, req *ChartRequest) ([]b
 		charts.PieSeriesShowLabel(),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.BackgroundColor = DEFAULT_BACKGROUND_COLOR
 			opt.Type = req.Output
 		},
 	)

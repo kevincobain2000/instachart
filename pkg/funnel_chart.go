@@ -34,6 +34,7 @@ func (c *FunnelChart) Get(values []float64, names []string, req *ChartRequest) (
 		}),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.BackgroundColor = DEFAULT_BACKGROUND_COLOR
 			opt.Type = req.Output
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP * 2,

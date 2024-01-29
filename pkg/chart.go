@@ -32,6 +32,13 @@ var DEFAULT_SUBTITLE_COLOR = drawing.Color{
 	A: 255,
 }
 
+var DEFAULT_BACKGROUND_COLOR = drawing.Color{
+	R: 0,
+	G: 0,
+	B: 0,
+	A: 0,
+}
+
 type Chart struct {
 }
 

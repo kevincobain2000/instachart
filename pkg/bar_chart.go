@@ -44,6 +44,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 			charts.SeriesMarkDataTypeMin),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.BackgroundColor = DEFAULT_BACKGROUND_COLOR
 			opt.Type = req.Output
 			opt.Legend.Padding = charts.Box{
 				Top:    DEFAULT_PADDING_TOP * 2,
@@ -128,6 +129,7 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 	}
 	opt.Type = req.Output
 	opt.Theme = req.Theme
+	opt.BackgroundColor = DEFAULT_BACKGROUND_COLOR
 	opt.Legend.Padding = charts.Box{
 		Top:    DEFAULT_PADDING_TOP * 2,
 		Bottom: DEFAULT_PADDING_BOTTOM,
@@ -179,6 +181,7 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 		}),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
+			opt.BackgroundColor = DEFAULT_BACKGROUND_COLOR
 			opt.Type = req.Output
 			opt.ValueFormatter = func(f float64) string {
 				if isMini {

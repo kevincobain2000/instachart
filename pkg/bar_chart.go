@@ -19,22 +19,25 @@ func NewBarChart() *BarChart {
 }
 
 func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
+	isMini := IsMiniChart(req)
+	showLegend := true
+	paddings := GetPaddings(req)
+	titleSizes := GetTitleSizes(req)
+	if isMini {
+		showLegend = false
+	}
 	p, err := charts.BarRender(
 		yData,
-		charts.TitleOptionFunc(charts.TitleOption{
-			Text:             req.ChartTitle,
-			Subtext:          req.ChartSubtitle,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:             charts.PositionCenter,
-			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-		}),
+		charts.TitleOptionFunc(titleSizes),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
+		charts.PaddingOptionFunc(paddings),
 		charts.XAxisDataOptionFunc(xData),
 		charts.LegendOptionFunc(charts.LegendOption{
 			Orient: charts.OrientHorizontal,
 			Data:   names,
 			Left:   charts.PositionLeft,
+			Show:   &showLegend,
 		}),
 		charts.MarkLineOptionFunc(0, charts.SeriesMarkDataTypeAverage),
 		charts.MarkPointOptionFunc(0, charts.SeriesMarkDataTypeMax,
@@ -47,7 +50,11 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 				Bottom: DEFAULT_PADDING_BOTTOM,
 			}
 			opt.ValueFormatter = func(f float64) string {
+				if isMini {
+					return "-"
+				}
 				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
+
 			}
 			idx := len(opt.SeriesList) - 1
 			if len(opt.SeriesList) > 1 {
@@ -57,9 +64,11 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
 			)
-			opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
-				charts.SeriesMarkDataTypeAverage,
-			)
+			if !isMini {
+				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
+					charts.SeriesMarkDataTypeAverage,
+				)
+			}
 		},
 	)
 	if err != nil {
@@ -90,15 +99,9 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 		}
 		series = append(series, s)
 	}
-
+	titleSizes := GetTitleSizes(req)
 	opt := charts.ChartOption{
-		Title: charts.TitleOption{
-			Text:             req.ChartTitle,
-			Subtext:          req.ChartSubtitle,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-			Left:             charts.PositionCenter,
-		},
+		Title:  titleSizes,
 		XAxis:  charts.NewXAxisOption(xData),
 		Legend: charts.NewLegendOption(names),
 		YAxisOptions: []charts.YAxisOption{
@@ -154,22 +157,33 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 }
 
 func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
+	isMini := IsMiniChart(req)
+	showLegend := true
+	paddings := GetPaddings(req)
+	titleSizes := GetTitleSizes(req)
+	if isMini {
+		showLegend = false
+	}
 	p, err := charts.HorizontalBarRender(
 		yData,
-		charts.TitleOptionFunc(charts.TitleOption{
-			Text:             req.ChartTitle,
-			Subtext:          req.ChartSubtitle,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-			Left:             charts.PositionCenter,
-		}),
+		charts.TitleOptionFunc(titleSizes),
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
+		charts.PaddingOptionFunc(paddings),
 		charts.YAxisDataOptionFunc(xData),
+		charts.LegendOptionFunc(charts.LegendOption{
+			Orient: charts.OrientHorizontal,
+			Data:   names,
+			Left:   charts.PositionLeft,
+			Show:   &showLegend,
+		}),
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
 			opt.Type = req.Output
 			opt.ValueFormatter = func(f float64) string {
+				if isMini {
+					return "-"
+				}
 				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 			}
 		},

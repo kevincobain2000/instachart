@@ -21,32 +21,40 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 	if req.Line == "fill" {
 		fill = true
 	}
+	isMini := IsMiniChart(req)
+
+	showLegend := true
+	paddings := GetPaddings(req)
+	titleSizes := GetTitleSizes(req)
+	if isMini {
+		showLegend = false
+	}
 	p, err := charts.LineRender(
 		yData,
 		charts.HeightOptionFunc(req.Height),
 		charts.WidthOptionFunc(req.Width),
-		charts.TitleOptionFunc(charts.TitleOption{
-			Text:             req.ChartTitle,
-			Subtext:          req.ChartSubtitle,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
-			Left:             charts.PositionCenter,
-			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
-		}),
+		charts.PaddingOptionFunc(paddings),
+		charts.TitleOptionFunc(titleSizes),
 		charts.XAxisDataOptionFunc(xData),
 		charts.LegendOptionFunc(charts.LegendOption{
 			Orient: charts.OrientHorizontal,
 			Data:   names,
 			Left:   charts.PositionLeft,
+			Show:   &showLegend,
 		}),
 		func(opt *charts.ChartOption) {
 			opt.Type = req.Output
 			opt.Theme = req.Theme
 			opt.Legend.Padding = charts.Box{
-				Top:    DEFAULT_PADDING_TOP,
-				Bottom: DEFAULT_PADDING_BOTTOM * 2,
+				Top:    DEFAULT_PADDING_TOP * 2,
+				Bottom: DEFAULT_PADDING_BOTTOM,
 			}
 			opt.ValueFormatter = func(f float64) string {
+				if isMini {
+					return "-"
+				}
 				return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
+
 			}
 			opt.FillArea = fill
 
@@ -58,9 +66,12 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
 			)
-			opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
-				charts.SeriesMarkDataTypeAverage,
-			)
+			if !isMini {
+				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
+					charts.SeriesMarkDataTypeAverage,
+				)
+			}
+
 		},
 	)
 	if err != nil {

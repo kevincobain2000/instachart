@@ -3,12 +3,9 @@ package pkg
 import (
 	"errors"
 	"net/http"
-	"net/url"
 	"os"
-	"strconv"
-	"strings"
 
-	"github.com/imroc/req/v3"
+	charts "github.com/vicanso/go-charts/v2"
 	"github.com/wcharczuk/go-chart/v2/drawing"
 )
 
@@ -17,7 +14,10 @@ const (
 	DEFAULT_PADDING_RIGHT      = 20
 	DEFAULT_PADDING_BOTTOM     = 20
 	DEFAULT_PADDING_LEFT       = 20
-	DEFAULT_SUBTITLE_FONT_SIZE = 11
+	DEFAULT_TITLE_FONT_SIZE    = 12
+	DEFAULT_SUBTITLE_FONT_SIZE = 10
+	MINI_CHART_WIDTH           = 300
+	MINI_CHART_HEIGHT          = 300
 
 	BAR_STYLE_VERTICAL   = "vertical"
 	BAR_STYLE_HORIZONTAL = "horizontal"
@@ -88,44 +88,6 @@ func SetHeadersResponseTxt(header http.Header) {
 	header.Set("X-XSS-Protection", "1; mode=block")
 }
 
-func IsURL(urlStr string) bool {
-	parsedURL, err := url.ParseRequestURI(urlStr)
-	return err == nil && parsedURL.Scheme != "" && parsedURL.Host != ""
-}
-
-func IsAllowedDomain(urlStr string, allowedDomains string) bool {
-	if allowedDomains == "" {
-		return false // default do not allow any urls
-	}
-
-	// Parse the URL to extract the domain
-	parsedURL, err := url.Parse(urlStr)
-	if err != nil {
-		return false // If the URL is invalid, do not allow
-	}
-	domain := parsedURL.Hostname()
-
-	// Split the allowedDomains into a slice
-	domains := strings.Split(allowedDomains, ",")
-
-	// Check if the domain is in the list of allowed domains
-	for _, d := range domains {
-		if domain == d {
-			return true
-		}
-	}
-
-	return false
-}
-
-func GetURL(urlStr string) (string, error) {
-	resp, err := req.Get(urlStr)
-	if err != nil {
-		return "", err
-	}
-	return resp.ToString()
-}
-
 func SetDataIfRemoteURL(req *ChartRequest) error {
 	allowedRemoteDomains := os.Getenv("ALLOWED_REMOTE_DOMAINS")
 	if allowedRemoteDomains == "" {
@@ -144,28 +106,46 @@ func SetDataIfRemoteURL(req *ChartRequest) error {
 	return nil
 }
 
-// NumberToK converts a number to a string with 'k' for thousands and 'm' for millions.
-func NumberToK(num *float64) string {
-	if num == nil {
-		return "0"
-	}
+func IsMiniChart(req *ChartRequest) bool {
+	return req.Width <= MINI_CHART_WIDTH && req.Height <= MINI_CHART_HEIGHT
+}
 
-	formatNumber := func(n float64) string {
-		if n == float64(int64(n)) {
-			// If n is an integer, format without decimal places.
-			return strconv.FormatFloat(n, 'f', 0, 64)
+func GetPaddings(req *ChartRequest) charts.Box {
+	paddings := charts.Box{
+		Top:    10,
+		Bottom: 10,
+		Left:   10,
+		Right:  10,
+	}
+	if IsMiniChart(req) {
+		paddings = charts.Box{
+			Top:    10,
+			Bottom: -20,
+			Left:   -10,
+			Right:  10,
 		}
-		// Otherwise, format with one decimal place.
-		return strconv.FormatFloat(n, 'f', 1, 64)
 	}
+	return paddings
+}
 
-	if *num < 1000 {
-		return formatNumber(*num)
+func GetTitleSizes(req *ChartRequest) charts.TitleOption {
+	titleSizes := charts.TitleOption{
+		Text:             req.ChartTitle,
+		Subtext:          req.ChartSubtitle,
+		FontSize:         DEFAULT_TITLE_FONT_SIZE,
+		SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+		Left:             charts.PositionCenter,
+		SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
 	}
-
-	if *num < 1000000 {
-		return formatNumber(*num/1000) + "k"
+	if IsMiniChart(req) {
+		titleSizes = charts.TitleOption{
+			Text:             Truncate(req.ChartTitle, 17),
+			Subtext:          Truncate(req.ChartSubtitle, 17),
+			FontSize:         DEFAULT_TITLE_FONT_SIZE,
+			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			Left:             charts.PositionCenter,
+			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
+		}
 	}
-
-	return formatNumber(*num/1000000) + "m"
+	return titleSizes
 }

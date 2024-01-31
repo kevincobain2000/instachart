@@ -10,14 +10,16 @@ import (
 )
 
 const (
-	DEFAULT_PADDING_TOP        = 20
-	DEFAULT_PADDING_RIGHT      = 20
-	DEFAULT_PADDING_BOTTOM     = 20
-	DEFAULT_PADDING_LEFT       = 20
-	DEFAULT_TITLE_FONT_SIZE    = 12
-	DEFAULT_SUBTITLE_FONT_SIZE = 10
-	MINI_CHART_WIDTH           = 300
-	MINI_CHART_HEIGHT          = 300
+	DEFAULT_PADDING_TOP             = 20
+	DEFAULT_PADDING_RIGHT           = 20
+	DEFAULT_PADDING_BOTTOM          = 20
+	DEFAULT_PADDING_LEFT            = 20
+	DEFAULT_TITLE_FONT_SIZE         = 12
+	DEFAULT_TITLE_MINI_FONT_SIZE    = 10
+	DEFAULT_SUBTITLE_FONT_SIZE      = 10
+	DEFAULT_SUBTITLE_MINI_FONT_SIZE = 9
+	MINI_CHART_WIDTH                = 300
+	MINI_CHART_HEIGHT               = 300
 
 	BAR_STYLE_VERTICAL   = "vertical"
 	BAR_STYLE_HORIZONTAL = "horizontal"
@@ -141,8 +143,8 @@ func GetTitleSizes(req *ChartRequest) charts.TitleOption {
 		titleSizes = charts.TitleOption{
 			Text:             Truncate(req.ChartTitle, 17),
 			Subtext:          Truncate(req.ChartSubtitle, 17),
-			FontSize:         DEFAULT_TITLE_FONT_SIZE,
-			SubtextFontSize:  DEFAULT_SUBTITLE_FONT_SIZE,
+			FontSize:         DEFAULT_TITLE_MINI_FONT_SIZE,
+			SubtextFontSize:  DEFAULT_SUBTITLE_MINI_FONT_SIZE,
 			Left:             charts.PositionCenter,
 			SubtextFontColor: DEFAULT_SUBTITLE_COLOR,
 		}

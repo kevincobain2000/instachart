@@ -22,6 +22,16 @@
 ![npm-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=npm-build-time&branch=master)
 ![go-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-build-time&branch=master)
 
+![unit-test-run-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=unit-test-run-time&output=svg&width=160&height=160&branch=master)
+![coverage](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=coverage&output=svg&width=160&height=160&branch=master)
+![go-binary-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-binary-size&output=svg&width=160&height=160&branch=master)
+![go-mod-dependencies](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-mod-dependencies&output=svg&width=160&height=160&branch=master)
+![go-sec-issues](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-sec-issues&output=svg&width=160&height=160&branch=master)
+![npm-install-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-install-time&output=svg&width=160&height=160&branch=master)
+![npm-modules-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-modules-size&output=svg&width=160&height=160&branch=master)
+![npm-build-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-build-time&output=svg&width=160&height=160&branch=master)
+![go-build-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-build-time&output=svg&width=160&height=160&branch=master)
+
 
 **Quick Setup:** Easy setup. Add charts as images in markdown, emails etc.
 
@@ -318,3 +328,4 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.8** - Adds support for `svg` charts.
 - **v1.0.9** - Validations improvements.
 - **v1.0.11** - No LP on release version.
+- **v1.0.14** - Support mini

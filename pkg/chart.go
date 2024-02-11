@@ -52,6 +52,7 @@ type ChartRequest struct {
 	Height        int    `json:"height" query:"height" form:"height" default:"768"`
 	Style         string `json:"style" query:"style" form:"style" default:"vertical"`
 	Line          string `json:"line" query:"line" default:"nofill" validate:"oneof=nofill fill" message:"line must be fill"`
+	Grid          string `json:"grid" query:"grid" default:"show" validate:"oneof=show hide" message:"grid must be show or hide"`
 	Output        string `json:"output" query:"output" form:"output" default:"png"`
 }
 

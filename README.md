@@ -76,6 +76,7 @@
 | Query  | Required | Type   | Default | Description        |
 | :----- | :------- | :----- | :------ | :----------------- |
 | `line` |          | string | `fill`  | `fill` or `nofill` |
+| `grid` |          | string | `show`  | `show` or `hide`   |
 
 
 | `data`  | Required | Type     |
@@ -131,6 +132,7 @@ Extra params for `bar` chart.
 | Query     | Required | Type   | Default    | Validation                 |
 | :-------- | :------- | :----- | :--------- | :------------------------- |
 | `style`   |          | string | `vertical` | `vertical` or `horizontal` |
+| `grid`    |          | string | `show`     | `show` or `hide`           |
 | `zmetric` |          | string | `vertical` | when `z` data is provided  |
 
 

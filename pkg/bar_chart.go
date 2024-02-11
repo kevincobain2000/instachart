@@ -24,9 +24,11 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 	paddings := GetPaddings(req)
 	titleSizes := GetTitleSizes(req)
 	showGrid := charts.TrueFlag()
+	if req.Grid == "hide" {
+		showGrid = charts.FalseFlag()
+	}
 	if isMini {
 		showLegend = false
-		showGrid = charts.FalseFlag()
 	}
 	p, err := charts.BarRender(
 		yData,
@@ -90,6 +92,10 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 }
 
 func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float64, names []string, req *ChartRequest) ([]byte, error) {
+	showGrid := charts.TrueFlag()
+	if req.Grid == "hide" {
+		showGrid = charts.FalseFlag()
+	}
 	series := make([]charts.Series, 0)
 	for _, y := range yData {
 		s := charts.Series{
@@ -133,6 +139,11 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 		},
 		SeriesList: series,
 	}
+	opt.YAxisOptions = []charts.YAxisOption{
+		{
+			SplitLineShow: showGrid,
+		},
+	}
 	opt.Type = req.Output
 	opt.Theme = req.Theme
 	opt.Legend.Padding = charts.Box{
@@ -168,6 +179,11 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 	showLegend := true
 	paddings := GetPaddings(req)
 	titleSizes := GetTitleSizes(req)
+
+	showGrid := charts.TrueFlag()
+	if req.Grid == "hide" {
+		showGrid = charts.FalseFlag()
+	}
 	if isMini {
 		showLegend = false
 	}
@@ -187,6 +203,11 @@ func (c *BarChart) GetHorizontal(xData []string, yData [][]float64, names []stri
 		func(opt *charts.ChartOption) {
 			opt.Theme = req.Theme
 			opt.Type = req.Output
+			opt.YAxisOptions = []charts.YAxisOption{
+				{
+					SplitLineShow: showGrid,
+				},
+			}
 			opt.ValueFormatter = func(f float64) string {
 				if isMini {
 					return "-"

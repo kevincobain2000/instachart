@@ -25,11 +25,13 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 
 	showLegend := true
 	showGrid := charts.TrueFlag()
+	if req.Grid == "hide" {
+		showGrid = charts.FalseFlag()
+	}
 	paddings := GetPaddings(req)
 	titleSizes := GetTitleSizes(req)
 	if isMini {
 		showLegend = false
-		showGrid = charts.FalseFlag()
 	}
 	p, err := charts.LineRender(
 		yData,

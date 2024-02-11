@@ -329,3 +329,4 @@ curl -sLk https://raw.githubusercontent.com/kevincobain2000/instachart/master/in
 - **v1.0.9** - Validations improvements.
 - **v1.0.11** - No LP on release version.
 - **v1.0.14** - Support mini
+- **v1.0.15** - Do not show grids on mini charts

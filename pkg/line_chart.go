@@ -24,10 +24,12 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 	isMini := IsMiniChart(req)
 
 	showLegend := true
+	showGrid := charts.TrueFlag()
 	paddings := GetPaddings(req)
 	titleSizes := GetTitleSizes(req)
 	if isMini {
 		showLegend = false
+		showGrid = charts.FalseFlag()
 	}
 	p, err := charts.LineRender(
 		yData,
@@ -66,6 +68,11 @@ func (c *LineChart) Get(xData []string, yData [][]float64, names []string, req *
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
 			)
+			opt.YAxisOptions = []charts.YAxisOption{
+				{
+					SplitLineShow: showGrid,
+				},
+			}
 			if !isMini {
 				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 					charts.SeriesMarkDataTypeAverage,

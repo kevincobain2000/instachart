@@ -23,8 +23,10 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 	showLegend := true
 	paddings := GetPaddings(req)
 	titleSizes := GetTitleSizes(req)
+	showGrid := charts.TrueFlag()
 	if isMini {
 		showLegend = false
+		showGrid = charts.FalseFlag()
 	}
 	p, err := charts.BarRender(
 		yData,
@@ -64,6 +66,11 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
 			)
+			opt.YAxisOptions = []charts.YAxisOption{
+				{
+					SplitLineShow: showGrid,
+				},
+			}
 			if !isMini {
 				opt.SeriesList[idx].MarkLine = charts.NewMarkLine(
 					charts.SeriesMarkDataTypeAverage,

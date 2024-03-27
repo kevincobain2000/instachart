@@ -46,7 +46,6 @@ type ChartRequest struct {
 	ChartTitle    string `json:"title" query:"title" form:"title"`
 	ChartSubtitle string `json:"subtitle" query:"subtitle" form:"subtitle"`
 	Metric        string `json:"metric" query:"metric" form:"metric"`
-	ZMetric       string `json:"zmetric" query:"zmetric" form:"zmetric"`
 	Theme         string `json:"theme" query:"theme" form:"theme" default:"light"`
 	Width         int    `json:"width" query:"width" form:"width" default:"1024"`
 	Height        int    `json:"height" query:"height" form:"height" default:"768"`
@@ -116,7 +115,7 @@ func IsMiniChart(req *ChartRequest) bool {
 func GetPaddings(req *ChartRequest) charts.Box {
 	paddings := charts.Box{
 		Top:    10,
-		Bottom: 10,
+		Bottom: 20,
 		Left:   10,
 		Right:  10,
 	}

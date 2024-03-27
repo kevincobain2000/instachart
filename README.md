@@ -133,7 +133,6 @@ Extra params for `bar` chart.
 | :-------- | :------- | :----- | :--------- | :------------------------- |
 | `style`   |          | string | `vertical` | `vertical` or `horizontal` |
 | `grid`    |          | string | `show`     | `show` or `hide`           |
-| `zmetric` |          | string | `vertical` | when `z` data is provided  |
 
 
 | `data` | Required | Type     | Description                                |
@@ -166,7 +165,6 @@ https://instachart.coveritup.app/bar?title=Bar+Chart
 https://instachart.coveritup.app/bar?title=Bar+Chart
 &subtitle=Sleeping+hours
 &metric=hours
-&zmetric=days
 &theme=dark
 &data={
     "x": ["Monday", "Friday", "Sunday"],

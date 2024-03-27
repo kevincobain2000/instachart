@@ -114,35 +114,18 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 	}
 	titleSizes := GetTitleSizes(req)
 	opt := charts.ChartOption{
-		Title:  titleSizes,
-		XAxis:  charts.NewXAxisOption(xData),
-		Legend: charts.NewLegendOption(names),
-		YAxisOptions: []charts.YAxisOption{
-			{
-				Formatter: "{value}" + req.Metric,
-				Color: charts.Color{
-					R: 84,
-					G: 112,
-					B: 198,
-					A: 255,
-				},
-			},
-			{
-				Formatter: "{value}" + req.ZMetric,
-				Color: charts.Color{
-					R: 250,
-					G: 200,
-					B: 88,
-					A: 255,
-				},
-			},
-		},
+		Title:      titleSizes,
+		XAxis:      charts.NewXAxisOption(xData),
+		Legend:     charts.NewLegendOption(names),
 		SeriesList: series,
 	}
 	opt.YAxisOptions = []charts.YAxisOption{
 		{
 			SplitLineShow: showGrid,
 		},
+	}
+	opt.ValueFormatter = func(f float64) string {
+		return fmt.Sprintf("%s %s", NumberToK(&f), req.Metric)
 	}
 	opt.Type = req.Output
 	opt.Theme = req.Theme

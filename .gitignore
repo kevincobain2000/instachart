@@ -26,3 +26,4 @@ out
 main
 
 logs/
+.DS_Store

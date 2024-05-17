@@ -64,6 +64,7 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 			if len(opt.SeriesList) > 1 {
 				idx = 1
 			}
+			opt.SeriesList[idx].RoundRadius = 10
 			opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,

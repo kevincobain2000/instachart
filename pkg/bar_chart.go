@@ -64,7 +64,9 @@ func (c *BarChart) GetVertical(xData []string, yData [][]float64, names []string
 			if len(opt.SeriesList) > 1 {
 				idx = 1
 			}
-			opt.SeriesList[idx].RoundRadius = 10
+			for series := range opt.SeriesList {
+				opt.SeriesList[series].RoundRadius = 10
+			}
 			opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 				charts.SeriesMarkDataTypeMax,
 				charts.SeriesMarkDataTypeMin,
@@ -143,7 +145,9 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 	if len(opt.SeriesList) > 1 {
 		idx = 1
 	}
-	opt.SeriesList[idx].RoundRadius = 10
+	for series := range opt.SeriesList {
+		opt.SeriesList[series].RoundRadius = 10
+	}
 	opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 		charts.SeriesMarkDataTypeMax,
 		charts.SeriesMarkDataTypeMin,

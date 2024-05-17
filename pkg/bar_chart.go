@@ -143,6 +143,7 @@ func (c *BarChart) GetStacked(xData []string, yData [][]float64, zData [][]float
 	if len(opt.SeriesList) > 1 {
 		idx = 1
 	}
+	opt.SeriesList[idx].RoundRadius = 10
 	opt.SeriesList[idx].MarkPoint = charts.NewMarkPoint(
 		charts.SeriesMarkDataTypeMax,
 		charts.SeriesMarkDataTypeMin,

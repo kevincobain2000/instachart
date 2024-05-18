@@ -52,7 +52,7 @@ func TestGetDonutChart(t *testing.T) {
 		if resp.StatusCode == http.StatusOK {
 			assert.Equal(t, "image/png", resp.Header.Get("Content-Type"))
 		} else {
-			assert.Equal(t, "application/json; charset=UTF-8", resp.Header.Get("Content-Type"))
+			assert.Equal(t, "application/json", resp.Header.Get("Content-Type"))
 		}
 	}
 }

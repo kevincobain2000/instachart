@@ -22,15 +22,15 @@
 ![npm-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=npm-build-time&branch=master)
 ![go-build-time](https://coveritup.app/badge?org=kevincobain2000&repo=instachart&type=go-build-time&branch=master)
 
-![unit-test-run-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=unit-test-run-time&output=svg&width=160&height=160&branch=master)
-![coverage](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=coverage&output=svg&width=160&height=160&branch=master)
-![go-binary-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-binary-size&output=svg&width=160&height=160&branch=master)
-![go-mod-dependencies](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-mod-dependencies&output=svg&width=160&height=160&branch=master)
+![unit-test-run-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=unit-test-run-time&output=svg&width=160&height=160&branch=master&line=fill)
+![coverage](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=coverage&output=svg&width=160&height=160&branch=master&line=fill)
+![go-binary-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-binary-size&output=svg&width=160&height=160&branch=master&line=fill)
+![go-mod-dependencies](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-mod-dependencies&output=svg&width=160&height=160&branch=master&line=fill)
 ![go-sec-issues](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-sec-issues&output=svg&width=160&height=160&branch=master)
-![npm-install-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-install-time&output=svg&width=160&height=160&branch=master)
-![npm-modules-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-modules-size&output=svg&width=160&height=160&branch=master)
+![npm-install-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-install-time&output=svg&width=160&height=160&branch=master&line=fill)
+![npm-modules-size](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-modules-size&output=svg&width=160&height=160&branch=master&line=fill)
 ![npm-build-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=npm-build-time&output=svg&width=160&height=160&branch=master)
-![go-build-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-build-time&output=svg&width=160&height=160&branch=master)
+![go-build-time](https://coveritup.app/chart?org=kevincobain2000&repo=instachart&type=go-build-time&output=svg&width=160&height=160&branch=master&line=fill)
 
 
 **Quick Setup:** Easy setup. Add charts as images in markdown, emails etc.

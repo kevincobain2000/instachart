@@ -27,3 +27,5 @@ main
 
 logs/
 .DS_Store
+
+*.log

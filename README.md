@@ -35,8 +35,6 @@
 
 # API
 
-**URL** `https://instachart.coveritup.app`
-
 | Common Queries | Required | Type   | Default | Description       |
 | :------------- | :------- | :----- | :------ | :---------------- |
 | `data`         | ◯        | string |         | JSON Format       |
@@ -66,7 +64,7 @@
 
 
 ```sh
-https://instachart.coveritup.app/line?title=Line+Chart
+/line?title=Line+Chart
 &subtitle=Sleeping+Hours
 &data={
     "x": ["Mon","Tue","Wed"],
@@ -75,17 +73,9 @@ https://instachart.coveritup.app/line?title=Line+Chart
 }
 ```
 
-<br>
-
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/line?title=Line+Chart&width=1024&height=620&subtitle=Sleeping+Hours&data={%20"x":%20["Mon","Tue","Wed"],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
-    <img alt="line chart" src='https://instachart.coveritup.app/line?title=Line+Chart&width=1024&height=620&subtitle=Sleeping+Hours&data={%20"x":%20["Mon","Tue","Wed"],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
-  </a>
-</p>
 
 ```sh
-https://instachart.coveritup.app/line?title=Area+Chart
+/line?title=Area+Chart
 &subtitle=Sleeping+Hours
 &fill=true
 &data={
@@ -96,12 +86,6 @@ https://instachart.coveritup.app/line?title=Area+Chart
 ```
 
 <br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&height=620&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20["Mon","Tue","Wed"],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
-    <img alt="line area chart" src='https://instachart.coveritup.app/line?title=Line+Chart+Area&width=1020&height=620&subtitle=Sleeping+Hours&fill=true&data={%20"x":%20["Mon","Tue","Wed"],%20"y":%20[[4,8,7],%20[10,20,24]],%20"names":%20["Sleeping",%20"Awake"]%20}'>
-  </a>
-</p>
 
 
 ## `GET /bar`
@@ -121,7 +105,7 @@ Extra params for `bar` chart.
 | `z`    |          | []string | Style will be `vertical` with `z` is given |
 
 ```sh
-https://instachart.coveritup.app/bar?title=Bar+Chart
+/bar?title=Bar+Chart
 &subtitle=Sleeping+hours
 &data={
     "x": ["Monday", "Friday", "Sunday"],
@@ -130,18 +114,11 @@ https://instachart.coveritup.app/bar?title=Bar+Chart
 }
 ```
 
-<br>
-
-<p align="center">
-  <a href="https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202%20,14]]%20}">
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Bar+Chart&subtitle=Sleeping+hours&data={%20%22x%22:%20[%22Monday%22,%20%22Friday%22,%20%22Sunday%22],%20%22y%22:%20[[8,%202,14]]%20}'>
-  </a>
-</p>
 
 <br>
 
 ```sh
-https://instachart.coveritup.app/bar?title=Bar+Chart
+/bar?title=Bar+Chart
 &subtitle=Sleeping+hours
 &metric=hours
 &theme=dark
@@ -153,14 +130,6 @@ https://instachart.coveritup.app/bar?title=Bar+Chart
 }
 ```
 
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/bar?title=Medidation+times&width=860&theme=dark&subtitle=Yoga&theme=light&metric=mins&width=1024&height=512&data={%22x%22:[%22Sunday%22,%22Monday%22,%22Monday%22,%22Monday%22,%22Tuesday%22,%22Tuesday%22,%22Tuesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Friday%22,%22Friday%22,%22Friday%22,%22Saturday%22],%22y%22:[[19,19,72,66,80,86,148,145,152,126,107,150,133,106,204,105,106,103,18,104]],%22z%22:[[20,20,73,67,81,87,149,146,153,127,108,151,134,107,205,106,107,104,19,105]]}'>
-    <img alt="bar chart" src='https://instachart.coveritup.app/bar?title=Medidation+times&width=860&theme=dark&subtitle=Yoga&theme=light&metric=mins&width=1024&height=512&data={%22x%22:[%22Sunday%22,%22Monday%22,%22Monday%22,%22Monday%22,%22Tuesday%22,%22Tuesday%22,%22Tuesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Wednesday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Thursday%22,%22Friday%22,%22Friday%22,%22Friday%22,%22Saturday%22],%22y%22:[[19,19,72,66,80,86,148,145,152,126,107,150,133,106,204,105,106,103,18,104]],%22z%22:[[20,20,73,67,81,87,149,146,153,127,108,151,134,107,205,106,107,104,19,105]]}'>
-  </a>
-</p>
-
 ## `GET /donut`
 
 
@@ -170,20 +139,12 @@ https://instachart.coveritup.app/bar?title=Bar+Chart
 | `values` | ◯        | []int    |
 
 ```sh
-https://instachart.coveritup.app/donut?title=Donut+Chart
+/donut?title=Donut+Chart
 &data={
     "names": ["Monday", "Friday", "Saturday", "Sunday"],
     "values": [4, 6 ,7, 9]
 }
 ```
-
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/donut?title=Donut+Chart&width=450&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-    <img alt="donut chart" src='https://instachart.coveritup.app/donut?title=Donut+Chart&width=450&height=350&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-  </a>
-</p>
 
 
 
@@ -196,21 +157,13 @@ https://instachart.coveritup.app/donut?title=Donut+Chart
 
 
 ```sh
-https://instachart.coveritup.app/pie?title=Pie+Chart
+/pie?title=Pie+Chart
 &subtitle=Sleeping+Hours
 &data={
     "names": ["Monday", "Friday", "Saturday", "Sunday"],
     "values": [4, 6 ,7, 9]
 }
 ```
-
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&height=450&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-    <img alt="pie chart" src='https://instachart.coveritup.app/pie?title=Pie+Chart&subtitle=Sleeping+Hours&height=450&data={%20"names":%20["Monday",%20"Friday",%20"Saturday",%20"Sunday"],%20"values":%20[4,%206%20,7,%209]%20}'>
-  </a>
-</p>
 
 
 ## `GET /radar`
@@ -222,21 +175,13 @@ https://instachart.coveritup.app/pie?title=Pie+Chart
 | `labels` |          | []string |                                    |
 
 ```sh
-https://instachart.coveritup.app/radar?title=Radar+Chart
+/radar?title=Radar+Chart
 &data={
     "names": ["Mon","Tue", "Wed", "Fri"],
     "labels": ["Work", "Relax", "Travel"],
     "values": [[1,2,3,4], [15,7,8,9], [15,17,5,7]]
 }
 ```
-
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/radar?title=Radar+Chart&theme=dark&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
-    <img alt="radar chart" src='https://instachart.coveritup.app/radar?title=Radar+Chart&theme=dark&height=520&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Wed%22,%20%22Fri%22],%20%22labels%22:%20[%22Work%22,%20%22Relax%22,%20%22Travel%22],%20%22values%22:%20[[1,2,3,4],%20[15,7,8,9],%20[15,17,5,7]]%20}'>
-  </a>
-</p>
 
 ## `GET /funnel`
 
@@ -246,20 +191,13 @@ https://instachart.coveritup.app/radar?title=Radar+Chart
 | `values` | ◯        | []int    |
 
 ```sh
-https://instachart.coveritup.app/funnel?title=Radar+Chart
+/funnel?title=Radar+Chart
 &data={
     "names": ["Mon","Tue", "Thu", "Fri", "Sat", "Sun"],
     "values": [100,80,60,40,20,10]
 }
 ```
 
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/funnel?title=Radar+Chart&width=620&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sun%22],%20%22values%22:%20[100,80,60,40,20,10]%20}'>
-    <img alt="funnel chart" src='https://instachart.coveritup.app/funnel?title=Radar+Chart&width=620&data={%20%22names%22:%20[%22Mon%22,%22Tue%22,%20%22Thu%22,%20%22Fri%22,%20%22Sat%22,%20%22Sun%22],%20%22values%22:%20[100,80,60,40,20,10]%20}'>
-  </a>
-</p>
 
 ## `GET /table`
 
@@ -269,20 +207,12 @@ https://instachart.coveritup.app/funnel?title=Radar+Chart
 | `values` | ◯        | [][]string | `aka rows`   |
 
 ```sh
-https://instachart.coveritup.app/table?title=Table+Chart
+/table?title=Table+Chart
 &data={
     "names": ["Branch","Code Coverage", "Quality"],
     "values": [["master","80","90"], ["develop","70","79"]]
 }
 ```
-
-<br>
-
-<p align="center">
-  <a href='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
-    <img alt="table" src='https://instachart.coveritup.app/table?data={%20"names":%20["Branch","Code%20Coverage",%20"Quality"],%20"values":%20[["master","80","90"],%20["develop","70","79"]]%20}'>
-  </a>
-</p>
 
 
 # Self Hosting
